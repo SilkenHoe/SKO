@@ -98,8 +98,13 @@ article h2 small{display:block;font:600 11.5px/1 system-ui,sans-serif;letter-spa
 .sw{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
 .sw i{width:24px;height:24px;border-radius:50%;cursor:pointer;box-shadow:inset 0 1px 1px rgba(255,255,255,.6),0 0 0 2px var(--hi)}
 .row{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
+.navtop{display:none}
+#scrim{display:none;position:fixed;inset:0;z-index:15;background:rgba(0,0,0,.28);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
 @media (max-width:760px){
- #menuBtn{display:inline-block}
+ #menuBtn{display:inline-block;margin-right:auto}
+ header h1,#dat,#imp,#sync{display:none}
+ .navtop{display:flex;justify-content:flex-end;padding:0 4px 6px}
+ body.nav #scrim{display:block}
  nav{position:fixed;left:10px;top:calc(10px + env(safe-area-inset-top,0px));bottom:10px;z-index:20;transform:translateX(-120%);transition:transform .25s;width:84%;max-width:320px;background:var(--g2)}
  body.nav nav{transform:none}
  article{padding:18px 16px 8px;border-radius:26px}
@@ -125,6 +130,7 @@ article h2 small{display:block;font:600 11.5px/1 system-ui,sans-serif;letter-spa
   <main id="main"></main>
  </div>
 </div>
+<div id="scrim"></div>
 <div id="drop">Dépose tes fichiers ici</div>
 <div id="toast"></div>
 <script>
@@ -218,7 +224,7 @@ const colorOf=s=>colors[s]||defColor(s);
 const PAL=['#6d5bd0','#d0587a','#e08a3c','#c9a227','#3fa66b','#2f9eb8','#4a7fd9','#8a8a99'];
 
 function group(){
- const g={};
+ const g={};for(const k in info)g[k]??={};
  for(const a of lib){const s=g[a.scenario]??={};const r=s[a.arc]??={};(r[a.n]??=[]).push(a)}
  for(const s in g)for(const r in g[s])for(const n in g[s][r])g[s][r][n].sort((x,y)=>x.ts-y.ts);
  return g;
@@ -237,7 +243,7 @@ function render(){
  if(!names.includes(cur))cur=names[0]||null;
  R.style.setProperty('--acc',cur?colorOf(cur):'#6d5bd0');R.style.setProperty('--accfg',cur?fgFor(colorOf(cur)):'#fff');
  /* navigation */
- $('#nav').innerHTML=names.map(s=>{
+ $('#nav').innerHTML='<div class="navtop"><button class="btn sm" data-navx>✕ Fermer</button></div>'+names.map(s=>{
   const sc=g[s],nA=Object.values(sc).reduce((t,r)=>t+Object.keys(r).length,0),open=s===cur&&!col[kS(s)];
   let h=`<div class="sc${s===cur?' on':''}" draggable="true"><button class="t" data-sc="${q(s)}" title="Clic droit ou appui long : options"><span>${esc(s)}</span><span class="n">${nA}</span><i class="chev">${open?'▾':'▸'}</i></button>`;
   if(open){
@@ -251,27 +257,27 @@ function render(){
    h+='</div>';
   }
   return h+'</div>';
- }).join('');
+ }).join('')+'<button class="btn sm" data-nsc="1" style="margin:8px 6px">＋ Scénario</button>';
  /* lecture */
  const m=$('#main');
  if(!cur){
-  m.innerHTML=`<div class="empty glass"><h2>Aucun scénario pour l’instant</h2><p>Importe tes archives de conversation (.txt) ou dépose-les sur la page. Seules les générations d’écriture sont conservées, classées par scénario, puis par arc et par acte.</p><button class="btn pri" id="imp2">Importer des fichiers…</button></div>`;
+  m.innerHTML=`<div class="empty glass"><h2>Aucun scénario pour l’instant</h2><p>Importe tes archives de conversation (.txt) ou dépose-les sur la page. Seules les générations d’écriture sont conservées, classées par scénario, puis par arc et par acte.</p><button class="btn pri" id="imp2">Importer des fichiers…</button> <button class="btn" data-nsc="1">Créer à la main</button></div>`;
   $('#imp2').onclick=()=>$('#file').click();return;
  }
  const sc=g[cur];let tot=0,out='';
  for(const arc of num(sc)){
   const c=col[kA(cur,arc)],cnt=Object.keys(sc[arc]).length;
-  out+=`<div class="arcsep" id="arc-${arc}"><button class="btn sm" data-tg="${q(kA(cur,arc))}">${c?'▸':'▾'} ${arcLbl(arc)} · ${cnt} acte${cnt>1?'s':''}</button><button class="btn sm" data-ea="${arc}" title="Modifier / déplacer l’arc">✎</button></div>`;
+  out+=`<div class="arcsep" id="arc-${arc}"><button class="btn sm" data-tg="${q(kA(cur,arc))}">${c?'▸':'▾'} ${arcLbl(arc)} · ${cnt} acte${cnt>1?'s':''}</button><button class="btn sm" data-ea="${arc}" title="Modifier / déplacer l’arc">✎</button><button class="btn sm" data-na="${arc}" title="Ajouter un acte à cet arc">＋</button><button class="btn sm" data-da="${arc}" title="Supprimer l’arc">✕</button></div>`;
   for(const n of num(sc[arc])){
    const v=sc[arc][n],k=JSON.stringify([cur,arc,n]),i=Math.min(ver[k]??v.length-1,v.length-1),a=v[i];tot+=words(a.md);
    if(c)continue;
    out+=`<article id="${aid(arc,n)}"><h2><small>Act ${n2rom(n)}</small>${esc(a.title)}</h2>
    <div class="tools"><span>${words(a.md).toLocaleString('fr-FR')} mots</span>
    ${v.length>1?`<select data-v="${q(k)}">${v.map((x,j)=>`<option value="${j}"${j===i?' selected':''}>Version ${j+1}/${v.length}</option>`).join('')}</select>`:''}
-   <button class="btn sm" data-c="${q(k)}">Copier</button><button class="btn sm" data-ev="${q(k)}">✎ Modifier</button></div><div class="txt">${md(a.md)}</div></article>`;
+   <button class="btn sm" data-c="${q(k)}">Copier</button><button class="btn sm" data-ev="${q(k)}">✎ Modifier</button><button class="btn sm" data-xv="${q(k)}">Supprimer</button></div><div class="txt">${md(a.md)}</div></article>`;
   }
  }
- m.innerHTML=`<div class="page"><div class="ph"><h1>${esc(cur)}</h1><button class="btn sm" data-es="1" title="Nom et couleur">✎</button></div><div class="meta">${num(sc).length} arc(s) · ${tot.toLocaleString('fr-FR')} mots</div>${ficheHtml(cur)}${out}</div>`;
+ m.innerHTML=`<div class="page"><div class="ph"><h1>${esc(cur)}</h1><button class="btn sm" data-es="1" title="Nom et couleur">✎</button><button class="btn sm" data-na="">＋ Acte</button><button class="btn sm" data-nr="1">＋ Arc</button></div><div class="meta">${num(sc).length} arc(s) · ${tot.toLocaleString('fr-FR')} mots</div>${ficheHtml(cur)}${out}</div>`;
  spy();
 }
 function keep(f){const m=$('#main'),y=m.scrollTop;f();render();m.scrollTop=y}
@@ -288,11 +294,12 @@ function modal(title,fields,ok,lab='Enregistrer'){
  const names=sortedNames();
  const o=document.createElement('div');o.id='modal';
  const fh=f=>{
+  if(f.t==='area')return`<label>${f.l}</label><textarea name="${f.k}" rows="14" style="font-family:ui-monospace,Menlo,monospace;font-size:13px">${esc(f.v||'')}</textarea>`;
   if(f.t==='text'||f.t==='number')return`<label>${f.l}</label><input type="${f.t}" name="${f.k}" value="${q(f.v)}"${f.t==='number'?' min="0"':''}>`;
-  if(f.t==='scen')return`<label>${f.l}</label><select name="${f.k}">${names.map(n=>`<option value="${q(n)}"${n===f.v?' selected':''}>${esc(n)}</option>`).join('')}<option value="__new">＋ Nouveau scénario…</option></select><input type="text" name="${f.k}_new" placeholder="Nom du nouveau scénario" style="display:none">`;
+  if(f.t==='scen')return`<label>${f.l}</label><select name="${f.k}">${names.map(n=>`<option value="${q(n)}"${n===f.v?' selected':''}>${esc(n)}</option>`).join('')}<option value="__new"${f.v==='__new'?' selected':''}>＋ Nouveau scénario…</option></select><input type="text" name="${f.k}_new" placeholder="Nom du nouveau scénario" style="${f.v==='__new'?'':'display:none'}">`;
   if(f.t==='color')return`<label>${f.l}</label><div class="sw">${PAL.map(c=>`<i data-c="${c}" style="background:${c}"></i>`).join('')}<input type="color" name="${f.k}" value="${f.v}"><button type="button" class="btn sm" data-auto>Auto</button></div>`;
  };
- o.innerHTML=`<form class="glass"><h3>${esc(title)}</h3>${fields.map(fh).join('')}<div class="row"><button type="button" class="btn" data-x>Annuler</button><button class="btn pri">${esc(lab)}</button></div></form>`;
+ o.innerHTML=`<form class="glass${fields.some(f=>f.t==='area')?' wide':''}"><h3>${esc(title)}</h3>${fields.map(fh).join('')}<div class="row"><button type="button" class="btn" data-x>Annuler</button><button class="btn pri">${esc(lab)}</button></div></form>`;
  document.body.appendChild(o);
  const f=o.querySelector('form'),close=()=>o.remove();
  f.querySelectorAll('select[name]').forEach(s=>s.onchange=()=>{f.elements[s.name+'_new'].style.display=s.value==='__new'?'':'none'});
@@ -327,22 +334,45 @@ function editArc(s,arc){
 function editAct(k){
  const[s,arc,n]=JSON.parse(k),slot=lib.filter(a=>a.scenario===s&&a.arc===arc&&a.n===n);
  const v0=slot.sort((a,b)=>a.ts-b.ts),sel=v0[Math.min(ver[k]??v0.length-1,v0.length-1)];
- modal('Acte',[{k:'t',t:'text',l:'Titre',v:sel.title},{k:'s',t:'scen',l:'Scénario',v:s},{k:'a',t:'number',l:'Arc',v:arc},{k:'n',t:'number',l:'Numéro d’acte',v:n}],v=>{
-  sel.title=v.t||sel.title;
+ modal('Acte',[{k:'t',t:'text',l:'Titre',v:sel.title},{k:'s',t:'scen',l:'Scénario',v:s},{k:'a',t:'number',l:'Arc',v:arc},{k:'n',t:'number',l:'Numéro d’acte',v:n},{k:'md',t:'area',l:'Texte (Markdown)',v:sel.md}],v=>{
+  sel.title=v.t;if(v.md)sel.md=v.md;
   const ns=v.s||s;slot.forEach(a=>{a.scenario=ns;a.arc=v.a;a.n=v.n||n});cur=ns;
  });
 }
 
+/* ---------- création / suppression manuelles ---------- */
+function newAct(s,arc){
+ const sc=group()[s]||{},as=num(sc);
+ const a=arc==='new'?(as.length?Math.max(...as):0)+1:arc===null?(as.length?Math.max(...as):1):arc;
+ const ns=num(sc[a]||{}),n=(ns.length?Math.max(...ns):0)+1;
+ modal('Nouvel acte',[{k:'s',t:'scen',l:'Scénario',v:s||'__new'},{k:'a',t:'number',l:'Arc',v:a},{k:'n',t:'number',l:'Numéro d’acte',v:n},{k:'t',t:'text',l:'Titre',v:''},{k:'md',t:'area',l:'Texte (Markdown)',v:''}],v=>{
+  const sn=v.s||s;if(!sn)return toast('Indique un scénario.');if(!v.md)return toast('Le texte est vide : acte non créé.');
+  lib.push({scenario:sn,arc:v.a,n:v.n||1,title:v.t,md:v.md,ts:Date.now(),src:'manuel'});cur=sn;
+ },'Ajouter');
+}
+function newScenario(){
+ modal('Nouveau scénario',[{k:'name',t:'text',l:'Nom',v:''}],v=>{if(!v.name)return;info[v.name]??={plot:'',chars:[]};cur=v.name},'Créer');
+}
+function pickAct(k){const[s,arc,n]=JSON.parse(k),sl=lib.filter(a=>a.scenario===s&&a.arc===arc&&a.n===n).sort((a,b)=>a.ts-b.ts);return{s,arc,n,sel:sl[Math.min(ver[k]??sl.length-1,sl.length-1)]}}
+function delAct(k){const{n,sel}=pickAct(k);modal('Supprimer l’acte « '+(sel.title||'Act '+n2rom(n))+' » ?',[],()=>{lib=lib.filter(a=>a!==sel);delete ver[k]},'Supprimer')}
+function delArc(s,arc){modal('Supprimer '+arcLbl(arc)+' de « '+s+' » ?',[],()=>{lib=lib.filter(a=>!(a.scenario===s&&a.arc===arc))},'Supprimer')}
+
 /* ---------- clics ---------- */
 document.addEventListener('click',e=>{
- const t=e.target.closest('[data-sc],[data-tg],[data-go],[data-del],[data-es],[data-ea],[data-ev],[data-ei],[data-c]');if(!t||t.closest('#modal'))return;
+ const t=e.target.closest('[data-sc],[data-tg],[data-go],[data-del],[data-es],[data-ea],[data-ev],[data-ei],[data-c],[data-navx],[data-na],[data-nr],[data-da],[data-nsc],[data-xv]');if(!t||t.closest('#modal'))return;
  const d=t.dataset;
- if(d.sc!==undefined){const s=d.sc;if(s===cur)col[kS(s)]=!col[kS(s)];else{cur=s;delete col[kS(s)];$('#main').scrollTop=0}delArm=null;save();render()}
+ if(d.sc!==undefined){const s=d.sc;if(s===cur)col[kS(s)]=!col[kS(s)];else{cur=s;delete col[kS(s)];$('#main').scrollTop=0;document.body.classList.remove('nav')}delArm=null;save();render()}
  else if(d.tg!==undefined){keep(()=>{col[d.tg]=!col[d.tg];save()})}
  else if(d.go!==undefined)go(d.go);
  else if(d.del!==undefined){if(delArm===d.del){lib=lib.filter(a=>a.scenario!==d.del);delArm=null;save()}else delArm=d.del;render()}
  else if(d.es!==undefined)editScenario(cur);
  else if(d.ei!==undefined)editFiche(cur);
+ else if(d.navx!==undefined)document.body.classList.remove('nav');
+ else if(d.na!==undefined)newAct(cur,d.na===''?null:+d.na);
+ else if(d.nr!==undefined)newAct(cur,'new');
+ else if(d.da!==undefined)delArc(cur,+d.da);
+ else if(d.nsc!==undefined)newScenario();
+ else if(d.xv!==undefined)delAct(d.xv);
  else if(d.ea!==undefined)editArc(cur,+d.ea);
  else if(d.ev!==undefined)editAct(d.ev);
  else if(d.c!==undefined){
@@ -380,11 +410,12 @@ $('#fm').onclick=()=>{fs=Math.max(14,fs-1);save();render()};
 $('#fp').onclick=()=>{fs=Math.min(30,fs+1);save();render()};
 $('#th').onclick=()=>{theme={auto:'light',light:'dark',dark:'auto'}[theme];save();render();toast('Thème : '+{auto:'automatique',light:'clair',dark:'sombre'}[theme])};
 $('#menuBtn').onclick=()=>document.body.classList.toggle('nav');
+$('#scrim').onclick=()=>document.body.classList.remove('nav');
 /* ---------- ordre des groupes, menu contextuel ---------- */
 const ordIdx=s=>{const i=order.indexOf(s);return i<0?1e9:i};
 function sortedNames(g=group()){return Object.keys(g).sort((a,b)=>ordIdx(a)-ordIdx(b)||a.localeCompare(b,'fr'))}
 function placeScenario(s,fn){const n=sortedNames().filter(x=>x!==s);fn(n);order=n;save();render()}
-function delScenario(s){modal('Supprimer « '+s+' » ?',[],()=>{lib=lib.filter(a=>a.scenario!==s)},'Supprimer')}
+function delScenario(s){modal('Supprimer « '+s+' » ?',[],()=>{lib=lib.filter(a=>a.scenario!==s);delete info[s]},'Supprimer')}
 function closeCtx(){const c=$('#ctx');if(c)c.remove()}
 function ctxMenu(x,y,s){
  closeCtx();
@@ -404,7 +435,7 @@ nv.addEventListener('touchstart',e=>{const b=e.target.closest('[data-sc]');if(!b
 ['touchend','touchmove','touchcancel'].forEach(ev=>nv.addEventListener(ev,()=>clearTimeout(lp),{passive:true}));
 nv.addEventListener('click',e=>{if(lpd){lpd=0;e.stopPropagation();e.preventDefault()}},true);
 document.addEventListener('click',closeCtx);
-addEventListener('keydown',e=>{if(e.key==='Escape')closeCtx()});
+addEventListener('keydown',e=>{if(e.key==='Escape'){closeCtx();document.body.classList.remove('nav')}});
 let dragS=null;
 const scName=el=>el&&el.querySelector('[data-sc]').dataset.sc;
 const clearDt=()=>nv.querySelectorAll('.sc').forEach(x=>x.classList.remove('dt','db'));
@@ -606,7 +637,7 @@ function readSetup(){
   const d=JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(m[1].replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0))));
   history.replaceState(null,'',location.pathname+location.search);
   if(!d.o||!d.r||!d.t)return;
-  setTimeout(()=>modal(`Connecter la synchronisation à ${d.o}/${d.r} ?`,[],()=>{Object.assign(gh,{owner:d.o,repo:d.r,branch:d.b||'main',path:d.p||'lecteur-data.json',token:d.t});ghSave();ghStart()},'Connecter'),50);
+  Object.assign(gh,{owner:d.o,repo:d.r,branch:d.b||'main',path:d.p||'lecteur-data.json',token:d.t});ghSave();toast('Synchronisation GitHub configurée.');
  }catch(e){}
 }
 load();render();readSetup();ghOn()?ghStart():loadRemote();
