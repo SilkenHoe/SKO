@@ -115,6 +115,7 @@ article h2 small{display:block;font:600 11.5px/1 system-ui,sans-serif;letter-spa
   <button class="btn" id="fm" title="Réduire le texte">A−</button>
   <button class="btn" id="fp" title="Agrandir le texte">A+</button>
   <button class="btn" id="th" title="Thème">◐</button>
+  <span id="sync" class="n"></span>
   <button class="btn" id="dat">Données</button>
   <button class="btn pri" id="imp">Importer…</button>
   <input type="file" id="file" multiple accept=".txt,.md,text/plain" hidden>
@@ -209,7 +210,7 @@ let lib=[],cur=null,ver={},fs=19,theme='auto',colors={},alias={},col={},delArm=n
 const KEY='lecteur-scenarios-v1';
 function load(){try{const d=JSON.parse(localStorage.getItem(KEY)||'{}');lib=d.lib||[];cur=d.cur||null;fs=d.fs||19;theme=d.theme||'auto';colors=d.colors||{};alias=d.alias||{};col=d.col||{};order=d.order||[];info=d.info||{};savedAt=d.savedAt||0}catch(e){}lastSnap=snap()}
 const snap=()=>JSON.stringify({lib,colors,alias,order,info});
-function save(){const sn=snap();if(sn!==lastSnap){savedAt=Date.now();lastSnap=sn}try{localStorage.setItem(KEY,JSON.stringify({lib,cur,fs,theme,colors,alias,col,order,info,savedAt}))}catch(e){toast('Stockage local indisponible : la bibliothèque ne sera pas conservée.')}}
+function save(){const sn=snap();if(sn!==lastSnap){savedAt=Date.now();lastSnap=sn;ghSchedule()}try{localStorage.setItem(KEY,JSON.stringify({lib,cur,fs,theme,colors,alias,col,order,info,savedAt}))}catch(e){toast('Stockage local indisponible : la bibliothèque ne sera pas conservée.')}}
 function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('on'),3800)}
 const hsl=(h,s,l)=>{s/=100;l/=100;const a=s*Math.min(l,1-l),f=n=>{const k=(n+h/30)%12;return Math.round(255*(l-a*Math.max(-1,Math.min(k-3,9-k,1)))).toString(16).padStart(2,'0')};return'#'+f(0)+f(8)+f(4)};
 const defColor=s=>{let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))%360;return hsl(h,58,52)};
@@ -504,12 +505,25 @@ function applyData(d,mode){
 }
 function dataModal(){
  const o=document.createElement('div');o.id='modal';
- o.innerHTML=`<form class="glass"><h3>Sauvegarde des données</h3><p class="n" style="font-size:13px;line-height:1.5;margin:0 0 12px">Scénarios, titres, couleurs, ordre, synopsis et personnages tiennent dans un seul fichier, <b>lecteur-data.json</b>. Place-le dans le même dossier GitHub (Pages) que cette page : elle le charge toute seule au démarrage, sur tous tes appareils. Après une modification, exporte et remplace le fichier sur GitHub.</p><div class="dcol"><button type="button" class="btn pri" data-dl>Télécharger lecteur-data.json</button><button type="button" class="btn" data-cp>Copier le JSON</button><label>Importer un fichier de données</label><select name="mode"><option value="merge">Fusionner avec ma bibliothèque</option><option value="replace">Remplacer ma bibliothèque</option></select><input type="file" accept=".json,application/json" data-imp></div><div class="row"><button type="button" class="btn" data-x>Fermer</button></div></form>`;
+ o.innerHTML=`<form class="glass"><h3>Sauvegarde des données</h3><p class="n" style="font-size:13px;line-height:1.5;margin:0 0 12px">Scénarios, titres, couleurs, ordre, synopsis et personnages tiennent dans un seul fichier, <b>lecteur-data.json</b>. Place-le dans le même dossier GitHub (Pages) que cette page : elle le charge toute seule au démarrage, sur tous tes appareils. Après une modification, exporte et remplace le fichier sur GitHub.</p><div class="dcol" style="margin-bottom:14px"><b style="font-size:14px">Synchronisation automatique avec GitHub</b><p class="n" style="font-size:12.5px;line-height:1.5;margin:0">Chaque modification est envoyée toute seule dans le fichier du dépôt (et relue à l’ouverture). Crée un jeton « fine-grained » limité à ce dépôt, avec la permission <b>Contents : Read and write</b> (github.com/settings/personal-access-tokens). Le jeton reste dans ce navigateur, à renseigner une fois par appareil, et n’est jamais écrit dans le fichier de données.</p><div class="two"><input type="text" name="gho" placeholder="Propriétaire (ton pseudo)" value="${q(gh.owner)}"><input type="text" name="ghr" placeholder="Dépôt" value="${q(gh.repo)}"></div><div class="two"><input type="text" name="ghb" placeholder="Branche (main)" value="${q(gh.branch)}"><input type="text" name="ghp" placeholder="Fichier (lecteur-data.json)" value="${q(gh.path)}"></div><input type="text" name="ght" placeholder="${gh.token?'Jeton enregistré (laisser vide pour le garder)':'Jeton d’accès GitHub'}" autocomplete="off" style="-webkit-text-security:disc"><div class="two"><button type="button" class="btn pri" data-ghs>Enregistrer et synchroniser</button><button type="button" class="btn" data-ghx>Déconnecter</button></div><button type="button" class="btn" data-ghl>Copier le lien d’installation rapide (autre appareil)</button><input type="text" id="ghl" readonly style="display:none"><p class="n" style="font-size:12px;line-height:1.5;margin:0">⚠ Ce lien contient ton jeton : envoie-le uniquement à toi-même (note personnelle, gestionnaire de mots de passe), ne le partage pas. En cas de fuite, révoque le jeton sur GitHub.</p><div class="n" id="ghst"></div></div><div class="dcol"><button type="button" class="btn" data-dl>Télécharger lecteur-data.json</button><button type="button" class="btn" data-cp>Copier le JSON</button><label>Importer un fichier de données</label><select name="mode"><option value="merge">Fusionner avec ma bibliothèque</option><option value="replace">Remplacer ma bibliothèque</option></select><input type="file" accept=".json,application/json" data-imp></div><div class="row"><button type="button" class="btn" data-x>Fermer</button></div></form>`;
  document.body.appendChild(o);
  const close=()=>o.remove();
  o.onclick=e=>{
   if(e.target===o||e.target.dataset.x!==undefined)return close();
   if(e.target.dataset.dl!==undefined)exportData();
+  if(e.target.dataset.ghs!==undefined){
+   const v=n=>o.querySelector(`[name=${n}]`).value.trim();
+   gh.owner=v('gho');gh.repo=v('ghr').replace(/\.git$/,'');gh.branch=v('ghb')||'main';gh.path=v('ghp')||'lecteur-data.json';if(v('ght'))gh.token=v('ght');
+   ghSave();if(!ghOn())return toast('Renseigne le propriétaire, le dépôt et le jeton.');
+   ghStart();
+  }
+  if(e.target.dataset.ghl!==undefined){
+   if(!ghOn())return toast('Enregistre d’abord la synchronisation.');
+   const link=location.href.split('#')[0]+'#setup='+b64(JSON.stringify({o:gh.owner,r:gh.repo,b:gh.branch,p:gh.path,t:gh.token})).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+   const i=o.querySelector('#ghl');i.style.display='';i.value=link;i.select();
+   navigator.clipboard.writeText(link).then(()=>toast('Lien copié.'),()=>toast('Sélectionne et copie le lien affiché.'));
+  }
+  if(e.target.dataset.ghx!==undefined){gh.token='';ghSave();clearTimeout(ghT);ghT=null;setMsg('','Synchronisation désactivée.')}
   if(e.target.dataset.cp!==undefined)navigator.clipboard.writeText(payload()).then(()=>toast('JSON copié.'),()=>toast('Copie impossible.'));
  };
  o.addEventListener('change',async e=>{
@@ -528,8 +542,74 @@ async function loadRemote(){
   else if(savedAt>at)toast('Tes données locales sont plus récentes que lecteur-data.json : pense à exporter.');
  }catch(e){}
 }
+/* ---------- synchro GitHub automatique ---------- */
+const GK='lecteur-gh-v1';
+let gh={owner:'',repo:'',branch:'main',path:'lecteur-data.json',token:''},ghSha=null,ghT=null,ghBusy=false,suppress=false;
+try{Object.assign(gh,JSON.parse(localStorage.getItem(GK)||'{}'))}catch(e){}
+const ghSave=()=>{try{localStorage.setItem(GK,JSON.stringify(gh))}catch(e){}};
+const ghOn=()=>!!(gh.token&&gh.owner&&gh.repo);
+const ghUrl=()=>`https://api.github.com/repos/${encodeURIComponent(gh.owner)}/${encodeURIComponent(gh.repo)}/contents/${gh.path.split('/').map(encodeURIComponent).join('/')}`;
+const ghH=raw=>({Authorization:'Bearer '+gh.token,Accept:raw?'application/vnd.github.raw+json':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'});
+const hhmm=()=>new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+function setMsg(short,full){const e=$('#sync');if(e){e.textContent=ghOn()?short:'';e.title=full||short}const m=$('#ghst');if(m)m.textContent=full||short}
+function b64(str){const b=new TextEncoder().encode(str);let t='';for(let i=0;i<b.length;i+=0x8000)t+=String.fromCharCode.apply(null,b.subarray(i,i+0x8000));return btoa(t)}
+const ghErr=r=>r.status===401||r.status===403?'jeton refusé ou permissions insuffisantes ('+r.status+')':r.status===404?'dépôt, branche ou accès introuvable':'erreur '+r.status;
+async function ghPull(){
+ const u=ghUrl()+'?ref='+encodeURIComponent(gh.branch);
+ const r=await fetch(u,{headers:ghH(),cache:'no-store'});
+ if(r.status===404){const rr=await fetch(`https://api.github.com/repos/${encodeURIComponent(gh.owner)}/${encodeURIComponent(gh.repo)}`,{headers:ghH()});if(!rr.ok)throw new Error(ghErr(rr));ghSha=null;return null}
+ if(!r.ok)throw new Error(ghErr(r));
+ const j=await r.json();ghSha=j.sha;
+ let txt;
+ if(j.content)txt=new TextDecoder().decode(Uint8Array.from(atob(j.content.replace(/\n/g,'')),c=>c.charCodeAt(0)));
+ else{const r2=await fetch(u,{headers:ghH(true),cache:'no-store'});if(!r2.ok)throw new Error(ghErr(r2));txt=await r2.text()}
+ return JSON.parse(txt);
+}
+async function ghPush(retry){
+ if(!ghOn())return;
+ ghBusy=true;setMsg('Envoi…','Envoi vers GitHub…');
+ try{
+  const body={message:'Mise à jour des données — '+new Date().toLocaleString('fr-FR'),content:b64(payload()),branch:gh.branch};
+  if(ghSha)body.sha=ghSha;
+  const r=await fetch(ghUrl(),{method:'PUT',headers:{...ghH(),'Content-Type':'application/json'},body:JSON.stringify(body)});
+  if((r.status===409||r.status===422)&&!retry){await ghPull();ghBusy=false;return ghPush(true)}
+  if(!r.ok)throw new Error(ghErr(r));
+  ghSha=(await r.json()).content.sha;
+  setMsg('Synchronisé ✓','Synchronisé avec GitHub à '+hhmm()+'.');
+ }catch(e){setMsg('Échec ✗','Échec de la synchronisation : '+e.message)}
+ finally{ghBusy=false}
+}
+function ghSchedule(){
+ if(!ghOn()||suppress)return;
+ clearTimeout(ghT);setMsg('En attente…','Modifications en attente d’envoi…');
+ ghT=setTimeout(()=>{ghT=null;ghPush()},2500);
+}
+async function ghStart(){
+ if(!ghOn())return;
+ try{
+  setMsg('Connexion…','Connexion à GitHub…');
+  const d=await ghPull();
+  if(d&&Array.isArray(d.lib)){
+   const at=d.savedAt||0;
+   if(!lib.length||at>savedAt){suppress=true;applyData(d,'replace');savedAt=at||Date.now();lastSnap=snap();save();suppress=false;setMsg('Synchronisé ✓','Données chargées depuis GitHub à '+hhmm()+'.');toast('Données chargées depuis GitHub.')}
+   else if(savedAt>at)await ghPush();
+   else setMsg('Synchronisé ✓','À jour avec GitHub ('+hhmm()+').');
+  }else if(lib.length)await ghPush();
+  else setMsg('Connecté ✓','Connecté à GitHub : aucun fichier de données pour l’instant.');
+ }catch(e){suppress=false;setMsg('Échec ✗','Échec de la connexion : '+e.message)}
+}
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&ghOn()&&!ghBusy&&!ghT)ghStart()});
 $('#dat').onclick=dataModal;
-load();render();loadRemote();
+function readSetup(){
+ const m=location.hash.match(/^#setup=([\w-]+)/);if(!m)return;
+ try{
+  const d=JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(m[1].replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0))));
+  history.replaceState(null,'',location.pathname+location.search);
+  if(!d.o||!d.r||!d.t)return;
+  setTimeout(()=>modal(`Connecter la synchronisation à ${d.o}/${d.r} ?`,[],()=>{Object.assign(gh,{owner:d.o,repo:d.r,branch:d.b||'main',path:d.p||'lecteur-data.json',token:d.t});ghSave();ghStart()},'Connecter'),50);
+ }catch(e){}
+}
+load();render();readSetup();ghOn()?ghStart():loadRemote();
 </script>
 </body>
 </html>
