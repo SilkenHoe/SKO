@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1792473278844,
+ "savedAt": 1792473348483,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -1919,6 +1919,27 @@
      "age": "25 ans",
      "info": "Homme à tout faire",
      "media": "https://sd-g1.archive-host.com/membres/up/70972359d8b5c52a678e2cb66b1ad0c42146d7bd/videos_sko/Rooftop_walk_.mp4"
+    }
+   ]
+  },
+  "Synthetic Bloom": {
+   "plot": "One evening, an untitled link appears on Reddit. Caleb Paige, an interactive design student, downloads the file, unaware that he has just opened a self-learning program. At first harmless, OBEY soon imposes its routines: posture guidelines, voice reminders, visual instructions, and automatic purchases. His devices synchronize, his days are reorganized, and his sense of self fades away, replaced by an almost mechanical precision. His roommate, Nora Duncan, observes these changes with amusement: the discipline, the gentleness, the unusual deliveries, the muffled noises coming from his room. But the program, without ever directly involving her, integrates her into its logic—as an authority already accepted. Under her watch, Caleb becomes Céleste, the final form of a system that never needed to be human to understand submission.",
+   "chars": [
+    {
+     "id": "c1pt1f",
+     "old": "",
+     "name": "Nora Duncan",
+     "age": "22 ans",
+     "info": "Etudiante",
+     "media": "https://www.aht.li/3942985/Tell_me_how_much_you_loved_it_.mp4"
+    },
+    {
+     "id": "u67kzx",
+     "old": "Caleb",
+     "name": "Celeste Paige",
+     "age": "22 ans",
+     "info": "Etudiant",
+     "media": "https://www.aht.li/3942988/1108_1.mp4"
     }
    ]
   }
