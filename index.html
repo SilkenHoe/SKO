@@ -103,6 +103,7 @@ article h2 small{display:block;font:600 11.5px/1 system-ui,sans-serif;letter-spa
 @media (max-width:760px){
  #menuBtn{display:inline-block;margin-right:auto}
  header h1,#dat,#imp,#sync{display:none}
+ [data-es],[data-ea],[data-ev],[data-ei],[data-na],[data-nr],[data-da],[data-xv],[data-nsc]{display:none!important}
  .navtop{display:flex;justify-content:flex-end;padding:0 4px 6px}
  body.nav #scrim{display:block}
  nav{position:fixed;left:10px;top:calc(10px + env(safe-area-inset-top,0px));bottom:10px;z-index:20;transform:translateX(-120%);transition:transform .25s;width:84%;max-width:320px;background:var(--g2)}
@@ -212,11 +213,14 @@ function parseFile(name,text){
 /* ---------- état ---------- */
 const $=s=>document.querySelector(s);
 const q=s=>esc(String(s)).replace(/"/g,'&quot;');
-let lib=[],cur=null,ver={},fs=19,theme='auto',colors={},alias={},col={},delArm=null,order=[],info={},savedAt=0,lastSnap='';
-const KEY='lecteur-scenarios-v1';
-function load(){try{const d=JSON.parse(localStorage.getItem(KEY)||'{}');lib=d.lib||[];cur=d.cur||null;fs=d.fs||19;theme=d.theme||'auto';colors=d.colors||{};alias=d.alias||{};col=d.col||{};order=d.order||[];info=d.info||{};savedAt=d.savedAt||0}catch(e){}lastSnap=snap()}
+let lib=[],cur=null,ver={},fs=19,theme='auto',colors={},alias={},col={},delArm=null,order=[],info={},savedAt=0,lastSnap='',prog={};
+const KEY='lecteur-scenarios-v1',PK2='lecteur-prefs-v1';
+function savePrefs(){try{localStorage.setItem(PK2,JSON.stringify({fs,theme,cur,col,prog}))}catch(e){}}
+function load(){try{const d=JSON.parse(localStorage.getItem(KEY)||'{}');lib=d.lib||[];cur=d.cur||null;fs=d.fs||19;theme=d.theme||'auto';colors=d.colors||{};alias=d.alias||{};col=d.col||{};order=d.order||[];info=d.info||{};savedAt=d.savedAt||0}catch(e){}
+ try{const p=JSON.parse(localStorage.getItem(PK2)||'{}');if(p.fs)fs=p.fs;if(p.theme)theme=p.theme;if(p.cur)cur=p.cur;if(p.col)col=p.col;if(p.prog)prog=p.prog}catch(e){}
+ lastSnap=snap()}
 const snap=()=>JSON.stringify({lib,colors,alias,order,info});
-function save(){const sn=snap();if(sn!==lastSnap){savedAt=Date.now();lastSnap=sn;ghSchedule()}try{localStorage.setItem(KEY,JSON.stringify({lib,cur,fs,theme,colors,alias,col,order,info,savedAt}))}catch(e){toast('Stockage local indisponible : la bibliothèque ne sera pas conservée.')}}
+function save(){savePrefs();const sn=snap();if(sn!==lastSnap){savedAt=Date.now();lastSnap=sn;ghSchedule()}try{localStorage.setItem(KEY,JSON.stringify({lib,cur,fs,theme,colors,alias,col,order,info,savedAt}))}catch(e){toast('Stockage local indisponible : la bibliothèque ne sera pas conservée.')}}
 function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('on'),3800)}
 const hsl=(h,s,l)=>{s/=100;l/=100;const a=s*Math.min(l,1-l),f=n=>{const k=(n+h/30)%12;return Math.round(255*(l-a*Math.max(-1,Math.min(k-3,9-k,1)))).toString(16).padStart(2,'0')};return'#'+f(0)+f(8)+f(4)};
 const defColor=s=>{let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))%360;return hsl(h,58,52)};
@@ -259,7 +263,7 @@ function render(){
   return h+'</div>';
  }).join('')+'<button class="btn sm" data-nsc="1" style="margin:8px 6px">＋ Scénario</button>';
  /* lecture */
- const m=$('#main');
+ const m=$('#main'),y0=m.scrollTop;
  if(!cur){
   m.innerHTML=`<div class="empty glass"><h2>Aucun scénario pour l’instant</h2><p>Importe tes archives de conversation (.txt) ou dépose-les sur la page. Seules les générations d’écriture sont conservées, classées par scénario, puis par arc et par acte.</p><button class="btn pri" id="imp2">Importer des fichiers…</button> <button class="btn" data-nsc="1">Créer à la main</button></div>`;
   $('#imp2').onclick=()=>$('#file').click();return;
@@ -278,6 +282,7 @@ function render(){
   }
  }
  m.innerHTML=`<div class="page"><div class="ph"><h1>${esc(cur)}</h1><button class="btn sm" data-es="1" title="Nom et couleur">✎</button><button class="btn sm" data-na="">＋ Acte</button><button class="btn sm" data-nr="1">＋ Arc</button></div><div class="meta">${num(sc).length} arc(s) · ${tot.toLocaleString('fr-FR')} mots</div>${ficheHtml(cur)}${out}</div>`;
+ m.style.scrollBehavior='auto';m.scrollTop=y0;m.style.scrollBehavior='';
  spy();
 }
 function keep(f){const m=$('#main'),y=m.scrollTop;f();render();m.scrollTop=y}
@@ -361,7 +366,7 @@ function delArc(s,arc){modal('Supprimer '+arcLbl(arc)+' de « '+s+' » ?',[],()=
 document.addEventListener('click',e=>{
  const t=e.target.closest('[data-sc],[data-tg],[data-go],[data-del],[data-es],[data-ea],[data-ev],[data-ei],[data-c],[data-navx],[data-na],[data-nr],[data-da],[data-nsc],[data-xv]');if(!t||t.closest('#modal'))return;
  const d=t.dataset;
- if(d.sc!==undefined){const s=d.sc;if(s===cur)col[kS(s)]=!col[kS(s)];else{cur=s;delete col[kS(s)];$('#main').scrollTop=0;document.body.classList.remove('nav')}delArm=null;save();render()}
+ if(d.sc!==undefined){const s=d.sc;let sw=false;if(s===cur)col[kS(s)]=!col[kS(s)];else{cur=s;delete col[kS(s)];$('#main').scrollTop=0;document.body.classList.remove('nav');sw=true}delArm=null;save();render();if(sw)restoreProg()}
  else if(d.tg!==undefined){keep(()=>{col[d.tg]=!col[d.tg];save()})}
  else if(d.go!==undefined)go(d.go);
  else if(d.del!==undefined){if(delArm===d.del){lib=lib.filter(a=>a.scenario!==d.del);delArm=null;save()}else delArm=d.del;render()}
@@ -418,7 +423,7 @@ function placeScenario(s,fn){const n=sortedNames().filter(x=>x!==s);fn(n);order=
 function delScenario(s){modal('Supprimer « '+s+' » ?',[],()=>{lib=lib.filter(a=>a.scenario!==s);delete info[s]},'Supprimer')}
 function closeCtx(){const c=$('#ctx');if(c)c.remove()}
 function ctxMenu(x,y,s){
- closeCtx();
+ closeCtx();if(isMobile())return;
  const names=sortedNames(),i=names.indexOf(s),last=i===names.length-1;
  const items=[['Nom et couleur…',()=>editScenario(s)],i>0&&['Placer en premier',()=>placeScenario(s,n=>n.unshift(s))],i>0&&['Monter',()=>placeScenario(s,n=>n.splice(i-1,0,s))],!last&&['Descendre',()=>placeScenario(s,n=>n.splice(i+1,0,s))],['Supprimer…',()=>delScenario(s)]].filter(Boolean);
  const m=document.createElement('div');m.id='ctx';m.className='glass';
@@ -569,8 +574,8 @@ async function loadRemote(){
   const r=await fetch('lecteur-data.json',{cache:'no-store'});if(!r.ok)return;
   const d=await r.json();if(!d||!Array.isArray(d.lib))return;
   const at=d.savedAt||0;
-  if(!lib.length||at>savedAt){applyData(d,'replace');savedAt=at||Date.now();lastSnap=snap();save();toast('Données chargées depuis lecteur-data.json.')}
-  else if(savedAt>at)toast('Tes données locales sont plus récentes que lecteur-data.json : pense à exporter.');
+  if(!lib.length||at>savedAt){applyData(d,'replace');savedAt=at||Date.now();lastSnap=snap();save();isMobile()||toast('Données chargées depuis lecteur-data.json.')}
+  else if(savedAt>at&&!isMobile())toast('Tes données locales sont plus récentes que lecteur-data.json : pense à exporter.');
  }catch(e){}
 }
 /* ---------- synchro GitHub automatique ---------- */
@@ -611,7 +616,7 @@ async function ghPush(retry){
  finally{ghBusy=false}
 }
 function ghSchedule(){
- if(!ghOn()||suppress)return;
+ if(!ghOn()||suppress||isMobile())return;
  clearTimeout(ghT);setMsg('En attente…','Modifications en attente d’envoi…');
  ghT=setTimeout(()=>{ghT=null;ghPush()},2500);
 }
@@ -629,8 +634,25 @@ async function ghStart(){
   else setMsg('Connecté ✓','Connecté à GitHub : aucun fichier de données pour l’instant.');
  }catch(e){suppress=false;setMsg('Échec ✗','Échec de la connexion : '+e.message)}
 }
-document.addEventListener('visibilitychange',()=>{if(!document.hidden&&ghOn()&&!ghBusy&&!ghT)ghStart()});
+document.addEventListener('visibilitychange',()=>{if(document.hidden||ghBusy||ghT)return;ghOn()&&!isMobile()?ghStart():loadRemote()});
 $('#dat').onclick=dataModal;
+const isMobile=()=>matchMedia('(max-width:760px)').matches;
+let pt;
+function saveProg(){
+ const m=$('#main');if(!cur)return;
+ const arts=[...m.querySelectorAll('article')];if(!arts.length)return;
+ const mt=m.getBoundingClientRect().top;let a=arts[0];
+ for(const x of arts){if(x.getBoundingClientRect().top-mt<=40)a=x;else break}
+ const f=Math.min(1,Math.max(0,(mt-a.getBoundingClientRect().top)/a.offsetHeight));
+ prog[cur]={id:a.id,f};savePrefs();
+}
+function restoreProg(){
+ const m=$('#main'),p=prog[cur];if(!p)return;
+ const a=document.getElementById(p.id);if(!a)return;
+ const d=a.getBoundingClientRect().top-m.getBoundingClientRect().top+p.f*a.offsetHeight;
+ m.style.scrollBehavior='auto';m.scrollTop+=d;m.style.scrollBehavior='';
+}
+$('#main').addEventListener('scroll',()=>{clearTimeout(pt);pt=setTimeout(saveProg,300)},{passive:true});
 function readSetup(){
  const m=location.hash.match(/^#setup=([\w-]+)/);if(!m)return;
  try{
@@ -640,7 +662,8 @@ function readSetup(){
   Object.assign(gh,{owner:d.o,repo:d.r,branch:d.b||'main',path:d.p||'lecteur-data.json',token:d.t});ghSave();toast('Synchronisation GitHub configurée.');
  }catch(e){}
 }
-load();render();readSetup();ghOn()?ghStart():loadRemote();
+load();render();restoreProg();readSetup();ghOn()&&!isMobile()?ghStart():loadRemote();
+try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
 </script>
 </body>
 </html>
