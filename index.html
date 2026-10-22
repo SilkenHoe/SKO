@@ -213,14 +213,26 @@ function parseFile(name,text){
 /* ---------- état ---------- */
 const $=s=>document.querySelector(s);
 const q=s=>esc(String(s)).replace(/"/g,'&quot;');
-let lib=[],cur=null,ver={},fs=19,theme='auto',colors={},alias={},col={},delArm=null,order=[],info={},savedAt=0,lastSnap='',prog={};
+let lib=[],cur=null,ver={},fs=19,theme='auto',colors={},alias={},col={},delArm=null,order=[],info={},savedAt=0,lastSnap='',prog={},wantCur=null,fresh=false;
 const KEY='lecteur-scenarios-v1',PK2='lecteur-prefs-v1';
-function savePrefs(){try{localStorage.setItem(PK2,JSON.stringify({fs,theme,cur,col,prog}))}catch(e){}}
+function savePrefs(){try{localStorage.setItem(PK2,JSON.stringify({fs,theme,cur:wantCur||cur,col,prog}))}catch(e){}}
 function load(){try{const d=JSON.parse(localStorage.getItem(KEY)||'{}');lib=d.lib||[];cur=d.cur||null;fs=d.fs||19;theme=d.theme||'auto';colors=d.colors||{};alias=d.alias||{};col=d.col||{};order=d.order||[];info=d.info||{};savedAt=d.savedAt||0}catch(e){}
- try{const p=JSON.parse(localStorage.getItem(PK2)||'{}');if(p.fs)fs=p.fs;if(p.theme)theme=p.theme;if(p.cur)cur=p.cur;if(p.col)col=p.col;if(p.prog)prog=p.prog}catch(e){}
+ try{const p=JSON.parse(localStorage.getItem(PK2)||'{}');if(p.fs)fs=p.fs;if(p.theme)theme=p.theme;if(p.cur){cur=p.cur;wantCur=p.cur}if(p.col)col=p.col;if(p.prog)prog=p.prog}catch(e){}
  lastSnap=snap()}
 const snap=()=>JSON.stringify({lib,colors,alias,order,info});
-function save(){savePrefs();const sn=snap();if(sn!==lastSnap){savedAt=Date.now();lastSnap=sn;ghSchedule()}try{localStorage.setItem(KEY,JSON.stringify({lib,cur,fs,theme,colors,alias,col,order,info,savedAt}))}catch(e){toast('Stockage local indisponible : la bibliothèque ne sera pas conservée.')}}
+const IDB={
+ open(){return new Promise((res,rej)=>{const r=indexedDB.open('lecteur',1);r.onupgradeneeded=()=>r.result.createObjectStore('kv');r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})},
+ async get(k){const db=await this.open();return new Promise((res,rej)=>{const q=db.transaction('kv').objectStore('kv').get(k);q.onsuccess=()=>res(q.result);q.onerror=()=>rej(q.error)})},
+ async set(k,v){const db=await this.open();return new Promise((res,rej)=>{const t=db.transaction('kv','readwrite');t.objectStore('kv').put(v,k);t.oncomplete=()=>res();t.onerror=()=>rej(t.error)})}
+};
+let it;
+function idbSoon(){clearTimeout(it);it=setTimeout(idbWrite,400)}
+async function idbWrite(){
+ const d={lib,colors,alias,order,info,savedAt};
+ try{await IDB.set('data',d);try{localStorage.removeItem(KEY)}catch(e){}return true}
+ catch(e){try{localStorage.setItem(KEY,JSON.stringify(d))}catch(x){}return false}
+}
+function save(){savePrefs();const sn=snap();if(sn!==lastSnap){savedAt=Date.now();lastSnap=sn;ghSchedule();idbSoon()}}
 function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('on'),3800)}
 const hsl=(h,s,l)=>{s/=100;l/=100;const a=s*Math.min(l,1-l),f=n=>{const k=(n+h/30)%12;return Math.round(255*(l-a*Math.max(-1,Math.min(k-3,9-k,1)))).toString(16).padStart(2,'0')};return'#'+f(0)+f(8)+f(4)};
 const defColor=s=>{let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))%360;return hsl(h,58,52)};
@@ -244,6 +256,7 @@ function render(){
  R.style.setProperty('--fs',fs+'px');
  theme==='auto'?R.removeAttribute('data-theme'):R.setAttribute('data-theme',theme);
  const g=group(),names=sortedNames(g);
+ if(wantCur&&names.includes(wantCur)){cur=wantCur;wantCur=null;fresh=true}
  if(!names.includes(cur))cur=names[0]||null;
  R.style.setProperty('--acc',cur?colorOf(cur):'#6d5bd0');R.style.setProperty('--accfg',cur?fgFor(colorOf(cur)):'#fff');
  /* navigation */
@@ -284,6 +297,7 @@ function render(){
  m.innerHTML=`<div class="page"><div class="ph"><h1>${esc(cur)}</h1><button class="btn sm" data-es="1" title="Nom et couleur">✎</button><button class="btn sm" data-na="">＋ Acte</button><button class="btn sm" data-nr="1">＋ Arc</button></div><div class="meta">${num(sc).length} arc(s) · ${tot.toLocaleString('fr-FR')} mots</div>${ficheHtml(cur)}${out}</div>`;
  m.style.scrollBehavior='auto';m.scrollTop=y0;m.style.scrollBehavior='';
  spy();
+ if(fresh){fresh=false;restoreProg()}
 }
 function keep(f){const m=$('#main'),y=m.scrollTop;f();render();m.scrollTop=y}
 function go(id){const e=document.getElementById(id);if(e)e.scrollIntoView({block:'start'});document.body.classList.remove('nav')}
@@ -366,7 +380,7 @@ function delArc(s,arc){modal('Supprimer '+arcLbl(arc)+' de « '+s+' » ?',[],()=
 document.addEventListener('click',e=>{
  const t=e.target.closest('[data-sc],[data-tg],[data-go],[data-del],[data-es],[data-ea],[data-ev],[data-ei],[data-c],[data-navx],[data-na],[data-nr],[data-da],[data-nsc],[data-xv]');if(!t||t.closest('#modal'))return;
  const d=t.dataset;
- if(d.sc!==undefined){const s=d.sc;let sw=false;if(s===cur)col[kS(s)]=!col[kS(s)];else{cur=s;delete col[kS(s)];$('#main').scrollTop=0;document.body.classList.remove('nav');sw=true}delArm=null;save();render();if(sw)restoreProg()}
+ if(d.sc!==undefined){const s=d.sc;let sw=false;if(s===cur)col[kS(s)]=!col[kS(s)];else{cur=s;wantCur=null;delete col[kS(s)];$('#main').scrollTop=0;document.body.classList.remove('nav');sw=true}delArm=null;save();render();if(sw)restoreProg()}
  else if(d.tg!==undefined){keep(()=>{col[d.tg]=!col[d.tg];save()})}
  else if(d.go!==undefined)go(d.go);
  else if(d.del!==undefined){if(delArm===d.del){lib=lib.filter(a=>a.scenario!==d.del);delArm=null;save()}else delArm=d.del;render()}
@@ -662,8 +676,19 @@ function readSetup(){
   Object.assign(gh,{owner:d.o,repo:d.r,branch:d.b||'main',path:d.p||'lecteur-data.json',token:d.t});ghSave();toast('Synchronisation GitHub configurée.');
  }catch(e){}
 }
-load();render();restoreProg();readSetup();ghOn()&&!isMobile()?ghStart():loadRemote();
-try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
+async function boot(){
+ load();
+ try{const d=await IDB.get('data');
+  if(d&&Array.isArray(d.lib)&&(d.savedAt||0)>=savedAt){lib=d.lib;colors=d.colors||{};alias=d.alias||{};order=d.order||[];info=d.info||{};savedAt=d.savedAt||0}
+ }catch(e){}
+ lastSnap=snap();
+ render();restoreProg();readSetup();
+ ghOn()&&!isMobile()?ghStart():loadRemote();
+ try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
+ setTimeout(()=>{wantCur=null},8000);
+ if(lib.length)idbWrite();
+}
+boot();
 </script>
 </body>
 </html>
