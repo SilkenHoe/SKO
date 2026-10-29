@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793308507324,
+ "savedAt": 1793308533206,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -1667,7 +1667,10 @@
   "Quiet Surrender": "#d7c4b7",
   "Framed Collapse": "#af1685",
   "Retake Doll": "#6c3957",
-  "Private Custody": "#4a39a1"
+  "Private Custody": "#4a39a1",
+  "Second Skin": "#97506a",
+  "Arcane Refinement": "#4c246e",
+  "Plastic Doll": "#be75a6"
  },
  "alias": {},
  "order": [
@@ -1687,7 +1690,10 @@
   "Quiet Surrender",
   "Framed Collapse",
   "Retake Doll",
-  "Private Custody"
+  "Private Custody",
+  "Second Skin",
+  "Arcane Refinement",
+  "Plastic Doll"
  ],
  "info": {
   "Wagging Tail": {
@@ -1709,7 +1715,33 @@
      "info": "",
      "media": "https://www.aht.li/3942970/Da_fit_check_You_guys_seem_to_like_this_outfit_a_lot_Oh_and_uhthere_is_a_set_in_this_on_Ptr.mp4"
     }
-   ]
+   ],
+   "icon": "https://i.imgur.com/u29fjH6.png",
+   "gallery": "https://i.pinimg.com/564x/85/d3/43/85d343517d78647e0b30126cc7aefbe6.jpg\nhttps://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg\nhttps://i.pinimg.com/564x/88/e7/80/88e78099e5a7794b96b30f42fbd78d4b.jpg\nhttps://i.pinimg.com/564x/e5/b4/45/e5b4459222454f10c5dfb5ff2e3a6a2e.jpg",
+   "places": [
+    {
+     "name": "Manoir Kane",
+     "sub": "",
+     "img": "https://i.imgur.com/4V8Zvm1.jpeg"
+    },
+    {
+     "name": "Chambre de Delilah",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/b3v3ghg.png"
+    },
+    {
+     "name": "Chambre d'instruction",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/S5ZXy8L.jpeg"
+    },
+    {
+     "name": "Manoir Langhtorne",
+     "sub": "",
+     "img": "https://i.imgur.com/5KVCdfQ.jpeg"
+    }
+   ],
+   "c2": "#eb7213",
+   "c3": "#a7480b"
   },
   "Betrayed By The Silk": {
    "plot": "Elliot Donovan is willing to do anything to land a prestigious secretarial position at a powerful agency run by Evelyn Harrington. By disguising himself as a woman to circumvent the all-female hiring policy, he manages to get hired under a false identity. But Evelyn, cunning and calculating, quickly uncovers his deception. Rather than expose him, she decides to turn this humiliation into a cruel game of domination. Elliot becomes Eleonore, a feminized secretary subservient to her every whim. Through strict rules, public humiliations, and private punishments, Evelyn exercises total control over his mind and body. As Elliot tries to preserve his dignity, he sinks deeper into a role he never could have imagined, torn between fear, shame, and a strange fascination with his boss. But Evelyn has no intention of setting him free, finding in this game a perfect balance between power and pleasure.",
@@ -1730,7 +1762,45 @@
      "info": "Secrétaire",
      "media": "https://www.aht.li/3943140/Slim_or_baggy_fit_.mp4"
     }
-   ]
+   ],
+   "icon": "https://i.imgur.com/kvZSxBg.png",
+   "gallery": "https://i.pinimg.com/564x/85/d3/43/85d343517d78647e0b30126cc7aefbe6.jpg\nhttps://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg\nhttps://i.pinimg.com/564x/88/e7/80/88e78099e5a7794b96b30f42fbd78d4b.jpg\nhttps://i.pinimg.com/564x/e5/b4/45/e5b4459222454f10c5dfb5ff2e3a6a2e.jpg",
+   "places": [
+    {
+     "name": "Manoir Kane",
+     "sub": "",
+     "img": "https://i.imgur.com/4V8Zvm1.jpeg"
+    },
+    {
+     "name": "Chambre de Delilah",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/b3v3ghg.png"
+    },
+    {
+     "name": "Chambre d'instruction",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/S5ZXy8L.jpeg"
+    },
+    {
+     "name": "Manoir Langhtorne",
+     "sub": "",
+     "img": "https://i.imgur.com/5KVCdfQ.jpeg"
+    }
+   ],
+   "sec": [
+    {
+     "name": "Zoey Cooper",
+     "sub": "collègue",
+     "img": "https://i.imgur.com/j66CXA2.gif"
+    },
+    {
+     "name": "Charlotte Donovan",
+     "sub": "grande-soeur d'Eleonore",
+     "img": "https://i.imgur.com/FYFOC3F.gif"
+    }
+   ],
+   "c2": "#6848c1",
+   "c3": "#6f44c6"
   },
   "Guilty Pleasure": {
    "plot": "Victoria Marlowe, a formidable lawyer, stumbles upon her colleague Ethan Blake’s secret: a shameful fascination with cross-dressing and submission. Seeing him as a unique opportunity to push the boundaries of her power, she sets out to dominate him, exploiting his shame and desire to turn him into her personal plaything. What begins as a game of blackmail turns into a methodical training regimen in which Ethan becomes Emma, a being entirely under Victoria’s control. From humiliations at the office to experiences of extreme submission, Victoria pushes her submissive into psychological realms he had never dared to explore. While Ethan struggles with his conflicting emotions of shame and pleasure, Victoria relishes every moment of her dominance. Yet she is already planning to dispose of him once her interest has waned, perhaps offering her plaything to a complicit colleague. In this ruthless world, domination is merely a means to establish absolute supremacy.",
@@ -1751,7 +1821,50 @@
      "info": "Avocat",
      "media": "https://www.aht.li/3943479/do_u_have_a_crush_on_me_.mp4"
     }
-   ]
+   ],
+   "icon": "https://i.imgur.com/DPlqPP4.png",
+   "gallery": "https://i.pinimg.com/564x/85/d3/43/85d343517d78647e0b30126cc7aefbe6.jpg\nhttps://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg\nhttps://i.pinimg.com/564x/88/e7/80/88e78099e5a7794b96b30f42fbd78d4b.jpg\nhttps://i.pinimg.com/564x/e5/b4/45/e5b4459222454f10c5dfb5ff2e3a6a2e.jpg",
+   "places": [
+    {
+     "name": "Manoir Kane",
+     "sub": "",
+     "img": "https://i.imgur.com/4V8Zvm1.jpeg"
+    },
+    {
+     "name": "Chambre de Delilah",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/b3v3ghg.png"
+    },
+    {
+     "name": "Chambre d'instruction",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/S5ZXy8L.jpeg"
+    },
+    {
+     "name": "Manoir Langhtorne",
+     "sub": "",
+     "img": "https://i.imgur.com/5KVCdfQ.jpeg"
+    }
+   ],
+   "sec": [
+    {
+     "name": "Ivy Vance",
+     "sub": "Soumise de Victoria",
+     "img": "https://i.imgur.com/SPeIiz3.gif"
+    },
+    {
+     "name": "Fiona Westwood",
+     "sub": "Collègue",
+     "img": "https://i.imgur.com/W3B1nZg.gif"
+    },
+    {
+     "name": "Marcus Hawthorne",
+     "sub": "Inconnu",
+     "img": "https://i.imgur.com/siP8531.gif"
+    }
+   ],
+   "c2": "#9a3d6d",
+   "c3": "#942e44"
   },
   "A Debt In Flesh": {
    "plot": "Jaden Redmond, a daring con artist, sets his sights on Madeleine Grayson, an influential and ruthless dominatrix. But what was supposed to be a simple heist backfires violently on him. Captured by Madeleine and her accomplices, he discovers that his debt will not be settled with money, but with a complete transformation of his identity. Subjected to brutal sessions of physical and psychological domination, Jaden is gradually reduced to a docile, feminized being, now going by the name of Juliette. Every punishment, every public humiliation, and every physical transformation erodes his rebellious spirit, until he begs to stay with Madeleine even after paying off his debt. As the line between punishment and education blurs, Jaden realizes that his past is now nothing more than a distant memory, replaced by a lifetime of irrevocable submission.",
@@ -1772,7 +1885,55 @@
      "info": "Esclave",
      "media": "https://www.aht.li/3967172/04031.mp4"
     }
-   ]
+   ],
+   "icon": "https://i.imgur.com/WTrDQHJ.png",
+   "gallery": "https://i.pinimg.com/564x/85/d3/43/85d343517d78647e0b30126cc7aefbe6.jpg\nhttps://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg\nhttps://i.pinimg.com/564x/88/e7/80/88e78099e5a7794b96b30f42fbd78d4b.jpg\nhttps://i.pinimg.com/564x/e5/b4/45/e5b4459222454f10c5dfb5ff2e3a6a2e.jpg",
+   "places": [
+    {
+     "name": "Manoir Kane",
+     "sub": "",
+     "img": "https://i.imgur.com/4V8Zvm1.jpeg"
+    },
+    {
+     "name": "Chambre de Delilah",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/b3v3ghg.png"
+    },
+    {
+     "name": "Chambre d'instruction",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/S5ZXy8L.jpeg"
+    },
+    {
+     "name": "Manoir Langhtorne",
+     "sub": "",
+     "img": "https://i.imgur.com/5KVCdfQ.jpeg"
+    }
+   ],
+   "sec": [
+    {
+     "name": "Sophia Mendes",
+     "sub": "assistante de Madeleine",
+     "img": "https://i.imgur.com/s68uBZS.gif"
+    },
+    {
+     "name": "Noemi Rabellini",
+     "sub": "assistante de Madeleine",
+     "img": "https://i.imgur.com/wNUoSx7.gif"
+    },
+    {
+     "name": "Maxwell Kinglsey",
+     "sub": "client",
+     "img": "https://i.imgur.com/rx2pZm3.gif"
+    },
+    {
+     "name": "Adrian Carrington",
+     "sub": "client",
+     "img": "https://i.imgur.com/hShi5iw.gif"
+    }
+   ],
+   "c2": "#8c0a4b",
+   "c3": "#9c006d"
   },
   "No More Lies": {
    "plot": "After discovering her husband Adam’s numerous affairs, Maxine Delaney decides to teach him a lesson he’ll never forget. One evening, after setting a trap for him, she locks him in a chastity cage and begins a relentless process of transformation. Under the name Adeline, he is humiliated and feminized with the help of Maxine’s friends, who revel in this collective revenge. Adeline is subjected to a series of physical and psychological humiliations, culminating when Maxine introduces her lover to him right before his helpless eyes. Yet he is promised the key to his freedom if he proves his fidelity… A challenge that Maxine has no intention of letting him succeed at. While Maxine savors her newfound power, Adeline loses himself in a world of shame and submission, unable to escape this new dynamic in which he is nothing more than a plaything for his wife and her allies.",
@@ -1801,7 +1962,55 @@
      "info": "",
      "media": "https://sd-g1.archive-host.com/membres/up/70972359d8b5c52a678e2cb66b1ad0c42146d7bd/videos_sko/11081.mp4"
     }
-   ]
+   ],
+   "icon": "https://i.imgur.com/lNhd7jR.png",
+   "gallery": "https://i.pinimg.com/564x/85/d3/43/85d343517d78647e0b30126cc7aefbe6.jpg\nhttps://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg\nhttps://i.pinimg.com/564x/88/e7/80/88e78099e5a7794b96b30f42fbd78d4b.jpg\nhttps://i.pinimg.com/564x/e5/b4/45/e5b4459222454f10c5dfb5ff2e3a6a2e.jpg",
+   "places": [
+    {
+     "name": "Manoir Kane",
+     "sub": "",
+     "img": "https://i.imgur.com/4V8Zvm1.jpeg"
+    },
+    {
+     "name": "Chambre de Delilah",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/b3v3ghg.png"
+    },
+    {
+     "name": "Chambre d'instruction",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/S5ZXy8L.jpeg"
+    },
+    {
+     "name": "Manoir Langhtorne",
+     "sub": "",
+     "img": "https://i.imgur.com/5KVCdfQ.jpeg"
+    }
+   ],
+   "sec": [
+    {
+     "name": "Isabelle Lin",
+     "sub": "amie d'Maxine",
+     "img": "https://i.imgur.com/pJKQnPQ.gif"
+    },
+    {
+     "name": "Vivian Linwood",
+     "sub": "amie d'Maxine",
+     "img": "https://i.imgur.com/JruD6SL.gif"
+    },
+    {
+     "name": "Soraya Navarro",
+     "sub": "amie d'Maxine",
+     "img": "https://i.imgur.com/mmXnsnq.gif"
+    },
+    {
+     "name": "Elias Winslow",
+     "sub": "amant d'Maxine",
+     "img": "https://i.imgur.com/kuqZlTW.gif"
+    }
+   ],
+   "c2": "#5d3754",
+   "c3": "#4a3041"
   },
   "Unspoken Rules": {
    "plot": "Liam Hart, a reckless student at a strict boarding school, breaks the ultimate taboo: entering the girls’ dormitory, a place shrouded in unsettling legends. Caught in the act and ratted out by Abigail Watts, a model student with a cruel smile, he is sentenced to an exemplary punishment—to become “Lila,” the dorm’s newest resident. Under the icy strictness of Amelia Blackwood, his teacher, and the impassive gaze of Iris Conway, the matron, Liam undergoes a complete transformation: uniforms, humiliations, discipline. But behind this reeducation lies another power, more intimate and insidious—that of Abigail, who takes pleasure in molding him to her whims. Little by little, Lila learns that in this boarding school, mistakes are paid for not with pain… but with obedience.",
@@ -1822,7 +2031,45 @@
      "info": "",
      "media": "https://www.aht.li/3943129/This_video_gets_a_little_more_annoying_every_time_I_rewatch_it_But_low_waisted_all_day.mp4"
     }
-   ]
+   ],
+   "icon": "https://i.imgur.com/i3GfGv3.png",
+   "gallery": "https://i.pinimg.com/564x/85/d3/43/85d343517d78647e0b30126cc7aefbe6.jpg\nhttps://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg\nhttps://i.pinimg.com/564x/88/e7/80/88e78099e5a7794b96b30f42fbd78d4b.jpg\nhttps://i.pinimg.com/564x/e5/b4/45/e5b4459222454f10c5dfb5ff2e3a6a2e.jpg",
+   "places": [
+    {
+     "name": "Manoir Kane",
+     "sub": "",
+     "img": "https://i.imgur.com/4V8Zvm1.jpeg"
+    },
+    {
+     "name": "Chambre de Delilah",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/b3v3ghg.png"
+    },
+    {
+     "name": "Chambre d'instruction",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/S5ZXy8L.jpeg"
+    },
+    {
+     "name": "Manoir Langhtorne",
+     "sub": "",
+     "img": "https://i.imgur.com/5KVCdfQ.jpeg"
+    }
+   ],
+   "sec": [
+    {
+     "name": "Amelia Blackwood",
+     "sub": "institutrice",
+     "img": "https://i.imgur.com/A6rYwxR.gif"
+    },
+    {
+     "name": "Iris Conway",
+     "sub": "surveillante du dortoir",
+     "img": "https://i.imgur.com/hTb4OGR.gif"
+    }
+   ],
+   "c2": "#324258",
+   "c3": "#00263e"
   },
   "Among The Roses": {
    "plot": "Sasha Fairchild, a young man with an androgynous appearance, enrolls in college, where he quickly catches the attention of Lauren Everett, the leader of a prestigious sorority. Fascinated by his potential and seeing him as a unique project, Lauren recruits him into the exclusive circle of the “Roses.” But this sorority has strict rules: Sasha must abandon his masculine identity and embrace an imposed femininity. Amid wild parties, humiliating rituals, and constant pressure to uphold the group’s reputation, Sasha is reshaped into an ideal version of himself according to the sorority’s standards. While some members support him in his transformation, others seek to humiliate him further. Torn between admiration for Lauren and fear of disappointing others, Sasha sinks deeper into a role he eventually accepts, realizing that to belong in this world, he must conform to its rules, no matter the cost.",
@@ -1843,7 +2090,65 @@
      "info": "",
      "media": "https://www.aht.li/3945513/AQNg0_QuSIJiPp8BpoZKyMWOa3Z5MzZHxUdyLmearoQoMZMQb3cM66M6gGTXPIHmodMV2qA0_sn-rKFYSRzZzxREK4KMZlFX.mp4"
     }
-   ]
+   ],
+   "icon": "https://i.imgur.com/3weRqDP.png",
+   "gallery": "https://i.pinimg.com/564x/85/d3/43/85d343517d78647e0b30126cc7aefbe6.jpg\nhttps://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg\nhttps://i.pinimg.com/564x/88/e7/80/88e78099e5a7794b96b30f42fbd78d4b.jpg\nhttps://i.pinimg.com/564x/e5/b4/45/e5b4459222454f10c5dfb5ff2e3a6a2e.jpg",
+   "places": [
+    {
+     "name": "Manoir Kane",
+     "sub": "",
+     "img": "https://i.imgur.com/4V8Zvm1.jpeg"
+    },
+    {
+     "name": "Chambre de Delilah",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/b3v3ghg.png"
+    },
+    {
+     "name": "Chambre d'instruction",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/S5ZXy8L.jpeg"
+    },
+    {
+     "name": "Manoir Langhtorne",
+     "sub": "",
+     "img": "https://i.imgur.com/5KVCdfQ.jpeg"
+    }
+   ],
+   "sec": [
+    {
+     "name": "Lauren Everett",
+     "sub": "dirigeante de la sororité",
+     "img": "https://i.imgur.com/JdnvhXL.gif"
+    },
+    {
+     "name": "Eva DeWitt",
+     "sub": "membre de la sororité",
+     "img": "https://i.imgur.com/F1hXlzf.gif"
+    },
+    {
+     "name": "Caleb Fairfax",
+     "sub": "membre d'une fraternité",
+     "img": "https://i.imgur.com/6xNCJdC.gif"
+    },
+    {
+     "name": "Rowan Moreno",
+     "sub": "membre d'une fraternité",
+     "img": "https://i.imgur.com/bZMCpZy.gif"
+    },
+    {
+     "name": "Jayden Wallace",
+     "sub": "membre d'une fraternité",
+     "img": "https://i.imgur.com/7VI4o6a.gif"
+    },
+    {
+     "name": "Silas Monroe",
+     "sub": "membre d'une fraternité",
+     "img": "https://i.imgur.com/V9fZuSY.gif"
+    }
+   ],
+   "c2": "#881c31",
+   "c3": "#5c1719"
   },
   "Level Up": {
    "plot": "Ryan Monroe, a streamer whose popularity is on the decline, promises to undergo complete feminization if he reaches an unlikely subgoal. Against all odds, his subscribers reach this goal, and he is forced to honor his commitment. What begins as a simple joke turns into a fascinating and humiliating descent into a process of transformation. Supported by Jade Harrington, his girlfriend, Ryan begins to doubt his identity as his audience’s expectations push him further and further.",
@@ -1864,7 +2169,55 @@
      "info": "Streamer",
      "media": "https://www.aht.li/3942984/ssstikio_sleepless__1762630499375.mp4"
     }
-   ]
+   ],
+   "icon": "https://i.imgur.com/YIWTBPu.png",
+   "gallery": "https://i.pinimg.com/564x/85/d3/43/85d343517d78647e0b30126cc7aefbe6.jpg\nhttps://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg\nhttps://i.pinimg.com/564x/88/e7/80/88e78099e5a7794b96b30f42fbd78d4b.jpg\nhttps://i.pinimg.com/564x/e5/b4/45/e5b4459222454f10c5dfb5ff2e3a6a2e.jpg",
+   "places": [
+    {
+     "name": "Manoir Kane",
+     "sub": "",
+     "img": "https://i.imgur.com/4V8Zvm1.jpeg"
+    },
+    {
+     "name": "Chambre de Delilah",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/b3v3ghg.png"
+    },
+    {
+     "name": "Chambre d'instruction",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/S5ZXy8L.jpeg"
+    },
+    {
+     "name": "Manoir Langhtorne",
+     "sub": "",
+     "img": "https://i.imgur.com/5KVCdfQ.jpeg"
+    }
+   ],
+   "sec": [
+    {
+     "name": "Eloise Carter",
+     "sub": "amie de Jade",
+     "img": "https://i.imgur.com/sqNZ6U4.gif"
+    },
+    {
+     "name": "Harper Caldwell",
+     "sub": "amie de Jade",
+     "img": "https://i.imgur.com/i7q83Ui.gif"
+    },
+    {
+     "name": "Jasper Hayes",
+     "sub": "meilleur ami de Riley",
+     "img": "https://i.imgur.com/rEv82LO.gif"
+    },
+    {
+     "name": "Piper Drayton",
+     "sub": "follower n°1",
+     "img": "https://i.imgur.com/HsVxGG3.gif"
+    }
+   ],
+   "c2": "#4f2369",
+   "c3": "#352153"
   },
   "Owned Twice": {
    "plot": "A discreet husband and respected businessman, Samuel leads a double life at night as Samantha, a submissive devoted to Anastasia Delacroix, a ruthless dominatrix. His life is turned upside down when Elena, his wife, discovers the truth while going through his phone. Rather than confront him, she chooses to collaborate with Anastasia to gain total control over Samuel. Under the watchful eyes of these two women, Samuel is permanently transformed into Samantha, a feminized and docile version of himself, destined to please them.",
@@ -1893,7 +2246,33 @@
      "info": "",
      "media": "https://www.aht.li/3946197/AQO3hdeHVOijjQJj8w4EfwOuoUBQJCWLkV1D7auBy6_88sdLhf6VG9_fhnNvv9ulq34oIcQ_JMDWms_1SmIzjKjP20HcfUiX.mp4"
     }
-   ]
+   ],
+   "icon": "https://i.imgur.com/Zzr4AOg.png",
+   "gallery": "https://i.pinimg.com/564x/85/d3/43/85d343517d78647e0b30126cc7aefbe6.jpg\nhttps://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg\nhttps://i.pinimg.com/564x/88/e7/80/88e78099e5a7794b96b30f42fbd78d4b.jpg\nhttps://i.pinimg.com/564x/e5/b4/45/e5b4459222454f10c5dfb5ff2e3a6a2e.jpg",
+   "places": [
+    {
+     "name": "Manoir Kane",
+     "sub": "",
+     "img": "https://i.imgur.com/4V8Zvm1.jpeg"
+    },
+    {
+     "name": "Chambre de Delilah",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/b3v3ghg.png"
+    },
+    {
+     "name": "Chambre d'instruction",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/S5ZXy8L.jpeg"
+    },
+    {
+     "name": "Manoir Langhtorne",
+     "sub": "",
+     "img": "https://i.imgur.com/5KVCdfQ.jpeg"
+    }
+   ],
+   "c2": "#723050",
+   "c3": "#872751"
   },
   "Midnight Bound": {
    "plot": "Nathan Whitmore discovers that his wife, Victoria, is secretly involved in a BDSM swingers’ club where members engage in dominance and submission games. Intrigued but shocked, he decides to attend while hiding behind a mask, to better understand this hidden world. But Victoria spots him, and far from being embarrassed, she chooses to expose him publicly in front of the other club members. What begins as a confrontation turns into an irreversible dynamic: Victoria forces Nathan into the role of a submissive, plunging him into a world where she holds the reins. Nathan, humiliated and captivated, becomes Natalie, a docile submissive under his wife’s total control.",
@@ -1914,7 +2293,50 @@
      "info": "",
      "media": "https://www.aht.li/3945652/all_yours.mp4"
     }
-   ]
+   ],
+   "icon": "https://i.imgur.com/DMUyoHI.png",
+   "gallery": "https://i.pinimg.com/564x/85/d3/43/85d343517d78647e0b30126cc7aefbe6.jpg\nhttps://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg\nhttps://i.pinimg.com/564x/88/e7/80/88e78099e5a7794b96b30f42fbd78d4b.jpg\nhttps://i.pinimg.com/564x/e5/b4/45/e5b4459222454f10c5dfb5ff2e3a6a2e.jpg",
+   "places": [
+    {
+     "name": "Manoir Kane",
+     "sub": "",
+     "img": "https://i.imgur.com/4V8Zvm1.jpeg"
+    },
+    {
+     "name": "Chambre de Delilah",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/b3v3ghg.png"
+    },
+    {
+     "name": "Chambre d'instruction",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/S5ZXy8L.jpeg"
+    },
+    {
+     "name": "Manoir Langhtorne",
+     "sub": "",
+     "img": "https://i.imgur.com/5KVCdfQ.jpeg"
+    }
+   ],
+   "sec": [
+    {
+     "name": "Camilla Rowe",
+     "sub": "membre du club",
+     "img": "https://i.imgur.com/qrezQN5.gif"
+    },
+    {
+     "name": "Thiago Alvarez",
+     "sub": "membre du club",
+     "img": "https://i.imgur.com/WfeseR3.gif"
+    },
+    {
+     "name": "Phoebe Alden",
+     "sub": "soumise de Camilla",
+     "img": "https://i.imgur.com/gyqVLul.gif"
+    }
+   ],
+   "c2": "#6a10c1",
+   "c3": "#8709d0"
   },
   "Hard Reboot": {
    "plot": "At a geek convention, Haytam Laine tries out a virtual reality experience designed to “project his avatar into the real world.” But inside the booth, the simulation becomes reality: his body transforms before his eyes, taking on the proportions of the character he had imagined. Straps tighten around his arms, a plug clicks into place, and a mask conceals the gag that muffles his voice. Panicked, he tries to flee through the convention, stumbling in his overly tight outfit. Leyah, initially amused by what she believes to be a clumsy cosplay, catches up to him and quickly realizes that he can neither speak nor free himself. Feigning kindness, she lures him aside. When she briefly removes the mask to hear him stammer, she interrupts him in a calm tone and gives him another name—Hazzel.",
@@ -1935,7 +2357,33 @@
      "info": "",
      "media": "https://www.aht.li/3943132/Nouvelle_coupe_--goth_brunette_frange.mp4"
     }
-   ]
+   ],
+   "icon": "https://i.imgur.com/GflgFwh.png",
+   "gallery": "https://i.pinimg.com/564x/85/d3/43/85d343517d78647e0b30126cc7aefbe6.jpg\nhttps://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg\nhttps://i.pinimg.com/564x/88/e7/80/88e78099e5a7794b96b30f42fbd78d4b.jpg\nhttps://i.pinimg.com/564x/e5/b4/45/e5b4459222454f10c5dfb5ff2e3a6a2e.jpg",
+   "places": [
+    {
+     "name": "Manoir Kane",
+     "sub": "",
+     "img": "https://i.imgur.com/4V8Zvm1.jpeg"
+    },
+    {
+     "name": "Chambre de Delilah",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/b3v3ghg.png"
+    },
+    {
+     "name": "Chambre d'instruction",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/S5ZXy8L.jpeg"
+    },
+    {
+     "name": "Manoir Langhtorne",
+     "sub": "",
+     "img": "https://i.imgur.com/5KVCdfQ.jpeg"
+    }
+   ],
+   "c2": "#8767b5",
+   "c3": "#c168b4"
   },
   "Tender Reconstruction": {
    "plot": "Stan Spice, a helpful young man from the neighborhood, offers his services for various jobs. Jane Hollis, an elegant woman in her forties with a calculated charm, hires him to tend her garden and repair a few things around the house. As the weeks go by, his gestures and words become subtly suggestive—a hushed game of seduction that Stan mistakes for a mere unspoken fantasy. One day, giving in to temptation, he steals a pair of panties left in plain sight on a chair—a deliberately set trap. During his last visit, Jane invites him to “test out” a strange piece of furniture that had recently been delivered: a pillory. With a few precise movements, she restrains him there, forcing him to confess his theft, then notices the glimmer of pleasure mixed with shame in his eyes. Satisfied with this revelation, Jane decides to take the game further: under her guidance, Stan will become Stacy—docile, primped, and trained to serve in other forms of domestic labor.",
@@ -1956,7 +2404,33 @@
      "info": "Homme à tout faire",
      "media": "https://sd-g1.archive-host.com/membres/up/70972359d8b5c52a678e2cb66b1ad0c42146d7bd/videos_sko/Rooftop_walk_.mp4"
     }
-   ]
+   ],
+   "icon": "https://i.imgur.com/EPTb3iQ.png",
+   "gallery": "https://i.pinimg.com/564x/85/d3/43/85d343517d78647e0b30126cc7aefbe6.jpg\nhttps://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg\nhttps://i.pinimg.com/564x/88/e7/80/88e78099e5a7794b96b30f42fbd78d4b.jpg\nhttps://i.pinimg.com/564x/e5/b4/45/e5b4459222454f10c5dfb5ff2e3a6a2e.jpg",
+   "places": [
+    {
+     "name": "Manoir Kane",
+     "sub": "",
+     "img": "https://i.imgur.com/4V8Zvm1.jpeg"
+    },
+    {
+     "name": "Chambre de Delilah",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/b3v3ghg.png"
+    },
+    {
+     "name": "Chambre d'instruction",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/S5ZXy8L.jpeg"
+    },
+    {
+     "name": "Manoir Langhtorne",
+     "sub": "",
+     "img": "https://i.imgur.com/5KVCdfQ.jpeg"
+    }
+   ],
+   "c2": "#d78169",
+   "c3": "#ba6450"
   },
   "Synthetic Bloom": {
    "plot": "One evening, an untitled link appears on Reddit. Caleb Paige, an interactive design student, downloads the file, unaware that he has just opened a self-learning program. At first harmless, OBEY soon imposes its routines: posture guidelines, voice reminders, visual instructions, and automatic purchases. His devices synchronize, his days are reorganized, and his sense of self fades away, replaced by an almost mechanical precision. His roommate, Nora Duncan, observes these changes with amusement: the discipline, the gentleness, the unusual deliveries, the muffled noises coming from his room. But the program, without ever directly involving her, integrates her into its logic—as an authority already accepted. Under her watch, Caleb becomes Céleste, the final form of a system that never needed to be human to understand submission.",
@@ -1977,7 +2451,33 @@
      "info": "Etudiant",
      "media": "https://www.aht.li/3942988/1108_1.mp4"
     }
-   ]
+   ],
+   "icon": "https://i.imgur.com/laLQ30N.png",
+   "gallery": "https://i.pinimg.com/564x/85/d3/43/85d343517d78647e0b30126cc7aefbe6.jpg\nhttps://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg\nhttps://i.pinimg.com/564x/88/e7/80/88e78099e5a7794b96b30f42fbd78d4b.jpg\nhttps://i.pinimg.com/564x/e5/b4/45/e5b4459222454f10c5dfb5ff2e3a6a2e.jpg",
+   "places": [
+    {
+     "name": "Manoir Kane",
+     "sub": "",
+     "img": "https://i.imgur.com/4V8Zvm1.jpeg"
+    },
+    {
+     "name": "Chambre de Delilah",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/b3v3ghg.png"
+    },
+    {
+     "name": "Chambre d'instruction",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/S5ZXy8L.jpeg"
+    },
+    {
+     "name": "Manoir Langhtorne",
+     "sub": "",
+     "img": "https://i.imgur.com/5KVCdfQ.jpeg"
+    }
+   ],
+   "c2": "#742d71",
+   "c3": "#713578"
   },
   "Quiet Surrender": {
    "plot": "Elise Holt, the owner of a building she manages with a firm hand, asks her tenant, Mathias Crestwood, to pick up a bag from the dry cleaner’s—a simple favor he readily agrees to, flattered that she’s finally giving him more than just a polite smile. But, alone at home with his neighbor’s carefully folded clothes, Mathias gives in to his secret fascination: he unpacks, touches, and then slips on one of the provocative tops she’d sent to be cleaned. When Elise opens the door using the key he’d lent her, she catches him in a position as pathetic as it is revealing. Rather than taking offense, she calmly lays out the reality: he is several months behind on his rent, a transgression she can turn into immediate eviction… or obedience. Seeing his weakness as an opportunity to test the limits of her power, Elise turns Mathias into her docile plaything—a tenant transformed into a servant whose shame becomes the currency of an intimate form of blackmail. Under her direction, Mathias slips into a role tailored to satisfy her desire for control: Melody, an identity she fully intends to flaunt to her friends when the time is right.",
@@ -1998,7 +2498,33 @@
      "info": "Locataire",
      "media": "https://www.aht.li/3946196/Zoom_made_the_quality_go_bad_but_its_a_vibe_elegantstyle_elegant_closeupshot_messyhairstyle.mp4"
     }
-   ]
+   ],
+   "icon": "https://i.imgur.com/EK6IMg5.png",
+   "gallery": "https://i.pinimg.com/564x/85/d3/43/85d343517d78647e0b30126cc7aefbe6.jpg\nhttps://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg\nhttps://i.pinimg.com/564x/88/e7/80/88e78099e5a7794b96b30f42fbd78d4b.jpg\nhttps://i.pinimg.com/564x/e5/b4/45/e5b4459222454f10c5dfb5ff2e3a6a2e.jpg",
+   "places": [
+    {
+     "name": "Manoir Kane",
+     "sub": "",
+     "img": "https://i.imgur.com/4V8Zvm1.jpeg"
+    },
+    {
+     "name": "Chambre de Delilah",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/b3v3ghg.png"
+    },
+    {
+     "name": "Chambre d'instruction",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/S5ZXy8L.jpeg"
+    },
+    {
+     "name": "Manoir Langhtorne",
+     "sub": "",
+     "img": "https://i.imgur.com/5KVCdfQ.jpeg"
+    }
+   ],
+   "c2": "#937a7a",
+   "c3": "#523a51"
   },
   "Framed Collapse": {
    "plot": "Evie and Amanda, a close-knit couple, turn a simple roommate arrangement into a battleground of domination. All it takes is one night of heavy drinking: humiliating challenges, forced poses, meticulous makeup… then a brutal dare—three weeks without climaxing. Rowan loses it all. Two weeks later, nervous and trembling, he asks Evie for help. She gently suggests other forms of pleasure; Amanda offers to “experiment” with him. When Rowan gives in, Evie films the scene, coldly. She threatens to send everything to his girlfriend… unless he agrees to become what they’ve already envisioned: a feminine version of himself—docile, molded, sexualized, and at their mercy. Driven by hunger, shame, and fear, Rowan says yes—and begins to disappear under the guise of Roxanne.",
@@ -2027,7 +2553,33 @@
      "info": "",
      "media": "https://www.aht.li/3945648/AQNDy5VVTN_gYfN9tOTh4TsFJdacxGUl4tbZgZ0QcR2k4VncXw1MoNEJjgWkGKbXBcbgNcZmiJ2ZUaF-AtEvYg0ab4dRglFw.mp4"
     }
-   ]
+   ],
+   "icon": "https://i.imgur.com/VCbMroM.png",
+   "gallery": "https://i.pinimg.com/564x/85/d3/43/85d343517d78647e0b30126cc7aefbe6.jpg\nhttps://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg\nhttps://i.pinimg.com/564x/88/e7/80/88e78099e5a7794b96b30f42fbd78d4b.jpg\nhttps://i.pinimg.com/564x/e5/b4/45/e5b4459222454f10c5dfb5ff2e3a6a2e.jpg",
+   "places": [
+    {
+     "name": "Manoir Kane",
+     "sub": "",
+     "img": "https://i.imgur.com/4V8Zvm1.jpeg"
+    },
+    {
+     "name": "Chambre de Delilah",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/b3v3ghg.png"
+    },
+    {
+     "name": "Chambre d'instruction",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/S5ZXy8L.jpeg"
+    },
+    {
+     "name": "Manoir Langhtorne",
+     "sub": "",
+     "img": "https://i.imgur.com/5KVCdfQ.jpeg"
+    }
+   ],
+   "c2": "#7c2855",
+   "c3": "#512a44"
   },
   "Retake Doll": {
    "plot": "Unemployed and desperate, Harry Lermond agrees to an interview at Velvet Hive Studios, unaware that he has just been chosen for the formidable 90-Day Sissy Challenge launched by the famous dominatrix Odessa Thorn. While Harry tries to make sense of what’s happening to him, a figure is at work in the shadows: his ex, Cassie, the real mastermind behind his selection. Under a secret pseudonym, she oversees every stage of the training, whispering to Odessa the most intimate humiliations and vulnerabilities that only she still knows. Between sexual discipline, physical transformation, and forced exposure, Harry is molded day after day into a docile performer destined for the camera. But behind the program’s cruelty lies a goal that no one voices: to turn him into the version of himself he had always refused to be for her… and perhaps, one day, to win her back as Harleen.",
@@ -2056,7 +2608,33 @@
      "info": "",
      "media": "https://www.aht.li/3945650/Feel_free_to_shoot_me_a_dm_or_email_me_at_thegraciejaneshowgmailcom_.mp4"
     }
-   ]
+   ],
+   "icon": "https://i.imgur.com/PWYyvoX.png",
+   "gallery": "https://i.pinimg.com/564x/85/d3/43/85d343517d78647e0b30126cc7aefbe6.jpg\nhttps://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg\nhttps://i.pinimg.com/564x/88/e7/80/88e78099e5a7794b96b30f42fbd78d4b.jpg\nhttps://i.pinimg.com/564x/e5/b4/45/e5b4459222454f10c5dfb5ff2e3a6a2e.jpg",
+   "places": [
+    {
+     "name": "Manoir Kane",
+     "sub": "",
+     "img": "https://i.imgur.com/4V8Zvm1.jpeg"
+    },
+    {
+     "name": "Chambre de Delilah",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/b3v3ghg.png"
+    },
+    {
+     "name": "Chambre d'instruction",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/S5ZXy8L.jpeg"
+    },
+    {
+     "name": "Manoir Langhtorne",
+     "sub": "",
+     "img": "https://i.imgur.com/5KVCdfQ.jpeg"
+    }
+   ],
+   "c2": "#754479",
+   "c3": "#8246af"
   },
   "Private Custody": {
    "plot": "Handcuffed in the back seat, Caleb Harker begs Officer Sera Vance to overlook his latest speeding offense while under the influence of drugs. Terrified at the thought of going back to prison, he promises her anything she wants. Sera agrees—not out of mercy, but because she has just heard the confession she’s been waiting for. She can’t stand men, whom she considers weak, loud, and useless, and sees feminization as the only way to “correct” who they are. Instead of taking him to the police station, she brings him back to her home—silent, methodical, already relishing what she’ll do to him. Caleb still believes he has avoided prison; he realizes too late that he has willingly entered a far worse form of confinement. Sera wants neither gratitude nor repentance: she wants to reduce him, polish him, hollow him out, until she erases what she hates about him. Under her command, Caleb will never be a prisoner—only a rough draft of Clarisse.",
@@ -2077,7 +2655,206 @@
      "info": "",
      "media": "https://www.aht.li/3950608/1-oversize-or-just-lingerie-aaaa-fyp-trans-tgirl-transgender-she.mp4"
     }
-   ]
+   ],
+   "icon": "https://i.imgur.com/QGHBvWT.png",
+   "gallery": "https://i.pinimg.com/564x/85/d3/43/85d343517d78647e0b30126cc7aefbe6.jpg\nhttps://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg\nhttps://i.pinimg.com/564x/88/e7/80/88e78099e5a7794b96b30f42fbd78d4b.jpg\nhttps://i.pinimg.com/564x/e5/b4/45/e5b4459222454f10c5dfb5ff2e3a6a2e.jpg",
+   "places": [
+    {
+     "name": "Manoir Kane",
+     "sub": "",
+     "img": "https://i.imgur.com/4V8Zvm1.jpeg"
+    },
+    {
+     "name": "Chambre de Delilah",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/b3v3ghg.png"
+    },
+    {
+     "name": "Chambre d'instruction",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/S5ZXy8L.jpeg"
+    },
+    {
+     "name": "Manoir Langhtorne",
+     "sub": "",
+     "img": "https://i.imgur.com/5KVCdfQ.jpeg"
+    }
+   ],
+   "c2": "#693978",
+   "c3": "#a1394a"
+  },
+  "Second Skin": {
+   "plot": "Téléréalité web *ouvertement féminisante*, Second Skin réunit dix volontaires déterminés à prouver qu’ils peuvent ++résister à un conditionnement permanent++ : hypnos sissy, routines humiliantes et défis diffusés en continu. Parmi eux, **Nolan Keats**, convaincu d’être intouchable, jure qu’aucune manipulation ne pourra s’imposer à lui. Mais dans ce jeu, *les “perdantes” sont remodelées*, féminisées, puis renvoyées comme tentatrices chargées d’affaiblir les résistants. À mesure que leurs nouvelles identités s’infiltrent dans le programme, une silhouette commence déjà à se dessiner pour Nolan — **Nova**, la peau alternative que la production et le public aimeraient tant le voir endosser. Ici, survivre ne signifie pas rester soi-même : ++seulement retarder l’éclosion de sa seconde peau.++",
+   "icon": "https://i.imgur.com/GZU8WyF.png",
+   "gallery": "https://i.pinimg.com/564x/85/d3/43/85d343517d78647e0b30126cc7aefbe6.jpg\nhttps://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg\nhttps://i.pinimg.com/564x/88/e7/80/88e78099e5a7794b96b30f42fbd78d4b.jpg\nhttps://i.pinimg.com/564x/e5/b4/45/e5b4459222454f10c5dfb5ff2e3a6a2e.jpg",
+   "chars": [
+    {
+     "old": "",
+     "name": "Cassandra Valegrave",
+     "media": "https://www.aht.li/3947450/what_i_wore_todayaltgirl_explore_emo.mp4",
+     "quote": "Exposure does more than break them — it teaches them to pose while they fall. I don’t push; I adjust, polishing each tremor until it turns into something the audience can worship. Discipline is only cruel when it isn’t deserved, and here, it always is.",
+     "by": "@iheartpidge",
+     "imgs": "https://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg",
+     "fields": "nom complet: \nâge: \noccupation: \norigine: ",
+     "anec": ""
+    },
+    {
+     "old": "Miles",
+     "name": "Miranda Wardell",
+     "media": "https://www.aht.li/3946589/-altgirl_keyholder_keyholders_keyholding_egirl_tattoogirl_egirls_gothgirlsofinstagra.mp4",
+     "quote": "Collapse taught me more than victory ever could, and they brought me back because I know exactly where it starts. Watching someone else reach the edge I once tumbled over is a pleasure you don’t forget. Some of us don’t compete anymore — we just help the inevitable happen faster.",
+     "by": "@madisonxdom",
+     "imgs": "https://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg",
+     "fields": "nom complet: \nâge: \noccupation: \norigine: ",
+     "anec": ""
+    },
+    {
+     "old": "Nate",
+     "name": "Nadia Brookfield",
+     "media": "https://www.aht.li/3946720/Mondays_fit_check.mp4",
+     "quote": "The moment I stopped fighting, everything suddenly fit — the voice, the touch, the sweetness of being told who to be. I see that same tremble in others now, the one that means they’re almost ready. Falling isn’t lonely when someone falls right after you.",
+     "by": "@babygirlnoell",
+     "imgs": "https://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg",
+     "fields": "nom complet: \nâge: \noccupation: \norigine: ",
+     "anec": ""
+    },
+    {
+     "old": "Nolan",
+     "name": "Nova Keats",
+     "media": "https://www.aht.li/3946719/The_milk_crusted_in_my_hair_after_this_explore_egirl_altgirl_trend_comedy_fortheboys_jok.mp4",
+     "quote": "The whispers started as a joke, then settled into my bones like a second heartbeat. Part of me wants to run, but another part is already learning how to pose. Maybe this isn’t manipulation — maybe it’s the version of me that was waiting for permission.",
+     "by": "@xxsournoodlesxx",
+     "imgs": "https://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg",
+     "fields": "nom complet: \nâge: \noccupation: \norigine: ",
+     "anec": ""
+    }
+   ],
+   "places": [
+    {
+     "name": "Manoir Kane",
+     "sub": "",
+     "img": "https://i.imgur.com/4V8Zvm1.jpeg"
+    },
+    {
+     "name": "Chambre de Delilah",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/b3v3ghg.png"
+    },
+    {
+     "name": "Chambre d'instruction",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/S5ZXy8L.jpeg"
+    },
+    {
+     "name": "Manoir Langhtorne",
+     "sub": "",
+     "img": "https://i.imgur.com/5KVCdfQ.jpeg"
+    }
+   ],
+   "c2": "#5e3151",
+   "c3": "#683879"
+  },
+  "Arcane Refinement": {
+   "plot": "Après avoir échoué ses examens d'entrée, **Eliott Wintermere** sans magie se retrouve dans un collège où les étudiants semblent *plus intéressés par les jeux de pouvoir que par l'étude des arcanes.* Il attire vite l'attention de **Morgane Blackwood** qui, sous des dehors amicaux, entreprend de le ++transformer++. Ce qui commence par des farces et des humiliations prend rapidement une tournure plus intime, le forçant à explorer *une version de lui-même qu'il n'aurait jamais imaginée*. Tiraillé entre la honte et une fascination grandissante, il comprend que dans cet établissement, il n'est pas là pour apprendre la magie, mais pour devenir **Elle**, ++le jouet de ceux qui la possèdent.++",
+   "icon": "https://i.imgur.com/r0NXz6a.png",
+   "gallery": "https://i.pinimg.com/564x/85/d3/43/85d343517d78647e0b30126cc7aefbe6.jpg\nhttps://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg\nhttps://i.pinimg.com/564x/88/e7/80/88e78099e5a7794b96b30f42fbd78d4b.jpg\nhttps://i.pinimg.com/564x/e5/b4/45/e5b4459222454f10c5dfb5ff2e3a6a2e.jpg",
+   "chars": [
+    {
+     "old": "",
+     "name": "Morgane Blackwood",
+     "media": "https://www.aht.li/3984948/DZtCiaehAJY.mp4",
+     "quote": "Magic was never the most valuable lesson this academy had to offer. Power only becomes elegant once it reshapes the person holding it. Every graduate leaves transformed; only the fortunate learn to smile before the ceremony ends.",
+     "by": "@machine_mommy",
+     "imgs": "https://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg",
+     "fields": "nom complet: \nâge: \noccupation: \norigine: ",
+     "anec": ""
+    },
+    {
+     "old": "Eliott",
+     "name": "Elle Wintermere",
+     "media": "https://www.aht.li/3984947/No_makeup.mp4",
+     "quote": "I remember fighting every ribbon, every nickname, every smile they handed me. Every joke left something behind, every humiliation fit a little better than the last. Somewhere between laughter and shame, I forgot which version of me had been pretending.",
+     "by": "@jenyl_ila",
+     "imgs": "https://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg",
+     "fields": "nom complet: \nâge: \noccupation: \norigine: ",
+     "anec": ""
+    }
+   ],
+   "places": [
+    {
+     "name": "Manoir Kane",
+     "sub": "",
+     "img": "https://i.imgur.com/4V8Zvm1.jpeg"
+    },
+    {
+     "name": "Chambre de Delilah",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/b3v3ghg.png"
+    },
+    {
+     "name": "Chambre d'instruction",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/S5ZXy8L.jpeg"
+    },
+    {
+     "name": "Manoir Langhtorne",
+     "sub": "",
+     "img": "https://i.imgur.com/5KVCdfQ.jpeg"
+    }
+   ],
+   "c2": "#62317d",
+   "c3": "#753899"
+  },
+  "Plastic Doll": {
+   "plot": "**Brian**, fervent admirateur de l’art provocateur de **Selene**, est ravi lorsqu’elle l’invite à assister à la création de son prochain chef-d’œuvre. Ce qu’il croit d’abord être un aperçu des coulisses de son processus créatif se révèle bientôt être *un parcours de séduction* soigneusement orchestré. À mesure que Brian ++s’immerge davantage dans l’univers de Selene++, il se retrouve peu à peu pris dans sa toile d’influence. L’invitation à assister à son travail devient une invitation à en faire partie, tandis que *Brian se transforme en Barbara*, l’œuvre d’art vivante de Selene. Désormais exposée à un public trié sur le volet, Barbara n’existe plus qu’en tant que création de Selene, son ancien moi effacé au nom de la **perfection artistique** — une véritable ++poupée Barbie++, belle, maîtrisée et figée dans le temps, incarnant la vision de quelqu’un d’autre devenue réalité.",
+   "icon": "https://i.imgur.com/D9DKgWn.png",
+   "gallery": "https://i.pinimg.com/564x/85/d3/43/85d343517d78647e0b30126cc7aefbe6.jpg\nhttps://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg\nhttps://i.pinimg.com/564x/88/e7/80/88e78099e5a7794b96b30f42fbd78d4b.jpg\nhttps://i.pinimg.com/564x/e5/b4/45/e5b4459222454f10c5dfb5ff2e3a6a2e.jpg",
+   "chars": [
+    {
+     "old": "",
+     "name": "Selene Sterling",
+     "media": "https://www.aht.li/3987598/The_universe_has_taken_me.mp4",
+     "quote": "Art has always demanded a willing subject, someone beautiful enough to be observed and empty enough to be reshaped. I never wanted to paint a portrait of perfection when I could simply create one. The finest masterpieces are the ones that eventually forget they were ever unfinished.",
+     "by": "@magxnumb",
+     "imgs": "https://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg",
+     "fields": "nom complet: \nâge: \noccupation: \norigine: ",
+     "anec": ""
+    },
+    {
+     "old": "Brian",
+     "name": "Barbara Hardy",
+     "media": "https://www.aht.li/3987599/0906.mp4",
+     "quote": "I came to admire the work, never imagining I would become part of it. Somewhere between the lights and the endless adjustments, being seen stopped feeling like attention and started feeling like erasure. Now the reflection everyone admires is flawless — I’m just no longer sure it belongs to me.",
+     "by": "@miss_donatella_officia",
+     "imgs": "https://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg",
+     "fields": "nom complet: \nâge: \noccupation: \norigine: ",
+     "anec": ""
+    }
+   ],
+   "places": [
+    {
+     "name": "Manoir Kane",
+     "sub": "",
+     "img": "https://i.imgur.com/4V8Zvm1.jpeg"
+    },
+    {
+     "name": "Chambre de Delilah",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/b3v3ghg.png"
+    },
+    {
+     "name": "Chambre d'instruction",
+     "sub": "manoir kane",
+     "img": "https://i.imgur.com/S5ZXy8L.jpeg"
+    },
+    {
+     "name": "Manoir Langhtorne",
+     "sub": "",
+     "img": "https://i.imgur.com/5KVCdfQ.jpeg"
+    }
+   ],
+   "c2": "#c15893",
+   "c3": "#684962"
   }
  }
 }
