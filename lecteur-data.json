@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793309945170,
+ "savedAt": 1793310005120,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2838,10 +2838,6 @@
    ],
    "c2": "#c15893",
    "c3": "#684962"
-  },
-  "jsp c'est un test": {
-   "plot": "",
-   "chars": []
   }
  }
 }
