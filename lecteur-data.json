@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793308706934,
+ "savedAt": 1793308807386,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -1723,7 +1723,6 @@
     }
    ],
    "icon": "https://i.imgur.com/u29fjH6.png",
-   "gallery": "https://i.pinimg.com/564x/85/d3/43/85d343517d78647e0b30126cc7aefbe6.jpg\nhttps://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg\nhttps://i.pinimg.com/564x/88/e7/80/88e78099e5a7794b96b30f42fbd78d4b.jpg\nhttps://i.pinimg.com/564x/e5/b4/45/e5b4459222454f10c5dfb5ff2e3a6a2e.jpg",
    "c2": "#eb7213",
    "c3": "#a7480b"
   },
