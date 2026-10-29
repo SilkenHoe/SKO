@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793308533206,
+ "savedAt": 1793308706934,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -1703,43 +1703,27 @@
      "id": "nboij1",
      "old": "",
      "name": "Nina Whitfield",
-     "age": "29 ans",
-     "info": "Psychiatre",
-     "media": "https://www.aht.li/3942971/AQOj-Y13EPoG4keaC3sOVMuzFdkJS2WEhMz5NR63GkP7i8kO0ZtdySVT9742hi4K2qZL4RUURr_goyg-A3fT35cdS5RFW3Ed.mp4"
+     "media": "https://www.aht.li/3942971/AQOj-Y13EPoG4keaC3sOVMuzFdkJS2WEhMz5NR63GkP7i8kO0ZtdySVT9742hi4K2qZL4RUURr_goyg-A3fT35cdS5RFW3Ed.mp4",
+     "fields": "âge: 29 ans\noccupation: Psychiatre",
+     "anec": "",
+     "imgs": "",
+     "quote": "Obedience isn’t cruelty — it’s calibration. I strip away language until instinct speaks clearly again, quiet and unashamed. They don’t break under my voice; they remember what it’s for.",
+     "by": "@submit_to_athena"
     },
     {
      "id": "hzrgk9",
      "old": "Landon",
      "name": "Lady Calloway",
-     "age": "22 ans",
-     "info": "",
-     "media": "https://www.aht.li/3942970/Da_fit_check_You_guys_seem_to_like_this_outfit_a_lot_Oh_and_uhthere_is_a_set_in_this_on_Ptr.mp4"
+     "media": "https://www.aht.li/3942970/Da_fit_check_You_guys_seem_to_like_this_outfit_a_lot_Oh_and_uhthere_is_a_set_in_this_on_Ptr.mp4",
+     "fields": "âge: 22 ans",
+     "anec": "",
+     "imgs": "",
+     "quote": "Her scent, her tone, the click of her heels — they tell me who I am before I can think it. My body moves first, my mind follows like a well-trained tail. I breathe when she allows it, and it feels like honesty.",
+     "by": "@__kitren__"
     }
    ],
    "icon": "https://i.imgur.com/u29fjH6.png",
    "gallery": "https://i.pinimg.com/564x/85/d3/43/85d343517d78647e0b30126cc7aefbe6.jpg\nhttps://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg\nhttps://i.pinimg.com/564x/88/e7/80/88e78099e5a7794b96b30f42fbd78d4b.jpg\nhttps://i.pinimg.com/564x/e5/b4/45/e5b4459222454f10c5dfb5ff2e3a6a2e.jpg",
-   "places": [
-    {
-     "name": "Manoir Kane",
-     "sub": "",
-     "img": "https://i.imgur.com/4V8Zvm1.jpeg"
-    },
-    {
-     "name": "Chambre de Delilah",
-     "sub": "manoir kane",
-     "img": "https://i.imgur.com/b3v3ghg.png"
-    },
-    {
-     "name": "Chambre d'instruction",
-     "sub": "manoir kane",
-     "img": "https://i.imgur.com/S5ZXy8L.jpeg"
-    },
-    {
-     "name": "Manoir Langhtorne",
-     "sub": "",
-     "img": "https://i.imgur.com/5KVCdfQ.jpeg"
-    }
-   ],
    "c2": "#eb7213",
    "c3": "#a7480b"
   },
