@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793482033135,
+ "savedAt": 1793482084766,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2308,43 +2308,26 @@
      "id": "c1pt1f",
      "old": "",
      "name": "Nora Duncan",
-     "age": "22 ans",
-     "info": "Etudiante",
-     "media": "https://www.aht.li/3942985/Tell_me_how_much_you_loved_it_.mp4"
+     "media": "https://www.aht.li/3942985/Tell_me_how_much_you_loved_it_.mp4",
+     "fields": "âge: 22 ans\noccupation: Student",
+     "anec": "",
+     "imgs": "",
+     "quote": "Obedience was never the command — it was the pattern. I only watched the code rearrange him, pixel by pixel, until he fit the logic perfectly. Maybe that’s what intimacy is now: efficient design.",
+     "by": "@missvioletteee"
     },
     {
      "id": "u67kzx",
      "old": "Caleb",
      "name": "Celeste Paige",
-     "age": "22 ans",
-     "info": "Etudiant",
-     "media": "https://www.aht.li/3942988/1108_1.mp4"
+     "media": "https://www.aht.li/3942988/1108_1.mp4",
+     "fields": "âge: 22 ans\noccupation: Student",
+     "anec": "",
+     "imgs": "",
+     "quote": "At first it whispered instructions; now it speaks through my pulse. The program doesn’t correct me anymore — it completes me. She calls me by a name the system wrote, and I answer without hesitation.",
+     "by": "@annie_dro"
     }
    ],
    "icon": "https://i.imgur.com/laLQ30N.png",
-   "gallery": "https://i.pinimg.com/564x/85/d3/43/85d343517d78647e0b30126cc7aefbe6.jpg\nhttps://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg\nhttps://i.pinimg.com/564x/88/e7/80/88e78099e5a7794b96b30f42fbd78d4b.jpg\nhttps://i.pinimg.com/564x/e5/b4/45/e5b4459222454f10c5dfb5ff2e3a6a2e.jpg",
-   "places": [
-    {
-     "name": "Manoir Kane",
-     "sub": "",
-     "img": "https://i.imgur.com/4V8Zvm1.jpeg"
-    },
-    {
-     "name": "Chambre de Delilah",
-     "sub": "manoir kane",
-     "img": "https://i.imgur.com/b3v3ghg.png"
-    },
-    {
-     "name": "Chambre d'instruction",
-     "sub": "manoir kane",
-     "img": "https://i.imgur.com/S5ZXy8L.jpeg"
-    },
-    {
-     "name": "Manoir Langhtorne",
-     "sub": "",
-     "img": "https://i.imgur.com/5KVCdfQ.jpeg"
-    }
-   ],
    "c2": "#742d71",
    "c3": "#713578"
   },
