@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793485585211,
+ "savedAt": 1793485600465,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2320,7 +2320,10 @@
    ],
    "icon": "https://i.imgur.com/GflgFwh.png",
    "c2": "#8767b5",
-   "c3": "#c168b4"
+   "c3": "#c168b4",
+   "arcs": {
+    "1": "The Convention"
+   }
   },
   "Tender Reconstruction": {
    "plot": "Stan Spice, a helpful young man from the neighborhood, offers his services for various jobs. Jane Hollis, an elegant woman in her forties with a calculated charm, hires him to tend her garden and repair a few things around the house. As the weeks go by, his gestures and words become subtly suggestive—a hushed game of seduction that Stan mistakes for a mere unspoken fantasy. One day, giving in to temptation, he steals a pair of panties left in plain sight on a chair—a deliberately set trap. During his last visit, Jane invites him to “test out” a strange piece of furniture that had recently been delivered: a pillory. With a few precise movements, she restrains him there, forcing him to confess his theft, then notices the glimmer of pleasure mixed with shame in his eyes. Satisfied with this revelation, Jane decides to take the game further: under her guidance, Stan will become Stacy—docile, primped, and trained to serve in other forms of domestic labor.",
