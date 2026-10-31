@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793485836733,
+ "savedAt": 1793485860424,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2517,7 +2517,10 @@
    ],
    "icon": "https://i.imgur.com/PWYyvoX.png",
    "c2": "#754479",
-   "c3": "#8246af"
+   "c3": "#8246af",
+   "arcs": {
+    "1": "The Interview"
+   }
   },
   "Private Custody": {
    "plot": "Handcuffed in the back seat, Caleb Harker begs Officer Sera Vance to overlook his latest speeding offense while under the influence of drugs. Terrified at the thought of going back to prison, he promises her anything she wants. Sera agrees—not out of mercy, but because she has just heard the confession she’s been waiting for. She can’t stand men, whom she considers weak, loud, and useless, and sees feminization as the only way to “correct” who they are. Instead of taking him to the police station, she brings him back to her home—silent, methodical, already relishing what she’ll do to him. Caleb still believes he has avoided prison; he realizes too late that he has willingly entered a far worse form of confinement. Sera wants neither gratitude nor repentance: she wants to reduce him, polish him, hollow him out, until she erases what she hates about him. Under her command, Caleb will never be a prisoner—only a rough draft of Clarisse.",
