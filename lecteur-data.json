@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793484971848,
+ "savedAt": 1793484991111,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -1904,7 +1904,8 @@
     "5": "Isolation",
     "6": "Permanent Lockdown",
     "7": "Brothel Debut",
-    "8": "The Cabin"
+    "8": "The Cabin",
+    "9": "Pinned Between The Bars"
    }
   },
   "No More Lies": {
