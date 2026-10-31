@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793484786815,
+ "savedAt": 1793484798332,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -1832,7 +1832,10 @@
     }
    ],
    "c2": "#9a3d6d",
-   "c3": "#942e44"
+   "c3": "#942e44",
+   "arcs": {
+    "1": "The Discovery"
+   }
   },
   "A Debt In Flesh": {
    "plot": "Jaden Redmond, a daring con artist, sets his sights on Madeleine Grayson, an influential and ruthless dominatrix. But what was supposed to be a simple heist backfires violently on him. Captured by Madeleine and her accomplices, he discovers that his debt will not be settled with money, but with a complete transformation of his identity. Subjected to brutal sessions of physical and psychological domination, Jaden is gradually reduced to a docile, feminized being, now going by the name of Juliette. Every punishment, every public humiliation, and every physical transformation erodes his rebellious spirit, until he begs to stay with Madeleine even after paying off his debt. As the line between punishment and education blurs, Jaden realizes that his past is now nothing more than a distant memory, replaced by a lifetime of irrevocable submission.",
