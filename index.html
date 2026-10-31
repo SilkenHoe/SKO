@@ -631,7 +631,11 @@ const num=o=>Object.keys(o).map(Number).sort((a,b)=>a-b);
 const words=s=>(s.match(/\S+/g)||[]).length;
 const aid=(arc,n)=>`a-${arc}-${n}`;
 const arcLbl=a=>a?'Arc '+n2rom(a):'Arc non précisé';
-const kS=s=>'S:'+s,kA=(s,a)=>'A:'+s+'|'+a;
+const kS=s=>'S:'+s,kA=(s,a)=>'A:'+s+'|'+a,kO=s=>'O:'+s;
+const arcT=(s,a)=>((info[s]||{}).arcs||{})[a]||'';
+const arcFull=(s,a)=>arcLbl(a)+(arcT(s,a)?' — '+arcT(s,a):'');
+function setArcT(s,a,t){const I=info[s]??={};I.arcs??={};if(t)I.arcs[a]=t;else delete I.arcs[a];if(!Object.keys(I.arcs).length)delete I.arcs}
+const cssv=v=>{v=String(v||'').replace(/[^\w\s.%,()-]/g,'').trim();return/^-?\d+(\.\d+)?$/.test(v)?v+'px':v};
 
 function render(){
  const R=document.documentElement;
@@ -643,16 +647,11 @@ function render(){
  R.style.setProperty('--c1',PC[0]);R.style.setProperty('--c2',PC[1]);R.style.setProperty('--c3',PC[2]);R.style.setProperty('--accfg',fgFor(PC[0]));
  /* navigation */
  $('#nav').innerHTML='<div class="navtop"><button class="btn sm" data-navx>✕ Fermer</button></div>'+names.map(s=>{
-  const sc=g[s],nA=Object.values(sc).reduce((t,r)=>t+Object.keys(r).length,0),open=s===cur&&!col[kS(s)],p=pal(s),ic=(info[s]||{}).icon;
-  let h=`<div class="sc${s===cur?' on':''}" draggable="true" style="--r1:${p[0]};--r2:${p[1]};--r3:${p[2]};--rf:${fgFor(p[0])}"><button class="t" data-sc="${q(s)}" title="Clic droit ou appui long : options">${safe(ic)?`<i class="ni" style="background-image:url(${q(JSON.stringify(ic))})"></i>`:''}<span class="nm">${esc(s)}</span><span class="n">${nA}</span><i class="chev">${open?'▾':'▸'}</i></button>`;
+  const sc=g[s],nA=num(sc).length,open=s===cur&&!!col[kO(s)],p=pal(s),ic=(info[s]||{}).icon;
+  let h=`<div class="sc${s===cur?' on':''}" draggable="true" style="--r1:${p[0]};--r2:${p[1]};--r3:${p[2]};--rf:${fgFor(p[0])}"><button class="t" data-sc="${q(s)}" title="Clic : ouvrir · second clic : arcs · clic droit : options">${safe(ic)?`<i class="ni" style="background-image:url(${q(JSON.stringify(ic))})"></i>`:''}<span class="nm">${esc(s)}</span><span class="n">${nA}</span><i class="chev">${open?'▾':'▸'}</i></button>`;
   if(open){
    h+='<div class="sub">';
-   for(const arc of num(sc)){
-    const c=col[kA(s,arc)];
-    h+=`<div class="arc"><span class="chev" data-tg="${q(kA(s,arc))}">${c?'▸':'▾'}</span><span data-go="arc-${arc}">${arcLbl(arc)}</span></div>`;
-    if(!c)for(const n of num(sc[arc])){const v=sc[arc][n];
-     h+=`<a data-go="${aid(arc,n)}" data-t="${aid(arc,n)}">Act ${n2rom(n)}${v[v.length-1].title?' — '+esc(v[v.length-1].title):''}</a>`}
-   }
+   for(const arc of num(sc))h+=`<a data-go="arc-${arc}" data-t="arc-${arc}" data-arc="${arc}" title="Clic droit : options de l’arc">${esc(arcFull(s,arc))}</a>`;
    h+='</div>';
   }
   return h+'</div>';
@@ -671,7 +670,7 @@ function render(){
  const wst=`--clr1:${trip(PC[0])};--clr2:${trip(PC[1])};--clr3:${trip(PC[2])}`;
  const top=`<top><div>${safe(I.icon)?`<img src="${q(I.icon)}" alt="">`:''}</div><in><tit>${esc(cur)}</tit><mt>${num(sc).length} arc(s) · ${acts.length} acte(s) · ${tot.toLocaleString('fr-FR')} mots</mt><tb><button class="tab${eff==='fiche'?' on':''}" data-tab="fiche">Fiche</button><button class="tab${eff==='lecture'?' on':''}" data-tab="lecture">Lecture</button></tb></in></top>`;
  const inner=eff==='fiche'?`<inner>${sheetBody(cur,sc)}</inner>`:lectureHtml(cur,sc);
- m.innerHTML=`<div class="container" style="${wst}"><div class="drm-business" data-zg><div class="bt"><button class="btn sm" data-es="1" title="Nom et couleur">✎</button><button class="btn sm" data-ei="syn" title="Modifier la fiche">✎ Fiche</button><button class="btn sm" data-xf="1" title="Télécharger la fiche complète (Markdown, pour une IA)">⬇ Fiche IA</button><button class="btn sm" data-na="">＋ Acte</button><button class="btn sm" data-nr="1">＋ Arc</button></div>${top}${inner}</div></div>`;
+ m.innerHTML=`<div class="container" style="${wst}"><div class="drm-business" data-zg><div class="bt"><button class="btn sm" data-na="">＋ Acte</button><button class="btn sm" data-nr="1">＋ Arc</button><button class="btn sm" data-xf="1" title="Télécharger la fiche complète (Markdown, pour une IA)">⬇ Fiche IA</button></div>${top}${inner}</div></div>`;
  m.querySelectorAll('video[data-src]').forEach(v=>{v.src=v.dataset.src;const p=v.play();if(p&&p.catch)p.catch(()=>{})});
  m.style.scrollBehavior='auto';m.scrollTop=y0;m.style.scrollBehavior='';
  spy();
@@ -694,8 +693,8 @@ function go(id){if(!document.getElementById(id)){tab='lecture';savePrefs();rende
 let io;
 function spy(){
  io&&io.disconnect();
- io=new IntersectionObserver(es=>{for(const e of es)if(e.isIntersecting)document.querySelectorAll('.sub a').forEach(a=>a.classList.toggle('cur',a.dataset.t===e.target.id))},{root:$('#main'),rootMargin:'0px 0px -75% 0px'});
- document.querySelectorAll('article').forEach(a=>io.observe(a));
+ io=new IntersectionObserver(es=>{for(const e of es)if(e.isIntersecting){const t='arc-'+e.target.dataset.arc;document.querySelectorAll('.sub a').forEach(a=>a.classList.toggle('cur',a.dataset.t===t))}},{root:$('#main'),rootMargin:'0px 0px -75% 0px'});
+ document.querySelectorAll('#main article[data-arc],#main .arcsep[data-arc]').forEach(a=>io.observe(a));
 }
 
 /* ---------- fenêtre de modification ---------- */
@@ -736,8 +735,9 @@ function editScenario(s){
  });
 }
 function editArc(s,arc){
- modal('Arc',[{k:'s',t:'scen',l:'Scénario',v:s},{k:'a',t:'number',l:'Numéro d’arc (0 = non précisé)',v:arc}],v=>{
-  const ns=v.s||s;lib.forEach(a=>{if(a.scenario===s&&a.arc===arc){a.scenario=ns;a.arc=v.a}});cur=ns;
+ modal('Arc',[{k:'t',t:'text',l:'Titre de l’arc',v:arcT(s,arc)},{k:'s',t:'scen',l:'Scénario',v:s},{k:'a',t:'number',l:'Numéro d’arc (0 = non précisé)',v:arc}],v=>{
+  const ns=v.s||s;lib.forEach(a=>{if(a.scenario===s&&a.arc===arc){a.scenario=ns;a.arc=v.a}});
+  if(ns!==s||v.a!==arc)setArcT(s,arc,'');setArcT(ns,v.a,v.t);cur=ns;
  });
 }
 function editAct(k){
@@ -754,23 +754,24 @@ function newAct(s,arc){
  const sc=group()[s]||{},as=num(sc);
  const a=arc==='new'?(as.length?Math.max(...as):0)+1:arc===null?(as.length?Math.max(...as):1):arc;
  const ns=num(sc[a]||{}),n=(ns.length?Math.max(...ns):0)+1;
- modal('Nouvel acte',[{k:'s',t:'scen',l:'Scénario',v:s||'__new'},{k:'a',t:'number',l:'Arc',v:a},{k:'n',t:'number',l:'Numéro d’acte',v:n},{k:'t',t:'text',l:'Titre',v:''},{k:'md',t:'area',l:'Texte (Markdown)',v:''}],v=>{
+ modal(arc==='new'?'Nouvel arc':'Nouvel acte',[{k:'s',t:'scen',l:'Scénario',v:s||'__new'},{k:'a',t:'number',l:'Arc',v:a},...(arc==='new'?[{k:'at',t:'text',l:'Titre de l’arc',v:''}]:[]),{k:'n',t:'number',l:'Numéro d’acte',v:n},{k:'t',t:'text',l:'Titre',v:''},{k:'md',t:'area',l:'Texte (Markdown)',v:''}],v=>{
   const sn=v.s||s;if(!sn)return toast('Indique un scénario.');if(!v.md)return toast('Le texte est vide : acte non créé.');
-  lib.push({scenario:sn,arc:v.a,n:v.n||1,title:v.t,md:v.md,ts:Date.now(),src:'manuel'});cur=sn;
+  lib.push({scenario:sn,arc:v.a,n:v.n||1,title:v.t,md:v.md,ts:Date.now(),src:'manuel'});if(v.at)setArcT(sn,v.a,v.at);cur=sn;
  },'Ajouter');
 }
 function newScenario(){
  modal('Nouveau scénario',[{k:'name',t:'text',l:'Nom',v:''}],v=>{if(!v.name)return;info[v.name]??={plot:'',chars:[]};cur=v.name},'Créer');
 }
+function copyAct(k){const{n,sel:a}=pickAct(k);navigator.clipboard.writeText(`**Act ${n2rom(n)} — ${a.title}**\n\n${a.md}`).then(()=>toast('Texte copié (Markdown).'),()=>toast('Copie impossible.'))}
 function pickAct(k){const[s,arc,n]=JSON.parse(k),sl=lib.filter(a=>a.scenario===s&&a.arc===arc&&a.n===n).sort((a,b)=>a.ts-b.ts);return{s,arc,n,sel:sl[Math.min(ver[k]??sl.length-1,sl.length-1)]}}
 function delAct(k){const{n,sel}=pickAct(k);modal('Supprimer l’acte « '+(sel.title||'Act '+n2rom(n))+' » ?',[],()=>{lib=lib.filter(a=>a!==sel);delete ver[k]},'Supprimer')}
-function delArc(s,arc){modal('Supprimer '+arcLbl(arc)+' de « '+s+' » ?',[],()=>{lib=lib.filter(a=>!(a.scenario===s&&a.arc===arc))},'Supprimer')}
+function delArc(s,arc){modal('Supprimer '+arcFull(s,arc)+' de « '+s+' » ?',[],()=>{lib=lib.filter(a=>!(a.scenario===s&&a.arc===arc));setArcT(s,arc,'')},'Supprimer')}
 
 /* ---------- clics ---------- */
 document.addEventListener('click',e=>{
  const t=e.target.closest('[data-sc],[data-tg],[data-go],[data-del],[data-es],[data-ea],[data-ev],[data-ei],[data-c],[data-navx],[data-na],[data-nr],[data-da],[data-nsc],[data-xv],[data-tab],[data-zoom],[data-sec],[data-xf]');if(!t||t.closest('#modal'))return;
  const d=t.dataset;
- if(d.sc!==undefined){const s=d.sc;let sw=false;if(s===cur)col[kS(s)]=!col[kS(s)];else{cur=s;wantCur=null;delete col[kS(s)];$('#main').scrollTop=0;document.body.classList.remove('nav');sw=true}delArm=null;save();render();if(sw)restoreProg()}
+ if(d.sc!==undefined){const s=d.sc;let sw=false;if(s===cur)col[kO(s)]=!col[kO(s)];else{cur=s;wantCur=null;delete col[kO(s)];$('#main').scrollTop=0;document.body.classList.remove('nav');sw=true}delArm=null;save();render();if(sw)restoreProg()}
  else if(d.tg!==undefined){keep(()=>{col[d.tg]=!col[d.tg];save()})}
  else if(d.go!==undefined)go(d.go);
  else if(d.del!==undefined){if(delArm===d.del){lib=lib.filter(a=>a.scenario!==d.del);delArm=null;save()}else delArm=d.del;render()}
@@ -788,10 +789,7 @@ document.addEventListener('click',e=>{
  else if(d.xv!==undefined)delAct(d.xv);
  else if(d.ea!==undefined)editArc(cur,+d.ea);
  else if(d.ev!==undefined)editAct(d.ev);
- else if(d.c!==undefined){
-  const[s,arc,n]=JSON.parse(d.c),v=lib.filter(a=>a.scenario===s&&a.arc===arc&&a.n===n).sort((x,y)=>x.ts-y.ts),a=v[Math.min(ver[d.c]??v.length-1,v.length-1)];
-  navigator.clipboard.writeText(`**Act ${n2rom(n)} — ${a.title}**\n\n${a.md}`).then(()=>toast('Texte copié (Markdown).'),()=>toast('Copie impossible.'));
- }
+ else if(d.c!==undefined)copyAct(d.c);
 });
 document.addEventListener('change',e=>{const s=e.target.closest('select[data-v]');if(s)keep(()=>{ver[s.dataset.v]=+s.value})});
 
@@ -834,10 +832,8 @@ function sortedNames(g=group()){return Object.keys(g).sort((a,b)=>ordIdx(a)-ordI
 function placeScenario(s,fn){const n=sortedNames().filter(x=>x!==s);fn(n);order=n;save();render()}
 function delScenario(s){modal('Supprimer « '+s+' » ?',[],()=>{lib=lib.filter(a=>a.scenario!==s);delete info[s]},'Supprimer')}
 function closeCtx(){const c=$('#ctx');if(c)c.remove()}
-function ctxMenu(x,y,s){
+function showCtx(x,y,items){
  closeCtx();if(isMobile())return;
- const names=sortedNames(),i=names.indexOf(s),last=i===names.length-1;
- const items=[['Nom et couleur…',()=>editScenario(s)],i>0&&['Placer en premier',()=>placeScenario(s,n=>n.unshift(s))],i>0&&['Monter',()=>placeScenario(s,n=>n.splice(i-1,0,s))],!last&&['Descendre',()=>placeScenario(s,n=>n.splice(i+1,0,s))],['Supprimer…',()=>delScenario(s)]].filter(Boolean);
  const m=document.createElement('div');m.id='ctx';m.className='glass';
  m.innerHTML=items.map((it,k)=>`<button data-i="${k}">${it[0]}</button>`).join('');
  document.body.appendChild(m);
@@ -845,8 +841,26 @@ function ctxMenu(x,y,s){
  m.style.top=Math.max(8,Math.min(y,innerHeight-m.offsetHeight-8))+'px';
  m.onclick=e=>{const b=e.target.closest('button');if(b){closeCtx();items[b.dataset.i][1]()}};
 }
+const arcItems=(s,a)=>[['Modifier l’arc (titre, numéro)…',()=>editArc(s,a)],['Ajouter un acte…',()=>newAct(s,a)],['Supprimer l’arc…',()=>delArc(s,a)]];
+const actItems=k=>[['Modifier l’acte…',()=>editAct(k)],['Copier le texte',()=>copyAct(k)],['Supprimer l’acte…',()=>delAct(k)]];
+function ctxMenu(x,y,s){
+ const names=sortedNames(),i=names.indexOf(s),last=i===names.length-1;
+ const items=[['Modifier la fiche…',()=>editFiche(s)],['Nom et couleur…',()=>editScenario(s)],i>0&&['Placer en premier',()=>placeScenario(s,n=>n.unshift(s))],i>0&&['Monter',()=>placeScenario(s,n=>n.splice(i-1,0,s))],!last&&['Descendre',()=>placeScenario(s,n=>n.splice(i+1,0,s))],['Supprimer…',()=>delScenario(s)]].filter(Boolean);
+ showCtx(x,y,items);
+}
+$('#main').addEventListener('contextmenu',e=>{
+ if(!cur||isMobile())return;
+ const sel=getSelection&&String(getSelection()).trim();if(sel)return;
+ const bz=e.target.closest('.drm-business');if(!bz)return;
+ const ar=e.target.closest('article[data-k]'),as=e.target.closest('.arcsep[data-arc]');let items;
+ if(ar)items=actItems(ar.dataset.k);
+ else if(as)items=arcItems(cur,+as.dataset.arc);
+ else{const f=e.target.closest('.star-speech,.cg')?'cast':e.target.closest('rapapa')?'pl':e.target.closest('mem')?'sec':'syn';
+  items=[['Modifier la fiche…',()=>editFiche(cur,f)],['Nom et couleur…',()=>editScenario(cur)],['Télécharger la fiche IA',()=>exportOne(cur)]]}
+ e.preventDefault();showCtx(e.clientX,e.clientY,items);
+});
 const nv=$('#nav');
-nv.addEventListener('contextmenu',e=>{const b=e.target.closest('[data-sc]');if(b){e.preventDefault();ctxMenu(e.clientX,e.clientY,b.dataset.sc)}});
+nv.addEventListener('contextmenu',e=>{const ar=e.target.closest('[data-arc]');if(ar&&cur){e.preventDefault();return showCtx(e.clientX,e.clientY,arcItems(cur,+ar.dataset.arc))}const b=e.target.closest('[data-sc]');if(b){e.preventDefault();ctxMenu(e.clientX,e.clientY,b.dataset.sc)}});
 let lp,lpd=0;
 nv.addEventListener('touchstart',e=>{const b=e.target.closest('[data-sc]');if(!b)return;lpd=0;lp=setTimeout(()=>{lpd=1;const t=e.touches[0];ctxMenu(t.clientX,t.clientY,b.dataset.sc)},550)},{passive:true});
 ['touchend','touchmove','touchcancel'].forEach(ev=>nv.addEventListener(ev,()=>clearTimeout(lp),{passive:true}));
@@ -891,8 +905,9 @@ function charBlock(c,i){
  const det=lines(c.fields??(c.age?'âge: '+c.age:'')).map(l=>{const j=l.indexOf(':');return j<0?['',l]:[l.slice(0,j).trim(),l.slice(j+1).trim()]}).filter(x=>x[1]);
  const an=lines(c.anec??c.info??''),gal=lines(c.imgs),m=c.media;
  const ok=safe(m),vid=ok&&isVid(m);
- const icA=ok&&!vid?` style="background-image:url(${q(JSON.stringify(m))});background-position:center 20%"`:'';
- let h=`<div class="star-speech"><h>${c.old?`<strike>${esc(c.old)}</strike> `:''}${esc(c.name||'')}</h><div class="star-con"><pic><ic${icA}>${vid?`<video autoplay muted loop playsinline preload="none" data-src="${q(m)}" style="object-position: center 20%;"></video>`:''}</ic></pic>${c.quote?`<ch-quote><q>${esc(c.quote)}</q>${c.by?`<q-source><b>${esc(c.by)}</b></q-source>`:''}</ch-quote>`:''}</div></div>`;
+ const vp=cssv(c.vpos)||'center 20%',ht=cssv(c.htop),hr=cssv(c.hright);
+ const icA=ok&&!vid?` style="background-image:url(${q(JSON.stringify(m))});background-position:${vp}"`:'';
+ let h=(ht||hr?`<style>.star-speech[data-ch="${i}"]:not(:hover)>h{${ht?`top:${ht};`:''}${hr?`right:${hr};`:''}}</style>`:'')+`<div class="star-speech" data-ch="${i}"><h>${c.old?`<strike>${esc(c.old)}</strike> `:''}${esc(c.name||'')}</h><div class="star-con"><pic><ic${icA}>${vid?`<video autoplay muted loop playsinline preload="none" data-src="${q(m)}" style="object-position: ${vp};"></video>`:''}</ic></pic>${c.quote?`<ch-quote><q>${esc(c.quote)}</q>${c.by?`<q-source><b>${esc(c.by)}</b></q-source>`:''}</ch-quote>`:''}</div></div>`;
  if(gal.length||det.length||an.length){
   h+=`<gall class="cg" style="${i%2?GBG(1,2,3):GBG(3,2,1)}">`;
   if(det.length)h+=`<div class="cblk"><h4 class="ch4"><x class="fas fa-feather-pointed"></x> Informations</h4><div class="cgrid">${det.map(([k,v])=>`<k><x>${esc(k)}</x><y>${esc(v)}</y></k>`).join('')}</div></div>`;
@@ -921,14 +936,14 @@ function lectureHtml(s,sc){
  let out='';
  for(const arc of num(sc)){
   const c=col[kA(s,arc)],cnt=Object.keys(sc[arc]).length;
-  out+=`<div class="arcsep" id="arc-${arc}"><button class="btn sm" data-tg="${q(kA(s,arc))}">${c?'▸':'▾'} ${arcLbl(arc)} · ${cnt} acte${cnt>1?'s':''}</button><button class="btn sm" data-ea="${arc}" title="Modifier / déplacer l’arc">✎</button><button class="btn sm" data-na="${arc}" title="Ajouter un acte à cet arc">＋</button><button class="btn sm" data-da="${arc}" title="Supprimer l’arc">✕</button></div>`;
+  out+=`<div class="arcsep" id="arc-${arc}" data-arc="${arc}" title="Clic droit : options de l’arc"><button class="btn sm" data-tg="${q(kA(s,arc))}">${c?'▸':'▾'} ${esc(arcFull(s,arc))} · ${cnt} acte${cnt>1?'s':''}</button><button class="btn sm" data-na="${arc}" title="Ajouter un acte à cet arc">＋</button></div>`;
   if(c)continue;
   for(const n of num(sc[arc])){
    const v=sc[arc][n],k=JSON.stringify([s,arc,n]),i=Math.min(ver[k]??v.length-1,v.length-1),a=v[i];
-   out+=`<article id="${aid(arc,n)}"><h2><small>Act ${n2rom(n)}</small>${esc(a.title)}</h2>${a.loc?`<div class="loc">${esc(a.loc)}</div>`:''}
+   out+=`<article id="${aid(arc,n)}" data-arc="${arc}" data-k="${q(k)}"><h2><small>Act ${n2rom(n)}</small>${esc(a.title)}</h2>${a.loc?`<div class="loc">${esc(a.loc)}</div>`:''}
    <div class="tools"><span>${words(a.md).toLocaleString('fr-FR')} mots</span>
    ${v.length>1?`<select data-v="${q(k)}">${v.map((x,j)=>`<option value="${j}"${j===i?' selected':''}>Version ${j+1}/${v.length}</option>`).join('')}</select>`:''}
-   <button class="btn sm" data-c="${q(k)}">Copier</button><button class="btn sm" data-ev="${q(k)}">✎ Modifier</button><button class="btn sm" data-xv="${q(k)}">Supprimer</button></div><div class="txt">${md(a.md)}</div></article>`;
+   <button class="btn sm" data-c="${q(k)}">Copier</button></div><div class="txt">${md(a.md)}</div></article>`;
   }
  }
  return`<div class="lect">${out||'<div class="hint n">Aucun acte pour l’instant : importe un fichier ou ajoute-en un à la main.</div>'}</div>`;
@@ -993,7 +1008,7 @@ function planMd(s){
  const sc=group()[s]||{};let o='';
  for(const arc of num(sc))for(const n of num(sc[arc])){
   const v=sc[arc][n],a=v[v.length-1];
-  if(a.sum||a.loc)o+=`- ${arcLbl(arc)}, Acte ${n2rom(n)}${a.title?' — '+a.title:''}${a.loc?` (lieu : ${a.loc})`:''}${a.sum?' : '+plain(a.sum).replace(/\n+/g,' '):''}\n`;
+  if(a.sum||a.loc)o+=`- ${arcFull(s,arc)}, Acte ${n2rom(n)}${a.title?' — '+a.title:''}${a.loc?` (lieu : ${a.loc})`:''}${a.sum?' : '+plain(a.sum).replace(/\n+/g,' '):''}\n`;
  }
  return o;
 }
@@ -1057,8 +1072,11 @@ function editFiche(s,focus){
  const cvt=c=>({...c,fields:kvOf(c),anec:lines(c.anec??c.info??''),imgs:lines(c.imgs)});
  const L={
   gen:{single:1,S:160,items:[{icon:I.icon||''}],f:[{k:'icon',t:'img'}]},
+  gal:{single:1,items:[{gallery:lines(I.gallery)}],f:[{k:'gallery',t:'chips',l:'Galerie — liens d’images',ph:'https://…',w:1}]},
   chars:{S:360,add:'＋ Personnage',items:(I.chars||[]).map(cvt),f:[
    {k:'media',t:'img'},
+   {k:'vpos',t:'text',ph:'Cadrage image / vidéo (object-position, ex. center 20%)'},
+   {k:'htop',t:'text',ph:'Nom — top (ex. 80px)',h:1},{k:'hright',t:'text',ph:'Nom — right (ex. 180px)',h:1},
    {k:'old',t:'text',ph:'Ancien prénom (affiché barré)',h:1},{k:'name',t:'text',ph:'Prénom Nom actuel',h:1},
    {k:'quote',t:'area',rows:3,ph:'Citation du personnage'},{k:'by',t:'text',ph:'@pseudo (auteur de la citation)'},
    {k:'fields',t:'kv',l:'Informations'},
@@ -1081,7 +1099,7 @@ function editFiche(s,focus){
 <div id="S_gen"><b class="eh">Général</b><label>Icône du scénario</label><div id="L_gen"></div>
 <label>Couleurs du dégradé (la première est la couleur principale)</label><div class="cors">${crow('c1',P[0],'1',!colors[s])}${crow('c2',P[1],'2',!I.c2)}${crow('c3',P[2],'3',!I.c3)}</div>
 <label>Synopsis (**gras**, *italique*, ++souligné++)</label><textarea name="plot" rows="6">${esc(I.plot||'')}</textarea>
-<label>Galerie — un lien d’image par ligne</label><textarea name="gallery" rows="4">${esc(I.gallery||'')}</textarea></div>
+<div id="L_gal"></div></div>
 ${sec('chars','Personnages')}${sec('places','Lieux')}${sec('sec','Personnages secondaires')}
 <div class="row"><button type="button" class="btn" data-x>Annuler</button><button class="btn pri">Enregistrer</button></div></form>`;
  document.body.appendChild(o);
@@ -1097,6 +1115,7 @@ ${sec('chars','Personnages')}${sec('places','Lieux')}${sec('sec','Personnages se
  const imgk=key=>L[key].f.find(x=>x.t==='img').k;
  Object.keys(L).forEach(draw);
  const go2={syn:'gen',gal:'gen',cast:'chars',pl:'places',sec:'sec'}[focus];
+ if(focus==='gal')setTimeout(()=>{const t=o.querySelector('#L_gal');t&&t.scrollIntoView()},30);
  if(go2&&go2!=='gen')setTimeout(()=>{const t=o.querySelector('#S_'+go2);t&&t.scrollIntoView()},30);
  o.onclick=e=>{
   if(e.target===o||e.target.dataset.x!==undefined)return close();
@@ -1131,7 +1150,7 @@ ${sec('chars','Personnages')}${sec('places','Lieux')}${sec('sec','Personnages se
    r.fields=(c.fields||[]).filter(x=>x[1]).map(x=>`${x[0]}: ${x[1]}`).join('\n');
    r.anec=(c.anec||[]).map(x=>x.trim()).filter(Boolean).join('\n');
    r.imgs=(c.imgs||[]).map(x=>x.trim()).filter(Boolean).join('\n');return r});
-  const nI={...I,plot:E.plot.value.trim(),gallery:E.gallery.value.trim(),icon:L.gen.items[0].icon||'',c2:auto('c2')?'':E.c2.value,c3:auto('c3')?'':E.c3.value,
+  const nI={...I,plot:E.plot.value.trim(),gallery:(L.gal.items[0].gallery||[]).map(x=>x.trim()).filter(Boolean).join('\n'),icon:L.gen.items[0].icon||'',c2:auto('c2')?'':E.c2.value,c3:auto('c3')?'':E.c3.value,
    chars:clean(L.chars.items.filter(c=>c.name||c.old)),places:L.places.items.filter(p=>p.name),sec:L.sec.items.filter(p=>p.name).map(c=>({...c,fields:(c.fields||[]).filter(x=>x[1]).map(x=>`${x[0]}: ${x[1]}`).join('\n')}))};
   Object.keys(nI).forEach(k=>{if(!nI[k]||(Array.isArray(nI[k])&&!nI[k].length))delete nI[k]});
   if(auto('c1'))delete colors[s];else colors[s]=E.c1.value;
@@ -1187,8 +1206,10 @@ function importSheet(txt,over){
   const tok=/<div class="star-speech">(.*?)<\/div><\/div>|<gall[^>]*>(.*?)<\/gall>|<mem>(.*?)<\/mem>/gs;
   for(const t of pn.matchAll(tok)){
    if(t[1]!==undefined){
-    const b=t[1],h=(b.match(/<h>(.*?)<\/h>/s)||[,''])[1],sk=h.match(/<strike>(.*?)<\/strike>/s);
+    const b=t[1],hm=b.match(/<h(\s[^>]*)?>(.*?)<\/h>/s)||[,'',''],h=hm[2],ha=hm[1]||'',sk=h.match(/<strike>(.*?)<\/strike>/s);
     const c={old:sk?stripH(sk[1]):'',name:stripH(h.replace(/<strike>.*?<\/strike>/s,''))};
+    const tp=ha.match(/[\s;"]top\s*:\s*([^;"]+)/i),rt=ha.match(/[\s;"]right\s*:\s*([^;"]+)/i),op=b.match(/<video[^>]*object-position\s*:\s*([^;"]+)/i);
+    if(tp)c.htop=tp[1].trim();if(rt)c.hright=rt[1].trim();if(op&&!/^center 20%$/i.test(op[1].trim()))c.vpos=op[1].trim();
     c.media=(b.match(/<video[^>]*data-src="([^"]+)"/)||b.match(/<video[^>]*\ssrc="([^"]+)"/)||b.match(/<img[^>]*src="([^"]+)"/)||[])[1]||urlOf((b.match(/<ic\s[^>]*style="[^"]*"/)||[''])[0]);
     const q1=b.match(/<q>(.*?)<\/q>/s);if(q1)c.quote=stripH(q1[1]);
     const by=b.match(/<q-source>\s*<b>(.*?)<\/b>/s);if(by)c.by=stripH(by[1]);
