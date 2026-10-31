@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793485178394,
+ "savedAt": 1793485188879,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2111,7 +2111,8 @@
    "c2": "#881c31",
    "c3": "#5c1719",
    "arcs": {
-    "1": "The Initiation Ritual"
+    "1": "The Initiation Ritual",
+    "2": "Cleo's Private Punishment"
    }
   },
   "Level Up": {
