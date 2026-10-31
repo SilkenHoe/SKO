@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793485055142,
+ "savedAt": 1793485060522,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2031,7 +2031,10 @@
     }
    ],
    "c2": "#324258",
-   "c3": "#00263e"
+   "c3": "#00263e",
+   "arcs": {
+    "1": "The Legend"
+   }
   },
   "Among The Roses": {
    "plot": "Sasha Fairchild, a young man with an androgynous appearance, enrolls in college, where he quickly catches the attention of Lauren Everett, the leader of a prestigious sorority. Fascinated by his potential and seeing him as a unique project, Lauren recruits him into the exclusive circle of the “Roses.” But this sorority has strict rules: Sasha must abandon his masculine identity and embrace an imposed femininity. Amid wild parties, humiliating rituals, and constant pressure to uphold the group’s reputation, Sasha is reshaped into an ideal version of himself according to the sorority’s standards. While some members support him in his transformation, others seek to humiliate him further. Torn between admiration for Lauren and fear of disappointing others, Sasha sinks deeper into a role he eventually accepts, realizing that to belong in this world, he must conform to its rules, no matter the cost.",
