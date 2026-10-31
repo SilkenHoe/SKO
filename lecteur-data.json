@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793485621119,
+ "savedAt": 1793485630389,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2356,7 +2356,8 @@
    "c2": "#d78169",
    "c3": "#ba6450",
    "arcs": {
-    "1": "The First Dressing"
+    "1": "The First Dressing",
+    "2": "Living Display"
    }
   },
   "Synthetic Bloom": {
