@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793485086307,
+ "savedAt": 1793485160805,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2034,7 +2034,7 @@
    "c3": "#00263e",
    "arcs": {
     "1": "The Legend",
-    "2": "Wrecked"
+    "2": "Found Purpose"
    }
   },
   "Among The Roses": {
