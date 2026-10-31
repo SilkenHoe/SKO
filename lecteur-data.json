@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793486626113,
+ "savedAt": 1793486656487,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2548,7 +2548,10 @@
    ],
    "icon": "https://i.imgur.com/QGHBvWT.png",
    "c2": "#693978",
-   "c3": "#a1394a"
+   "c3": "#a1394a",
+   "arcs": {
+    "1": "The Arrest"
+   }
   },
   "Second Skin": {
    "plot": "An overtly feminizing web reality show, Second Skin brings together ten volunteers determined to prove they can resist constant conditioning: sissy hypnosis, humiliating routines, and challenges streamed live. Among them is Nolan Keats, convinced he’s untouchable, who swears that no manipulation will ever work on him. But in this game, the “losers” are reshaped, feminized, and then sent back as temptresses tasked with weakening the resisters. As their new identities seep into the program, a figure is already beginning to take shape for Nolan—Nova, the alternative persona that the producers and the audience would so love to see him embrace. Here, survival doesn’t mean staying true to oneself: it merely means delaying the emergence of one’s second skin.",
