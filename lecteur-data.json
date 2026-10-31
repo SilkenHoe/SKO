@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793484833342,
+ "savedAt": 1793484878384,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -1898,7 +1898,8 @@
    "c3": "#9c006d",
    "arcs": {
     "1": "The Capture and The Reconstruction",
-    "2": "The Dinner and The Heels"
+    "2": "The Dinner and The Heels",
+    "5": "Isolation"
    }
   },
   "No More Lies": {
