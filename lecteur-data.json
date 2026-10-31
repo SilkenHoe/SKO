@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793485796975,
+ "savedAt": 1793485806587,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2428,7 +2428,8 @@
    "c2": "#937a7a",
    "c3": "#523a51",
    "arcs": {
-    "1": "The Deal"
+    "1": "The Deal",
+    "2": "Property"
    }
   },
   "Framed Collapse": {
