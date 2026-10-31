@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793485565931,
+ "savedAt": 1793485585211,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2287,7 +2287,10 @@
     }
    ],
    "c2": "#6a10c1",
-   "c3": "#8709d0"
+   "c3": "#8709d0",
+   "arcs": {
+    "1": "The Exposure"
+   }
   },
   "Hard Reboot": {
    "plot": "At a geek convention, Haytam Laine tries out a virtual reality experience designed to “project his avatar into the real world.” But inside the booth, the simulation becomes reality: his body transforms before his eyes, taking on the proportions of the character he had imagined. Straps tighten around his arms, a plug clicks into place, and a mask conceals the gag that muffles his voice. Panicked, he tries to flee through the convention, stumbling in his overly tight outfit. Leyah, initially amused by what she believes to be a clumsy cosplay, catches up to him and quickly realizes that he can neither speak nor free himself. Feigning kindness, she lures him aside. When she briefly removes the mask to hear him stammer, she interrupts him in a calm tone and gives him another name—Hazzel.",
