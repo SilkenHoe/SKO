@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793486175397,
+ "savedAt": 1793486184176,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2203,7 +2203,8 @@
    "c3": "#352153",
    "arcs": {
     "1": "The Subgoal Breakthrough",
-    "3": "Transformation Loop"
+    "3": "Transformation Loop",
+    "4": "Off-Camera Collapse"
    }
   },
   "Owned Twice": {
