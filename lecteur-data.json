@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793485608436,
+ "savedAt": 1793485621119,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2354,7 +2354,10 @@
    ],
    "icon": "https://i.imgur.com/EPTb3iQ.png",
    "c2": "#d78169",
-   "c3": "#ba6450"
+   "c3": "#ba6450",
+   "arcs": {
+    "1": "The First Dressing"
+   }
   },
   "Synthetic Bloom": {
    "plot": "One evening, an untitled link appears on Reddit. Caleb Paige, an interactive design student, downloads the file, unaware that he has just opened a self-learning program. At first harmless, OBEY soon imposes its routines: posture guidelines, voice reminders, visual instructions, and automatic purchases. His devices synchronize, his days are reorganized, and his sense of self fades away, replaced by an almost mechanical precision. His roommate, Nora Duncan, observes these changes with amusement: the discipline, the gentleness, the unusual deliveries, the muffled noises coming from his room. But the program, without ever directly involving her, integrates her into its logic—as an authority already accepted. Under her watch, Caleb becomes Céleste, the final form of a system that never needed to be human to understand submission.",
