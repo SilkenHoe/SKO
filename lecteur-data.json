@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793485656377,
+ "savedAt": 1793485662655,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2390,7 +2390,8 @@
    "c2": "#742d71",
    "c3": "#713578",
    "arcs": {
-    "1": "Nora's Discover"
+    "1": "Nora's Discover",
+    "2": "Hardware Obedience"
    }
   },
   "Quiet Surrender": {
