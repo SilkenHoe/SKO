@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793485308607,
+ "savedAt": 1793485319646,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2197,6 +2197,7 @@
    "c3": "#352153",
    "arcs": {
     "1": "The Subgoal Breakthrough",
+    "2": "Ruined Performance",
     "3": "Transformation Loop"
    }
   },
