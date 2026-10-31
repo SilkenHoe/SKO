@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793482575930,
+ "savedAt": 1793482628744,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2511,9 +2511,8 @@
    "c3": "#683879"
   },
   "Arcane Refinement": {
-   "plot": "Après avoir échoué ses examens d'entrée, **Eliott Wintermere** sans magie se retrouve dans un collège où les étudiants semblent *plus intéressés par les jeux de pouvoir que par l'étude des arcanes.* Il attire vite l'attention de **Morgane Blackwood** qui, sous des dehors amicaux, entreprend de le ++transformer++. Ce qui commence par des farces et des humiliations prend rapidement une tournure plus intime, le forçant à explorer *une version de lui-même qu'il n'aurait jamais imaginée*. Tiraillé entre la honte et une fascination grandissante, il comprend que dans cet établissement, il n'est pas là pour apprendre la magie, mais pour devenir **Elle**, ++le jouet de ceux qui la possèdent.++",
+   "plot": "After failing his entrance exams, Eliott Wintermere—who possesses no magic—finds himself at a college where students seem more interested in power games than in the study of the arcane. He quickly catches the attention of Morgane Blackwood, who, beneath a friendly facade, sets out to transform him. What begins with pranks and humiliations quickly takes a more intimate turn, forcing him to explore a side of himself he never could have imagined. Torn between shame and a growing fascination, he realizes that at this school, he isn’t there to learn magic, but to become “Her”—the plaything of those who possess it.",
    "icon": "https://i.imgur.com/r0NXz6a.png",
-   "gallery": "https://i.pinimg.com/564x/85/d3/43/85d343517d78647e0b30126cc7aefbe6.jpg\nhttps://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg\nhttps://i.pinimg.com/564x/88/e7/80/88e78099e5a7794b96b30f42fbd78d4b.jpg\nhttps://i.pinimg.com/564x/e5/b4/45/e5b4459222454f10c5dfb5ff2e3a6a2e.jpg",
    "chars": [
     {
      "old": "",
@@ -2521,8 +2520,8 @@
      "media": "https://www.aht.li/3984948/DZtCiaehAJY.mp4",
      "quote": "Magic was never the most valuable lesson this academy had to offer. Power only becomes elegant once it reshapes the person holding it. Every graduate leaves transformed; only the fortunate learn to smile before the ceremony ends.",
      "by": "@machine_mommy",
-     "imgs": "https://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg",
-     "fields": "nom complet: \nâge: \noccupation: \norigine: ",
+     "imgs": "",
+     "fields": "âge: 22 ans\noccupation: Student",
      "anec": ""
     },
     {
@@ -2531,31 +2530,9 @@
      "media": "https://www.aht.li/3984947/No_makeup.mp4",
      "quote": "I remember fighting every ribbon, every nickname, every smile they handed me. Every joke left something behind, every humiliation fit a little better than the last. Somewhere between laughter and shame, I forgot which version of me had been pretending.",
      "by": "@jenyl_ila",
-     "imgs": "https://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg",
-     "fields": "nom complet: \nâge: \noccupation: \norigine: ",
+     "imgs": "",
+     "fields": "âge: 20 ans\noccupation: Student",
      "anec": ""
-    }
-   ],
-   "places": [
-    {
-     "name": "Manoir Kane",
-     "sub": "",
-     "img": "https://i.imgur.com/4V8Zvm1.jpeg"
-    },
-    {
-     "name": "Chambre de Delilah",
-     "sub": "manoir kane",
-     "img": "https://i.imgur.com/b3v3ghg.png"
-    },
-    {
-     "name": "Chambre d'instruction",
-     "sub": "manoir kane",
-     "img": "https://i.imgur.com/S5ZXy8L.jpeg"
-    },
-    {
-     "name": "Manoir Langhtorne",
-     "sub": "",
-     "img": "https://i.imgur.com/5KVCdfQ.jpeg"
     }
    ],
    "c2": "#62317d",
