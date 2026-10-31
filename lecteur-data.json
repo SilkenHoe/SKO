@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793485014396,
+ "savedAt": 1793485030529,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -1979,7 +1979,10 @@
     }
    ],
    "c2": "#5d3754",
-   "c3": "#4a3041"
+   "c3": "#4a3041",
+   "arcs": {
+    "1": "After The Party"
+   }
   },
   "Unspoken Rules": {
    "plot": "Liam Hart, a reckless student at a strict boarding school, breaks the ultimate taboo: entering the girls’ dormitory, a place shrouded in unsettling legends. Caught in the act and ratted out by Abigail Watts, a model student with a cruel smile, he is sentenced to an exemplary punishment—to become “Lila,” the dorm’s newest resident. Under the icy strictness of Amelia Blackwood, his teacher, and the impassive gaze of Iris Conway, the matron, Liam undergoes a complete transformation: uniforms, humiliations, discipline. But behind this reeducation lies another power, more intimate and insidious—that of Abigail, who takes pleasure in molding him to her whims. Little by little, Lila learns that in this boarding school, mistakes are paid for not with pain… but with obedience.",
