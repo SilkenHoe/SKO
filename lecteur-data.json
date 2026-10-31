@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793485197474,
+ "savedAt": 1793485218286,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2174,7 +2174,10 @@
     }
    ],
    "c2": "#4f2369",
-   "c3": "#352153"
+   "c3": "#352153",
+   "arcs": {
+    "1": "The Subgoal Breakthrough"
+   }
   },
   "Owned Twice": {
    "plot": "A discreet husband and respected businessman, Samuel leads a double life at night as Samantha, a submissive devoted to Anastasia Delacroix, a ruthless dominatrix. His life is turned upside down when Elena, his wife, discovers the truth while going through his phone. Rather than confront him, she chooses to collaborate with Anastasia to gain total control over Samuel. Under the watchful eyes of these two women, Samuel is permanently transformed into Samantha, a feminized and docile version of himself, destined to please them.",
