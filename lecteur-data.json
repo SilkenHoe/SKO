@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793482701681,
+ "savedAt": 1793484699583,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -1724,7 +1724,10 @@
    ],
    "icon": "https://i.imgur.com/u29fjH6.png",
    "c2": "#eb7213",
-   "c3": "#a7480b"
+   "c3": "#a7480b",
+   "arcs": {
+    "1": "Click Conditioning"
+   }
   },
   "Betrayed By The Silk": {
    "plot": "Elliot Donovan is willing to do anything to land a prestigious secretarial position at a powerful agency run by Evelyn Harrington. By disguising himself as a woman to circumvent the all-female hiring policy, he manages to get hired under a false identity. But Evelyn, cunning and calculating, quickly uncovers his deception. Rather than expose him, she decides to turn this humiliation into a cruel game of domination. Elliot becomes Eleonore, a feminized secretary subservient to her every whim. Through strict rules, public humiliations, and private punishments, Evelyn exercises total control over his mind and body. As Elliot tries to preserve his dignity, he sinks deeper into a role he never could have imagined, torn between fear, shame, and a strange fascination with his boss. But Evelyn has no intention of setting him free, finding in this game a perfect balance between power and pleasure.",
