@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793485550270,
+ "savedAt": 1793485565931,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2231,7 +2231,10 @@
    ],
    "icon": "https://i.imgur.com/Zzr4AOg.png",
    "c2": "#723050",
-   "c3": "#872751"
+   "c3": "#872751",
+   "arcs": {
+    "1": "Shared Secret"
+   }
   },
   "Midnight Bound": {
    "plot": "Nathan Whitmore discovers that his wife, Victoria, is secretly involved in a BDSM swingers’ club where members engage in dominance and submission games. Intrigued but shocked, he decides to attend while hiding behind a mask, to better understand this hidden world. But Victoria spots him, and far from being embarrassed, she chooses to expose him publicly in front of the other club members. What begins as a confrontation turns into an irreversible dynamic: Victoria forces Nathan into the role of a submissive, plunging him into a world where she holds the reins. Nathan, humiliated and captivated, becomes Natalie, a docile submissive under his wife’s total control.",
