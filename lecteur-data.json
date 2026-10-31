@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793485160805,
+ "savedAt": 1793485178394,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2109,7 +2109,10 @@
     }
    ],
    "c2": "#881c31",
-   "c3": "#5c1719"
+   "c3": "#5c1719",
+   "arcs": {
+    "1": "The Initiation Ritual"
+   }
   },
   "Level Up": {
    "plot": "Ryan Monroe, a streamer whose popularity is on the decline, promises to undergo complete feminization if he reaches an unlikely subgoal. Against all odds, his subscribers reach this goal, and he is forced to honor his commitment. What begins as a simple joke turns into a fascinating and humiliating descent into a process of transformation. Supported by Jade Harrington, his girlfriend, Ryan begins to doubt his identity as his audience’s expectations push him further and further.",
