@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793481599390,
+ "savedAt": 1793481647568,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -1834,63 +1834,55 @@
      "id": "9canbr",
      "old": "",
      "name": "Madeleine Grayson",
-     "age": "32 ans",
-     "info": "Maquerelle",
-     "media": "https://sd-g1.archive-host.com/membres/up/70972359d8b5c52a678e2cb66b1ad0c42146d7bd/videos_sko/Follow_this_beautiful_girl_and_your_fantastic_account_lady_perse__.mp4"
+     "media": "https://sd-g1.archive-host.com/membres/up/70972359d8b5c52a678e2cb66b1ad0c42146d7bd/videos_sko/Follow_this_beautiful_girl_and_your_fantastic_account_lady_perse__.mp4",
+     "fields": "âge: 32 ans\noccupation: Maquerelle",
+     "anec": "",
+     "imgs": "",
+     "quote": "Debts aren’t settled in numbers, but in surrender. I rebuild what I ruin, sculpting repentance into something beautiful. Breaking is only cruel when it isn’t deserved.",
+     "by": "@lady_perse"
     },
     {
      "id": "ae2gw3",
      "old": "Jaden",
      "name": "Juliette Redmond",
-     "age": "25 ans",
-     "info": "Esclave",
-     "media": "https://www.aht.li/3967172/04031.mp4"
+     "media": "https://www.aht.li/3967172/04031.mp4",
+     "fields": "âge: 25 ans\noccupation: Esclave",
+     "anec": "",
+     "imgs": "",
+     "quote": "She took everything I owed and carved it into my skin. Each command burned, but I learned to find rhythm in the pain. Now even my breathing feels borrowed from her mercy.",
+     "by": "@misa_amane1"
     }
    ],
    "icon": "https://i.imgur.com/WTrDQHJ.png",
    "gallery": "https://i.pinimg.com/564x/85/d3/43/85d343517d78647e0b30126cc7aefbe6.jpg\nhttps://i.pinimg.com/564x/0e/17/d5/0e17d5d0f4da1881018fc1cac0b4ccb1.jpg\nhttps://i.pinimg.com/564x/c9/5d/36/c95d36cbebd52804e20fa0077d06745f.jpg\nhttps://i.pinimg.com/564x/ba/30/78/ba3078bc072df2545924f172288fd07f.jpg\nhttps://i.pinimg.com/564x/c4/da/48/c4da48479f4ea7d9907fb39cf5001a8d.jpg\nhttps://i.pinimg.com/564x/88/e7/80/88e78099e5a7794b96b30f42fbd78d4b.jpg\nhttps://i.pinimg.com/564x/e5/b4/45/e5b4459222454f10c5dfb5ff2e3a6a2e.jpg",
-   "places": [
-    {
-     "name": "Manoir Kane",
-     "sub": "",
-     "img": "https://i.imgur.com/4V8Zvm1.jpeg"
-    },
-    {
-     "name": "Chambre de Delilah",
-     "sub": "manoir kane",
-     "img": "https://i.imgur.com/b3v3ghg.png"
-    },
-    {
-     "name": "Chambre d'instruction",
-     "sub": "manoir kane",
-     "img": "https://i.imgur.com/S5ZXy8L.jpeg"
-    },
-    {
-     "name": "Manoir Langhtorne",
-     "sub": "",
-     "img": "https://i.imgur.com/5KVCdfQ.jpeg"
-    }
-   ],
    "sec": [
     {
      "name": "Sophia Mendes",
      "sub": "assistante de Madeleine",
-     "img": "https://i.imgur.com/s68uBZS.gif"
+     "img": "https://i.imgur.com/s68uBZS.gif",
+     "fields": "",
+     "desc": ""
     },
     {
      "name": "Noemi Rabellini",
      "sub": "assistante de Madeleine",
-     "img": "https://i.imgur.com/wNUoSx7.gif"
+     "img": "https://i.imgur.com/wNUoSx7.gif",
+     "fields": "",
+     "desc": ""
     },
     {
      "name": "Maxwell Kinglsey",
      "sub": "client",
-     "img": "https://i.imgur.com/rx2pZm3.gif"
+     "img": "https://i.imgur.com/rx2pZm3.gif",
+     "fields": "",
+     "desc": ""
     },
     {
      "name": "Adrian Carrington",
      "sub": "client",
-     "img": "https://i.imgur.com/hShi5iw.gif"
+     "img": "https://i.imgur.com/hShi5iw.gif",
+     "fields": "",
+     "desc": ""
     }
    ],
    "c2": "#8c0a4b",
