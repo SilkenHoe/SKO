@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793492953180,
+ "savedAt": 1793492972866,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2405,7 +2405,9 @@
      "anec": "",
      "imgs": "",
      "quote": "Obedience was never the command — it was the pattern. I only watched the code rearrange him, pixel by pixel, until he fit the logic perfectly. Maybe that’s what intimacy is now: efficient design.",
-     "by": "@missvioletteee"
+     "by": "@missvioletteee",
+     "vpos": "",
+     "qtop": ""
     },
     {
      "id": "u67kzx",
@@ -2416,7 +2418,9 @@
      "anec": "",
      "imgs": "",
      "quote": "At first it whispered instructions; now it speaks through my pulse. The program doesn’t correct me anymore — it completes me. She calls me by a name the system wrote, and I answer without hesitation.",
-     "by": "@annie_dro"
+     "by": "@annie_dro",
+     "vpos": "",
+     "qtop": "25px"
     }
    ],
    "icon": "https://i.imgur.com/laLQ30N.png",
