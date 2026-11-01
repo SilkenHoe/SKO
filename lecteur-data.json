@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793493021961,
+ "savedAt": 1793493110521,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2485,7 +2485,9 @@
      "anec": "",
      "imgs": "",
      "quote": "Curiosity breaks faster than pride, especially when desire has nowhere else to go. Every dare softened him, every confession fell into place like it had been rehearsed. By the end of the night, all he needed was a direction.",
-     "by": "@knives.nx"
+     "by": "@knives.nx",
+     "vpos": "center 60%",
+     "qtop": ""
     },
     {
      "id": "ww7z4v",
@@ -2496,7 +2498,9 @@
      "anec": "",
      "imgs": "",
      "quote": "Some people beg without speaking, and the way he trembled told me everything long before he did. I didn’t push him — I just showed him what he was already starving for. Once he leaned in, shaping him became effortless.",
-     "by": "@ashbabetv2.0"
+     "by": "@ashbabetv2.0",
+     "vpos": "",
+     "qtop": ""
     },
     {
      "id": "2iridd",
@@ -2507,7 +2511,9 @@
      "anec": "",
      "imgs": "",
      "quote": "I thought I could step back, pretend it was just a game, but the mirror kept stealing pieces of me. The fear, the hunger, the pressure — it all blurred until giving in felt like breathing. When the new name slipped out, the old one didn’t fit anymore.",
-     "by": "@dpuw_"
+     "by": "@dpuw_",
+     "vpos": "",
+     "qtop": ""
     }
    ],
    "icon": "https://i.imgur.com/VCbMroM.png",
