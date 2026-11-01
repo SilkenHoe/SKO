@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793493217462,
+ "savedAt": 1793493235914,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2552,7 +2552,7 @@
      "quote": "Revenge never interested me — precision did. No one knows where a person cracks except the one who once held them gently. Guiding this transformation is just finishing what was already breaking.",
      "by": "@mommyanastasiaaa",
      "vpos": "center 70%",
-     "qtop": ""
+     "qtop": "25px"
     },
     {
      "id": "d3jr9l",
