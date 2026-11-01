@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793492599087,
+ "savedAt": 1793492685457,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2343,7 +2343,7 @@
      "imgs": "",
      "quote": "The program promised embodiment, but it feels more like exile. My reflection blinks back in someone else’s rhythm, my voice buried under its own echo. She calls it a game, yet every order fits my body too perfectly to undo. I’m not sure where the mask ends anymore.",
      "by": "@alicefoxyreal",
-     "vpos": "",
+     "vpos": "center 20%",
      "qtop": "50px"
     }
    ],
