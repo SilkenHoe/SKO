@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793493303614,
+ "savedAt": 1793493318103,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2648,8 +2648,8 @@
      "imgs": "",
      "fields": "âge: 23 ans\noccupation: Participante de Second Skin",
      "anec": "",
-     "vpos": "",
-     "qtop": ""
+     "vpos": "center 40%",
+     "qtop": "75px"
     },
     {
      "old": "Nolan",
