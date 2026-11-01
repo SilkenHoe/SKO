@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793492972866,
+ "savedAt": 1793492983135,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2447,7 +2447,9 @@
      "anec": "",
      "imgs": "",
      "quote": "Men break themselves long before anyone touches them; I simply collect the pieces. The moment I saw him wearing my clothes, I understood he wanted permission more than forgiveness. Debt only gave me the excuse to shape him properly.",
-     "by": "@yolindavixenlatex"
+     "by": "@yolindavixenlatex",
+     "vpos": "",
+     "qtop": "50px"
     },
     {
      "id": "vncp6y",
@@ -2458,7 +2460,9 @@
      "anec": "",
      "imgs": "",
      "quote": "Her perfume hit me first, then the truth — I wasn’t caught, I was chosen. Shame wrapped around me tighter than the fabric I stole, and somehow it felt like relief. When she named my obedience a ‘solution,’ I stopped pretending I wanted to leave.",
-     "by": "@claudiaderouge"
+     "by": "@claudiaderouge",
+     "vpos": "",
+     "qtop": ""
     }
    ],
    "icon": "https://i.imgur.com/EK6IMg5.png",
