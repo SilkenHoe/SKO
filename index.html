@@ -907,7 +907,7 @@ function charBlock(c,i){
  const ok=safe(m),vid=ok&&isVid(m);
  const vp=cssv(c.vpos)||'center 20%',qt=cssv(c.qtop);
  const icA=ok&&!vid?` style="background-image:url(${q(JSON.stringify(m))});background-position:${vp}"`:'';
- let h=(qt&&c.quote?`<style>.star-speech[data-ch="${i}"]:not(:hover) .star-con ch-quote{top:${qt}}</style>`:'')+`<div class="star-speech" data-ch="${i}"><h>${c.old?`<strike>${esc(c.old)}</strike> `:''}${esc(c.name||'')}</h><div class="star-con"><pic><ic${icA}>${vid?`<video autoplay muted loop playsinline preload="none" data-src="${q(m)}" style="object-position: ${vp};"></video>`:''}</ic></pic>${c.quote?`<ch-quote><q>${esc(c.quote)}</q>${c.by?`<q-source><b>${esc(c.by)}</b></q-source>`:''}</ch-quote>`:''}</div></div>`;
+ let h=(qt&&c.quote?`<style>.star-speech[data-ch="${i}"] .star-con ch-quote,.star-speech[data-ch="${i}"]:hover .star-con ch-quote{top:${qt}}</style>`:'')+`<div class="star-speech" data-ch="${i}"><h>${c.old?`<strike>${esc(c.old)}</strike> `:''}${esc(c.name||'')}</h><div class="star-con"><pic><ic${icA}>${vid?`<video autoplay muted loop playsinline preload="none" data-src="${q(m)}" style="object-position: ${vp};"></video>`:''}</ic></pic>${c.quote?`<ch-quote><q>${esc(c.quote)}</q>${c.by?`<q-source><b>${esc(c.by)}</b></q-source>`:''}</ch-quote>`:''}</div></div>`;
  if(gal.length||det.length||an.length){
   h+=`<gall class="cg" style="${i%2?GBG(1,2,3):GBG(3,2,1)}">`;
   if(det.length)h+=`<div class="cblk"><h4 class="ch4"><x class="fas fa-feather-pointed"></x> Informations</h4><div class="cgrid">${det.map(([k,v])=>`<k><x>${esc(k)}</x><y>${esc(v)}</y></k>`).join('')}</div></div>`;
