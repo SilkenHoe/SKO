@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793493272967,
+ "savedAt": 1793493289751,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2636,8 +2636,8 @@
      "imgs": "",
      "fields": "âge: 29 ans\noccupation: Ancienne participante de Second Skin",
      "anec": "",
-     "vpos": "",
-     "qtop": ""
+     "vpos": "center 45%",
+     "qtop": "50"
     },
     {
      "old": "Nate",
