@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793486672651,
+ "savedAt": 1793491594388,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -1754,7 +1754,10 @@
      "anec": "",
      "imgs": "",
      "quote": "Deception is only vulgar when it fails. I didn’t expose him — I refined him, shaped the lie until it learned to walk in heels. Shame looks exquisite when tailored correctly.",
-     "by": "@1800dominatrix"
+     "by": "@1800dominatrix",
+     "vpos": "",
+     "htop": "",
+     "hright": ""
     },
     {
      "id": "21ctdq",
@@ -1765,7 +1768,10 @@
      "anec": "",
      "imgs": "",
      "quote": "Every rule she gave tasted like absolution wrapped in silk. I kept obeying, not to survive, but to stay within the warmth of her attention. By the time I looked in the mirror, I was already hers.",
-     "by": "@leyagornaya"
+     "by": "@leyagornaya",
+     "vpos": "center 20%",
+     "htop": "",
+     "hright": ""
     }
    ],
    "icon": "https://i.imgur.com/kvZSxBg.png",
