@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793493412825,
+ "savedAt": 1793493420990,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2716,7 +2716,7 @@
      "imgs": "",
      "fields": "âge: 28 ans\noccupation: Artist",
      "anec": "",
-     "vpos": "",
+     "vpos": "center 0%",
      "qtop": "50px"
     },
     {
