@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793493362652,
+ "savedAt": 1793493372189,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2588,7 +2588,9 @@
      "anec": "",
      "imgs": "",
      "quote": "Mercy is wasted on men who mistake fear for innocence. I don’t punish crimes — I correct the noise they call identity. What leaves my house isn’t reformed, it’s refined.",
-     "by": "@goddessfawn"
+     "by": "@goddessfawn",
+     "vpos": "center 60%",
+     "qtop": ""
     },
     {
      "id": "0jyjpz",
@@ -2599,7 +2601,9 @@
      "anec": "",
      "imgs": "",
      "quote": "I thought I was bargaining for freedom, but I handed myself over piece by piece. Every order feels cleaner than the panic that brought me here. Prison would have ended one sentence — this is rewriting me entirely.",
-     "by": "@dinapoison"
+     "by": "@dinapoison",
+     "vpos": "",
+     "qtop": ""
     }
    ],
    "icon": "https://i.imgur.com/QGHBvWT.png",
