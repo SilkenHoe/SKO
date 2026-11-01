@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793492265329,
+ "savedAt": 1793492276414,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2073,7 +2073,9 @@
      "anec": "",
      "imgs": "",
      "quote": "Every sisterhood needs a sacrifice. She wanted to belong, so I let her — on her knees, mascara running, adored for her humiliation. Cruelty isn’t the point; it’s just how truth looks without its makeup.",
-     "by": "@_coiimbraa"
+     "by": "@_coiimbraa",
+     "vpos": "",
+     "qtop": "25px"
     },
     {
      "id": "phs04d",
@@ -2084,7 +2086,9 @@
      "anec": "",
      "imgs": "",
      "quote": "They said it was initiation, but it felt like judgment. I wanted to disappear, yet every command pulled me closer to her approval. I never knew humiliation could sound like applause.",
-     "by": "@illtilldeath"
+     "by": "@illtilldeath",
+     "vpos": "",
+     "qtop": ""
     }
    ],
    "icon": "https://i.imgur.com/3weRqDP.png",
