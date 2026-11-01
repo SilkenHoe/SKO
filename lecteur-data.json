@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793492424126,
+ "savedAt": 1793492459816,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2269,7 +2269,9 @@
      "anec": "",
      "imgs": "",
      "quote": "Desire is honest only when it kneels. He thought he was unmasking me, but I was teaching him how to wear his own truth. The night forgives what daylight condemns.",
-     "by": "@officialnikitacaslida"
+     "by": "@officialnikitacaslida",
+     "vpos": "",
+     "qtop": ""
     },
     {
      "id": "fr5j02",
@@ -2280,7 +2282,9 @@
      "anec": "",
      "imgs": "",
      "quote": "She didn’t shame me — she unveiled me. Every look stripped the lies I built to stay a man. Now I glow only when she says I belong to her.",
-     "by": "@rbynrxs"
+     "by": "@rbynrxs",
+     "vpos": "",
+     "qtop": "-25px"
     }
    ],
    "icon": "https://i.imgur.com/DMUyoHI.png",
