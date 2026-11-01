@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793491609331,
+ "savedAt": 1793491643550,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -1938,7 +1938,10 @@
      "anec": "",
      "imgs": "",
      "quote": "Truth was never his gift, so I taught it in silence and steel. I don’t shout; I watch him shrink until honesty fits inside a cage. Fidelity, once demanded, tastes better when enforced.",
-     "by": "@inky_minky_mooo"
+     "by": "@inky_minky_mooo",
+     "vpos": "",
+     "htop": "",
+     "hright": ""
     },
     {
      "id": "0e086p",
@@ -1949,7 +1952,10 @@
      "anec": "",
      "imgs": "",
      "quote": "Truth is dull unless it’s cornered. I wanted to see what honesty looks like when it’s stripped of sleep and choice — that moment between dream and obedience. He called it betrayal; I called it craftsmanship.",
-     "by": "@pasteljellies"
+     "by": "@pasteljellies",
+     "vpos": "",
+     "htop": "20px",
+     "hright": ""
     },
     {
      "id": "2bgicy",
@@ -1960,7 +1966,10 @@
      "anec": "",
      "imgs": "",
      "quote": "She took my voice first, then my pride. Every lock she closed sounded like forgiveness I didn’t deserve. I no longer dream of freedom — only of being trusted not to lie again.",
-     "by": "@tsporcelainx"
+     "by": "@tsporcelainx",
+     "vpos": "",
+     "htop": "",
+     "hright": ""
     }
    ],
    "icon": "https://i.imgur.com/lNhd7jR.png",
