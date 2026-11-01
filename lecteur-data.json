@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793493134168,
+ "savedAt": 1793493210936,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2537,7 +2537,9 @@
      "anec": "",
      "imgs": "",
      "quote": "Raw potential is easy to sculpt when fear does half the work. I don’t need loyalty — I only need repetition, until even the tremble in the hips becomes obedient. A performer isn’t born here; it’s engineered.",
-     "by": "@missvixennoir"
+     "by": "@missvixennoir",
+     "vpos": "center 20%",
+     "qtop": "25px"
     },
     {
      "id": "yvv9qt",
@@ -2548,7 +2550,9 @@
      "anec": "",
      "imgs": "",
      "quote": "Revenge never interested me — precision did. No one knows where a person cracks except the one who once held them gently. Guiding this transformation is just finishing what was already breaking.",
-     "by": "@mommyanastasiaaa"
+     "by": "@mommyanastasiaaa",
+     "vpos": "center 60%",
+     "qtop": ""
     },
     {
      "id": "d3jr9l",
@@ -2559,7 +2563,9 @@
      "anec": "",
      "imgs": "",
      "quote": "The first cameras felt like punishment, but then something inside me softened under the glare. Every correction reshaped a truth I never wanted to face. The nightmare became easier once I stopped pretending I was fighting it.",
-     "by": "@tsgraciejane"
+     "by": "@tsgraciejane",
+     "vpos": "",
+     "qtop": ""
     }
    ],
    "icon": "https://i.imgur.com/PWYyvoX.png",
