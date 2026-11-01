@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793493257989,
+ "savedAt": 1793493272967,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2623,7 +2623,9 @@
      "by": "@iheartpidge",
      "imgs": "",
      "fields": "âge: 27 ans\noccupation: Dominatrice & Présentatrice de Second Skin",
-     "anec": ""
+     "anec": "",
+     "vpos": "center 30%",
+     "qtop": "50px"
     },
     {
      "old": "Miles",
@@ -2633,7 +2635,9 @@
      "by": "@madisonxdom",
      "imgs": "",
      "fields": "âge: 29 ans\noccupation: Ancienne participante de Second Skin",
-     "anec": ""
+     "anec": "",
+     "vpos": "",
+     "qtop": ""
     },
     {
      "old": "Nate",
@@ -2643,7 +2647,9 @@
      "by": "@babygirlnoell",
      "imgs": "",
      "fields": "âge: 23 ans\noccupation: Participante de Second Skin",
-     "anec": ""
+     "anec": "",
+     "vpos": "",
+     "qtop": ""
     },
     {
      "old": "Nolan",
@@ -2653,7 +2659,9 @@
      "by": "@xxsournoodlesxx",
      "imgs": "",
      "fields": "âge: 24 ans\noccupation: Participante de Second Skin",
-     "anec": ""
+     "anec": "",
+     "vpos": "",
+     "qtop": ""
     }
    ],
    "c2": "#5e3151",
