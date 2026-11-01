@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793492387406,
+ "savedAt": 1793492402456,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2156,7 +2156,9 @@
      "anec": "",
      "imgs": "",
      "quote": "The camera doesn’t lie — it worships. I just give it something worth confessing to. Every click, every cheer, turns humiliation into currency.",
-     "by": "@VixenP_"
+     "by": "@VixenP_",
+     "vpos": "",
+     "qtop": "-10px"
     },
     {
      "id": "l759k6",
@@ -2167,7 +2169,9 @@
      "anec": "",
      "imgs": "",
      "quote": "At first it was a joke, a dare wrapped in pink lighting. Then the laughs turned to moans, and I forgot where the audience ended. I stream now just to remember who I was before she pressed ‘live.’",
-     "by": "@l.rsn_"
+     "by": "@l.rsn_",
+     "vpos": "",
+     "qtop": ""
     }
    ],
    "icon": "https://i.imgur.com/YIWTBPu.png",
