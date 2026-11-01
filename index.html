@@ -905,9 +905,9 @@ function charBlock(c,i){
  const det=lines(c.fields??(c.age?'âge: '+c.age:'')).map(l=>{const j=l.indexOf(':');return j<0?['',l]:[l.slice(0,j).trim(),l.slice(j+1).trim()]}).filter(x=>x[1]);
  const an=lines(c.anec??c.info??''),gal=lines(c.imgs),m=c.media;
  const ok=safe(m),vid=ok&&isVid(m);
- const vp=cssv(c.vpos)||'center 20%',ht=cssv(c.htop),hr=cssv(c.hright);
+ const vp=cssv(c.vpos)||'center 20%',qt=cssv(c.qtop);
  const icA=ok&&!vid?` style="background-image:url(${q(JSON.stringify(m))});background-position:${vp}"`:'';
- let h=(ht||hr?`<style>.star-speech[data-ch="${i}"]:not(:hover)>h{${ht?`top:${ht};`:''}${hr?`right:${hr};`:''}}</style>`:'')+`<div class="star-speech" data-ch="${i}"><h>${c.old?`<strike>${esc(c.old)}</strike> `:''}${esc(c.name||'')}</h><div class="star-con"><pic><ic${icA}>${vid?`<video autoplay muted loop playsinline preload="none" data-src="${q(m)}" style="object-position: ${vp};"></video>`:''}</ic></pic>${c.quote?`<ch-quote><q>${esc(c.quote)}</q>${c.by?`<q-source><b>${esc(c.by)}</b></q-source>`:''}</ch-quote>`:''}</div></div>`;
+ let h=(qt&&c.quote?`<style>.star-speech[data-ch="${i}"]:not(:hover) .star-con ch-quote{top:${qt}}</style>`:'')+`<div class="star-speech" data-ch="${i}"><h>${c.old?`<strike>${esc(c.old)}</strike> `:''}${esc(c.name||'')}</h><div class="star-con"><pic><ic${icA}>${vid?`<video autoplay muted loop playsinline preload="none" data-src="${q(m)}" style="object-position: ${vp};"></video>`:''}</ic></pic>${c.quote?`<ch-quote><q>${esc(c.quote)}</q>${c.by?`<q-source><b>${esc(c.by)}</b></q-source>`:''}</ch-quote>`:''}</div></div>`;
  if(gal.length||det.length||an.length){
   h+=`<gall class="cg" style="${i%2?GBG(1,2,3):GBG(3,2,1)}">`;
   if(det.length)h+=`<div class="cblk"><h4 class="ch4"><x class="fas fa-feather-pointed"></x> Informations</h4><div class="cgrid">${det.map(([k,v])=>`<k><x>${esc(k)}</x><y>${esc(v)}</y></k>`).join('')}</div></div>`;
@@ -1076,7 +1076,7 @@ function editFiche(s,focus){
   chars:{S:360,add:'＋ Personnage',items:(I.chars||[]).map(cvt),f:[
    {k:'media',t:'img'},
    {k:'vpos',t:'text',ph:'Cadrage image / vidéo (object-position, ex. center 20%)'},
-   {k:'htop',t:'text',ph:'Nom — top (ex. 80px)',h:1},{k:'hright',t:'text',ph:'Nom — right (ex. 180px)',h:1},
+   {k:'qtop',t:'text',ph:'Citation — top (ex. -40px)'},
    {k:'old',t:'text',ph:'Ancien prénom (affiché barré)',h:1},{k:'name',t:'text',ph:'Prénom Nom actuel',h:1},
    {k:'quote',t:'area',rows:3,ph:'Citation du personnage'},{k:'by',t:'text',ph:'@pseudo (auteur de la citation)'},
    {k:'fields',t:'kv',l:'Informations'},
@@ -1147,7 +1147,7 @@ ${sec('chars','Personnages')}${sec('places','Lieux')}${sec('sec','Personnages se
  f.onsubmit=e=>{e.preventDefault();Object.keys(L).forEach(sync);
   const E=f.elements,auto=n=>E[n].dataset.auto==='1';
   const clean=a=>a.map(c=>{const r={...c};delete r.age;delete r.info;
-   r.fields=(c.fields||[]).filter(x=>x[1]).map(x=>`${x[0]}: ${x[1]}`).join('\n');
+   delete r.htop;delete r.hright;r.fields=(c.fields||[]).filter(x=>x[1]).map(x=>`${x[0]}: ${x[1]}`).join('\n');
    r.anec=(c.anec||[]).map(x=>x.trim()).filter(Boolean).join('\n');
    r.imgs=(c.imgs||[]).map(x=>x.trim()).filter(Boolean).join('\n');return r});
   const nI={...I,plot:E.plot.value.trim(),gallery:(L.gal.items[0].gallery||[]).map(x=>x.trim()).filter(Boolean).join('\n'),icon:L.gen.items[0].icon||'',c2:auto('c2')?'':E.c2.value,c3:auto('c3')?'':E.c3.value,
@@ -1206,10 +1206,10 @@ function importSheet(txt,over){
   const tok=/<div class="star-speech">(.*?)<\/div><\/div>|<gall[^>]*>(.*?)<\/gall>|<mem>(.*?)<\/mem>/gs;
   for(const t of pn.matchAll(tok)){
    if(t[1]!==undefined){
-    const b=t[1],hm=b.match(/<h(\s[^>]*)?>(.*?)<\/h>/s)||[,'',''],h=hm[2],ha=hm[1]||'',sk=h.match(/<strike>(.*?)<\/strike>/s);
+    const b=t[1],h=(b.match(/<h(?:\s[^>]*)?>(.*?)<\/h>/s)||[,''])[1],sk=h.match(/<strike>(.*?)<\/strike>/s);
     const c={old:sk?stripH(sk[1]):'',name:stripH(h.replace(/<strike>.*?<\/strike>/s,''))};
-    const tp=ha.match(/[\s;"]top\s*:\s*([^;"]+)/i),rt=ha.match(/[\s;"]right\s*:\s*([^;"]+)/i),op=b.match(/<video[^>]*object-position\s*:\s*([^;"]+)/i);
-    if(tp)c.htop=tp[1].trim();if(rt)c.hright=rt[1].trim();if(op&&!/^center 20%$/i.test(op[1].trim()))c.vpos=op[1].trim();
+    const qa=(b.match(/<ch-quote(\s[^>]*)?>/)||[,''])[1]||'',tp=qa.match(/[\s;"]top\s*:\s*([^;"]+)/i),op=b.match(/<video[^>]*object-position\s*:\s*([^;"]+)/i);
+    if(tp)c.qtop=tp[1].trim();if(op&&!/^center 20%$/i.test(op[1].trim()))c.vpos=op[1].trim();
     c.media=(b.match(/<video[^>]*data-src="([^"]+)"/)||b.match(/<video[^>]*\ssrc="([^"]+)"/)||b.match(/<img[^>]*src="([^"]+)"/)||[])[1]||urlOf((b.match(/<ic\s[^>]*style="[^"]*"/)||[''])[0]);
     const q1=b.match(/<q>(.*?)<\/q>/s);if(q1)c.quote=stripH(q1[1]);
     const by=b.match(/<q-source>\s*<b>(.*?)<\/b>/s);if(by)c.by=stripH(by[1]);
