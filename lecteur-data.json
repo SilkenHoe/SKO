@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1793492685457,
+ "savedAt": 1793492696887,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2330,7 +2330,7 @@
      "imgs": "",
      "quote": "I only wanted to see how far illusion could stretch before it begged to be real. He thought he was playing; I simply made the rules tangible. The suit, the silence, the helplessness — all I did was hold a mirror to his fantasy. Control is never taken; it’s recognized.",
      "by": "@edenivyxx",
-     "vpos": "",
+     "vpos": "center 70%",
      "qtop": "50px"
     },
     {
@@ -2343,7 +2343,7 @@
      "imgs": "",
      "quote": "The program promised embodiment, but it feels more like exile. My reflection blinks back in someone else’s rhythm, my voice buried under its own echo. She calls it a game, yet every order fits my body too perfectly to undo. I’m not sure where the mask ends anymore.",
      "by": "@alicefoxyreal",
-     "vpos": "center 20%",
+     "vpos": "center 70%",
      "qtop": "50px"
     }
    ],
