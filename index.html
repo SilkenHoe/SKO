@@ -1392,5 +1392,200 @@ async function boot(){
 }
 boot();
 </script>
+<style>
+/* =====================================================================
+   ANIMATIONS & FINITIONS — ajoutées par-dessus, le design d'origine est intact
+   ===================================================================== */
+:root{--ease:cubic-bezier(.22,1,.36,1);--spring:cubic-bezier(.34,1.56,.64,1)}
+
+/* ---------- apparition des blocs au défilement (classes posées par le script) ---------- */
+.rv{opacity:0;transform:translateY(28px) scale(.985);filter:blur(4px);transition:opacity .8s var(--ease),transform .9s var(--ease),filter .8s var(--ease);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none;filter:none}
+.rvl{opacity:0;transform:translateY(12px);transition:opacity .7s var(--ease),transform .8s var(--ease)}
+.rvl.in{opacity:1;transform:none}
+
+/* ---------- bannière ----------
+   la bannière elle-même n'est jamais rendue transparente : sinon l'image en mix-blend-mode
+   se retrouve isolée et s'affiche en blanc. On anime seulement son contenu. */
+.drm-business top{background-size:200% 100%!important;animation:topflow 14s ease-in-out infinite alternate;overflow:hidden}
+@keyframes topflow{from{background-position:0% 50%}to{background-position:100% 50%}}
+.drm-business top::before{content:'';position:absolute;inset:-30%;pointer-events:none;
+ background:radial-gradient(28% 34% at 30% 40%,rgba(var(--clr1).35),transparent 70%),radial-gradient(24% 30% at 72% 60%,rgba(var(--clr3).3),transparent 70%),radial-gradient(18% 22% at 55% 25%,rgba(var(--clr2).28),transparent 70%);
+ animation:orbs 20s ease-in-out infinite alternate}
+@keyframes orbs{0%{transform:translate(-4%,2%) rotate(0)}50%{transform:translate(4%,-3%) rotate(8deg)}100%{transform:translate(-2%,4%) rotate(-6deg)}}
+.drm-business tit{background-image:linear-gradient(to right,rgba(var(--clr1)1),rgba(var(--clr2)1),rgba(var(--clr3)1),rgba(var(--clr2)1),rgba(var(--clr1)1));background-size:200% auto;animation:shimmer 7s linear infinite}
+@keyframes shimmer{to{background-position:-200% center}}
+.container div top div img{animation:imgin 1.6s var(--ease) backwards,floaty 9s ease-in-out 1.6s infinite}
+@keyframes imgin{from{opacity:0;transform:scale(1.15)}}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-10px) rotate(1.5deg)}}
+top.hello tit{animation:shimmer 7s linear infinite,titin 1.1s var(--ease) backwards}
+@keyframes titin{from{opacity:0;letter-spacing:18px;filter:blur(8px)}}
+top.hello mt{animation:upin .8s var(--ease) .35s backwards}
+top.hello tb{animation:upin .8s var(--ease) .5s backwards}
+top.hello tb .tab{animation:popin .6s var(--spring) backwards}
+top.hello tb .tab:nth-child(1){animation-delay:.6s}top.hello tb .tab:nth-child(2){animation-delay:.7s}
+.drm-business > .bt{animation:fadein 1s ease .9s backwards}
+@keyframes upin{from{opacity:0;transform:translateY(14px)}}
+
+/* ---------- boutons, onglets ---------- */
+.btn,.tab{transition:border-color .2s,background .25s,color .2s,transform .25s var(--spring),box-shadow .25s}
+.btn:hover,.tab:hover{transform:translateY(-1px)}
+.btn:active,.tab:active{transform:scale(.95)}
+.tab.on{background-size:200% 200%!important;animation:gradmove 6s ease infinite;box-shadow:0 6px 18px -6px rgba(var(--clr1).7)}
+@keyframes gradmove{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+:focus-visible{outline:2px solid var(--c1);outline-offset:2px}
+.rip{position:absolute;border-radius:50%;pointer-events:none;background:rgba(255,255,255,.35);transform:scale(0);animation:rip .6s ease-out forwards}
+@keyframes rip{to{transform:scale(1);opacity:0}}
+
+/* ---------- barre latérale ---------- */
+.sc>.t{position:relative;overflow:hidden;transition:background .25s,transform .3s var(--ease)}
+.sc>.t:hover{transform:translateX(3px)}
+.sc.on>.t{background-size:200% 200%!important;animation:gradmove 8s ease infinite}
+.sc.on>.t::after{content:'';position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.22) 50%,transparent 70%);transform:translateX(-100%);animation:sheen 4.5s ease-in-out 1s infinite;pointer-events:none}
+@keyframes sheen{0%{transform:translateX(-100%)}35%,100%{transform:translateX(100%)}}
+.ni{transition:filter .3s,opacity .3s,transform .4s var(--spring)}
+.sc>.t:hover .ni{transform:scale(1.15) rotate(-6deg);opacity:1}
+.sub a{transition:background .2s,color .2s,padding-left .3s var(--ease)}
+.sub a:hover{padding-left:16px}
+.sub{animation:subin .45s var(--ease) backwards}
+.sub a{animation:upin .4s var(--ease) backwards;animation-delay:calc(var(--i,0) * 30ms)}
+@keyframes subin{from{opacity:0;transform:translateY(-6px)}}
+body.boot nav .sc{animation:navin .6s var(--ease) both;animation-delay:calc(var(--i,0) * 35ms)}
+@keyframes navin{from{opacity:0;transform:translateX(-16px)}}
+
+/* ---------- synopsis ---------- */
+.drm-business inner abt block{position:relative;overflow:hidden}
+abt.in block{animation:clipin 1.1s var(--ease) .1s backwards}
+@keyframes clipin{from{clip-path:inset(0 0 100% 0 round 6px);opacity:.3}}
+
+/* ---------- personnages principaux : entrée en trois temps ---------- */
+.star-speech.go .star-con pic{animation:picin 1s var(--ease) backwards}
+.star-speech.go > h{animation:hin 1s var(--ease) .2s backwards}
+.star-speech.go .star-con ch-quote{animation:quotein 1s var(--spring) .35s backwards}
+.star-speech.go .star-con q-source{animation:upin .8s var(--ease) .8s backwards}
+@keyframes picin{from{opacity:0;transform:translateX(-50px) rotate(-4deg)}}
+@keyframes hin{from{opacity:0;transform:translateX(60px);filter:blur(6px)}}
+@keyframes quotein{from{opacity:0;transform:translateY(40px) scale(.94)}}
+.star-speech .star-con pic{border-radius:25px;transition:transform .5s var(--ease)}
+.star-speech h,.star-speech .star-con ch-quote,.star-speech .star-con pic ic{transition:all .6s var(--ease)!important}
+.star-speech .star-con ch-quote:before{animation:qfloat 6s ease-in-out infinite}
+@keyframes qfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* ---------- cartes : survols + halo qui suit la souris ---------- */
+.spot{position:relative;overflow:hidden}
+.spot::after{content:'';position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .35s;border-radius:inherit;
+ background:radial-gradient(220px circle at var(--mx,50%) var(--my,50%),rgba(var(--clr2).22),transparent 70%)}
+.spot:hover::after{opacity:1}
+.cg k,.anl span{transition:transform .4s var(--ease),box-shadow .4s,background .3s}
+.cg k:hover,.anl span:hover{transform:translateY(-3px);box-shadow:0 10px 22px -10px rgb(0 0 0 / 60%)}
+.drm-business inner grid span{transition:transform .5s var(--ease),box-shadow .5s}
+.drm-business inner grid span img{transition:transform .8s var(--ease),filter .5s}
+.drm-business inner grid span:hover img{transform:scale(1.08)}
+.drm-business inner grid span:hover{box-shadow:0 10px 26px rgb(0 0 0 / 45%)}
+.drm-business inner mem a{transition:transform .5s var(--ease)}
+.drm-business inner mem span{transition:transform .4s var(--ease),box-shadow .4s}
+.drm-business inner mem a:hover span{box-shadow:0 18px 30px -14px rgb(0 0 0 / 70%)}
+.drm-business inner mem span ic{transition:filter .6s,transform 1s var(--ease)}
+.drm-business inner mem a:hover span ic{transform:scale(1.08)}
+.secb{transition:transform .3s var(--spring),background .3s}
+.secb:hover{transform:rotate(-6deg) scale(1.1)}
+span2 bg{transition:all .8s var(--ease)!important}
+.tilt{transition:transform .5s var(--ease)}
+.tilt.tilting{transition:transform .08s linear}
+
+/* ---------- lecture ---------- */
+#rp{position:fixed;top:0;left:0;right:0;height:3px;z-index:40;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(to right,var(--c1),var(--c2),var(--c3));box-shadow:0 0 12px var(--c1);opacity:0;transition:opacity .3s}
+body.reading #rp{opacity:1}
+.arcsep.rv{transform:translateX(-30px)}
+.arcsep.rv.in{transform:none}
+.lect article.in h2{animation:wipe 1.2s var(--ease) .1s backwards}
+@keyframes wipe{from{clip-path:inset(0 100% 0 0);opacity:.2}}
+.lect article.in .loc,.lect article.in .tools{animation:upin .7s var(--ease) .35s backwards}
+.lect article h2{background-size:200% auto!important;transition:background-position 1.2s var(--ease)}
+.lect article:hover h2{background-position:100% center}
+.txt hr::after{display:inline-block;animation:twinkle 3s ease-in-out infinite}
+@keyframes twinkle{0%,100%{transform:scale(1) rotate(0);opacity:.7}50%{transform:scale(1.3) rotate(45deg);opacity:1}}
+#totop{position:fixed;right:22px;bottom:calc(22px + env(safe-area-inset-bottom,0px));z-index:24;width:42px;height:42px;border-radius:50%;border:0;cursor:pointer;color:var(--accfg,#fff);font-size:18px;
+ background:linear-gradient(145deg,var(--c1),var(--c2),var(--c3));box-shadow:0 8px 22px -8px var(--c1);opacity:0;transform:translateY(20px) scale(.8);pointer-events:none;transition:opacity .35s,transform .45s var(--spring)}
+#totop.on{opacity:1;transform:none;pointer-events:auto}
+#totop:hover{transform:translateY(-3px)}
+
+/* ---------- fenêtres, menus, visionneuse, notifications ---------- */
+#modal{animation:fadein .3s ease both}
+#modal form{animation:popin .45s var(--spring) both}
+#ctx{animation:popin .25s var(--ease) both;transform-origin:top left}
+#setm{animation:popin .3s var(--ease) both;transform-origin:top right}
+#lb{animation:fadein .3s ease both}
+#lbc img,#lbc video{animation:popin .5s var(--ease) both}
+#toast{transform:translate(-50%,16px);transition:opacity .3s,transform .4s var(--spring)}
+#toast.on{transform:translate(-50%,0)}
+@keyframes fadein{from{opacity:0}}
+@keyframes popin{from{opacity:0;transform:scale(.94) translateY(8px)}}
+main{scroll-behavior:smooth}
+</style>
+<div id="rp"></div>
+<button id="totop" title="Revenir en haut" aria-label="Revenir en haut">↑</button>
+<script>
+(()=>{
+ const main=document.getElementById('main'),rp=document.getElementById('rp'),totop=document.getElementById('totop');
+ if(!main)return;
+ document.body.classList.add('boot');setTimeout(()=>document.body.classList.remove('boot'),1800);
+ let last='',lastT=0,io=null;
+
+ /* ===== apparitions ===== */
+ const SEL='.drm-business inner > :not(.star-speech), .star-speech, .lect .arcsep, .lect article, .drm-business inner mem a, .drm-business inner grid span, .cg .cblk, .cg k, .anl span, rapapa span2';
+ function apply(){
+  document.querySelectorAll('#nav .sc').forEach((e,i)=>e.style.setProperty('--i',i));
+  document.querySelectorAll('#nav .sub a').forEach((e,i)=>e.style.setProperty('--i',i));
+  main.querySelectorAll('.cg k, .anl span, .drm-business inner abt block, .drm-business inner mem span').forEach(e=>e.classList.add('spot'));
+  main.querySelectorAll('.star-speech .star-con pic, .drm-business inner mem a > span').forEach(e=>e.classList.add('tilt'));
+  const t=main.querySelector('.tab.on'),key=(typeof cur!=='undefined'?cur:'')+'|'+(t?t.dataset.tab:'');
+  document.body.classList.toggle('reading',!!t&&t.dataset.tab==='lecture');
+  onScroll();
+  if(key===last&&Date.now()-lastT>1500)return;
+  if(key!==last)lastT=Date.now();last=key;
+  const top=main.querySelector('.drm-business > top');if(top)top.classList.add('hello');
+  io&&io.disconnect();
+  io=new IntersectionObserver(es=>{for(const e of es)if(e.isIntersecting){e.target.classList.add('in');if(e.target.matches('.star-speech'))e.target.classList.add('go');io.unobserve(e.target)}},{root:main,rootMargin:'0px 0px -6% 0px',threshold:.06});
+  const sib=new Map();
+  main.querySelectorAll(SEL).forEach(el=>{
+   const p=el.parentElement,k=sib.get(p)||0;sib.set(p,k+1);
+   el.style.setProperty('--d',Math.min(k,8)*0.07+'s');
+   if(!el.matches('.star-speech'))el.classList.add('rv');
+   io.observe(el);
+  });
+  main.querySelectorAll('.lect .txt > *').forEach(el=>{el.classList.add('rvl');io.observe(el)});
+ }
+ function onScroll(){
+  const max=main.scrollHeight-main.clientHeight;
+  rp.style.transform='scaleX('+(max>0?main.scrollTop/max:0)+')';
+  totop.classList.toggle('on',main.scrollTop>900);
+ }
+ totop.onclick=()=>main.scrollTo({top:0,behavior:'smooth'});
+ main.addEventListener('scroll',onScroll,{passive:true});
+
+ /* halo qui suit la souris + inclinaison 3D des portraits */
+ main.addEventListener('pointermove',e=>{
+  const s=e.target.closest('.spot');
+  if(s){const r=s.getBoundingClientRect();s.style.setProperty('--mx',e.clientX-r.left+'px');s.style.setProperty('--my',e.clientY-r.top+'px')}
+  const t=e.target.closest('.tilt');
+  if(t){const r=t.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+   t.classList.add('tilting');t.style.transform=`perspective(800px) rotateY(${x*12}deg) rotateX(${-y*12}deg) translateZ(0)`}
+ },{passive:true});
+ main.addEventListener('pointerout',e=>{const t=e.target.closest('.tilt');if(t&&!t.contains(e.relatedTarget)){t.classList.remove('tilting');t.style.transform=''}});
+
+ /* onde au clic sur les boutons */
+ document.addEventListener('pointerdown',e=>{
+  const b=e.target.closest('.btn,.tab,.secb,#totop');if(!b)return;
+  const r=b.getBoundingClientRect(),d=Math.max(r.width,r.height)*2,i=document.createElement('i');
+  i.className='rip';i.style.cssText=`width:${d}px;height:${d}px;left:${e.clientX-r.left-d/2}px;top:${e.clientY-r.top-d/2}px`;
+  if(getComputedStyle(b).position==='static')b.style.position='relative';b.style.overflow='hidden';
+  b.appendChild(i);setTimeout(()=>i.remove(),650);
+ });
+
+ new MutationObserver(apply).observe(main,{childList:true});
+ apply();
+})();
+</script>
 </body>
 </html>
