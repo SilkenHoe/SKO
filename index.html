@@ -595,7 +595,35 @@ function parseFile(name,text){
 const $=s=>document.querySelector(s);
 const q=s=>esc(String(s)).replace(/"/g,'&quot;');
 let lib=[],cur=null,ver={},fs=19,theme='auto',colors={},alias={},col={},delArm=null,order=[],info={},savedAt=0,lastSnap='',prog={},wantCur=null,fresh=false,tab=null,tf='s';
-function cleanLib(){let ch=false;for(const a of lib){const m=cleanTail(a.md||'');if(m&&m!==a.md){a.md=m;ch=true}}return ch}
+function cleanLib(){let ch=migrateInfo();for(const a of lib){const m=cleanTail(a.md||'');if(m&&m!==a.md){a.md=m;ch=true}}return ch}
+/* ---------- migration of older French profile data to English ---------- */
+const MK={'âge':'age','age':'age','genre':'gender','gender':'gender','nom complet':'full name','full name':'full name','origine':'origin','origin':'origin','occupation':'occupation'};
+const MOCC={'Maquerelle':'Madam','Esclave':'Slave','Dominatrice':'Dominatrix','Propriétaire':'Landlady','Locataire':'Tenant','Policière':'Police officer','Homme à tout faire':'Handyman','Directrice du studio Velvet Hive':'Director of Velvet Hive Studios','Ancienne participante de Second Skin':'Former Second Skin contestant','Participante de Second Skin':'Second Skin contestant','Dominatrice & Présentatrice de Second Skin':'Dominatrix & Second Skin host'};
+const MSUB={'Collègue':'Colleague','collègue':'colleague','Inconnu':'Unknown','Soumise de Victoria':"Victoria's submissive","amant d'Maxine":"Maxine's lover","amie d'Maxine":"Maxine's friend",'amie de Jade':"Jade's friend",'assistante de Madeleine':"Madeleine's assistant",'follower n°1':'follower #1',"grande-soeur d'Eleonore":"Eleonore's older sister",'institutrice':'teacher','meilleur ami de Riley':"Riley's best friend","membre d'une fraternité":'fraternity member','membre de la sororité':'sorority member','membre du club':'club member','président de la sororité':'sorority president','soumise de Camilla':"Camilla's submissive",'surveillante du dortoir':'dorm matron'};
+const MMALE=['Marcus Hawthorne','Maxwell Kinglsey','Adrian Carrington','Elias Winslow','Caleb Fairfax','Rowan Moreno','Jayden Wallace','Silas Monroe','Jasper Hayes','Thiago Alvarez'];
+const MORD=['full name','age','gender','occupation','origin'];
+function migFields(t,g){
+ const rows=[];
+ for(const l of String(t||'').split('\n')){if(!l.trim())continue;const j=l.indexOf(':');if(j<0){rows.push(['',l.trim()]);continue}
+  let k=l.slice(0,j).trim(),v=l.slice(j+1).trim();const nk=MK[k.toLowerCase()];if(nk)k=nk;
+  if(k==='age')v=v.replace(/^(\d+)\s*ans$/i,'$1 years old');
+  if(k==='occupation'&&MOCC[v])v=MOCC[v];
+  const dup=rows.find(r=>r[0]===k&&MORD.includes(k));
+  if(dup){if(!dup[1])dup[1]=v;continue}
+  rows.push([k,v])}
+ const gr=rows.find(r=>r[0]==='gender');
+ if(!gr)rows.push(['gender',g]);else if(!gr[1])gr[1]=g;
+ const ix=k=>{const i=MORD.indexOf(k);return i<0?99:i};
+ return rows.filter(r=>r[1]).sort((a,b)=>ix(a[0])-ix(b[0])).map(r=>r[0]?r[0]+': '+r[1]:r[1]).join('\n');
+}
+function migrateInfo(){
+ let ch=false;
+ for(const s in info){const I=info[s];if(!I)continue;
+  for(const c of I.chars||[]){const f0=c.fields??(c.age?'age: '+c.age:'');const f=migFields(f0,c.old||c.name==='Sasha Fairchild'?'male (sissified)':'female');if(f!==c.fields){c.fields=f;delete c.age;ch=true}}
+  for(const x of I.sec||[]){if(MSUB[x.sub]){x.sub=MSUB[x.sub];ch=true}const f=migFields(x.fields,MMALE.includes(x.name)?'male':'female');if(f!==(x.fields||'')){x.fields=f;ch=true}}
+ }
+ return ch;
+}
 const KEY='lecteur-scenarios-v1',PK2='lecteur-prefs-v1';
 function savePrefs(){try{localStorage.setItem(PK2,JSON.stringify({fs,theme,cur:wantCur||cur,col,prog,tab,tf}))}catch(e){}}
 function load(){try{const d=JSON.parse(localStorage.getItem(KEY)||'{}');lib=d.lib||[];cur=d.cur||null;fs=d.fs||19;theme=d.theme||'auto';colors=d.colors||{};alias=d.alias||{};col=d.col||{};order=d.order||[];info=d.info||{};savedAt=d.savedAt||0}catch(e){}
