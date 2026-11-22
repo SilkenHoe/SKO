@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1795378077665,
+ "savedAt": 1795378086955,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2417,7 +2417,7 @@
      "old": "",
      "name": "Nora Duncan",
      "media": "https://www.aht.li/3942985/Tell_me_how_much_you_loved_it_.mp4",
-     "fields": "age: 22 years old\ngender: female\noccupation: Student",
+     "fields": "age: 22 years old\ngender: female\noccupation: student",
      "anec": "",
      "imgs": "",
      "quote": "Obedience was never the command — it was the pattern. I only watched the code rearrange him, pixel by pixel, until he fit the logic perfectly. Maybe that’s what intimacy is now: efficient design.",
@@ -2430,7 +2430,7 @@
      "old": "Caleb",
      "name": "Celeste Paige",
      "media": "https://www.aht.li/3942988/1108_1.mp4",
-     "fields": "age: 22 years old\ngender: male (sissified)\noccupation: Student",
+     "fields": "age: 22 years old\ngender: male (sissified)\noccupation: student",
      "anec": "",
      "imgs": "",
      "quote": "At first it whispered instructions; now it speaks through my pulse. The program doesn’t correct me anymore — it completes me. She calls me by a name the system wrote, and I answer without hesitation.",
