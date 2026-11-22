@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Lecteur de scénarios</title>
+<title>Scenario Reader</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://files.jcink.net/uploads2/leaptesting/cappucicons.css" />
 <script src="//pull.cappuccicons.com/cpf.js"></script>
 <style>
-/* === CSS d’origine de la page « fiches » (repris tel quel) === */
+/* === original CSS of the “sheets” page (kept as is) === */
 @font-face{font-family: 'Qalisso'; src: url('https://dl.dropboxusercontent.com/scl/fi/87x36vff7s5mow6yle49q/Qalisso.otf?rlkey=az9lijxdy0tsykihi70e2yfwh&st=qm7wcaha&dl=0') ; format("opentype");}
 .container{display: block; width: 800px; margin: auto;}
 :root{--sans: 'Poppins', arial; --sans2: 'Poppins', sans-serif; --serif: 'Poppins', sans-serif; --titlefont: 'Qalisso'; --fonta: "Font Awesome 6 Pro"; --fonta2: "Font Awesome 7 Pro"; --jp: 'JoyPixels';}
@@ -227,12 +227,12 @@ ramama inf sc block span b{background: linear-gradient(45deg, rgba(var(--clr1) 1
 video{position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: -webkit-fill-available; height: -webkit-fill-available; transform: translate(-50%, -50%); z-index: -1; object-fit: cover; border-radius: inherit; object-position: center top;}
 .unmute-button{display: inline-block; font-size: 25px; color: white; cursor: pointer; z-index: 4; position: absolute; top: 15px; left: 15px; width: 50px; height: 50px; font-family: 'cappucicons'; background: none !important; border: none !important; font: normal normal normal 14px / 1 FontAwesome; font-size: inherit; text-rendering: auto; -webkit-font-smoothing: antialiased; -webkit-text-stroke: 3px #0000000f; text-shadow: 0 0 5px #00000033; display: none;}
 @font-face{font-family: 'cappuccicons'; src: url('https://files.jcink.net/uploads2/leaptesting/cappuccicons_1.ttf') format('truetype'); font-weight: normal; font-style: normal;}
-/* === interface du lecteur (thème sombre uniquement) === */
+/* === reader interface (dark theme only) === */
 :root{--bg:#111;--sb:#222;--s0:#1a1a1a;--s1:#0000002b;--s2:#2c2c2c;--line:#0000002b;--ink:#ddd;--mut:#9a9aa6;--c1:#6d5bd0;--c2:#8a5bd0;--c3:#5b6dd0;--acc:var(--c1);--fs:19px;--sh:0 10px 34px rgba(0,0,0,.55);
 --t1:color-mix(in srgb,var(--c1) 62%,#fff);--t2:color-mix(in srgb,var(--c2) 62%,#fff);--t3:color-mix(in srgb,var(--c3) 62%,#fff);color-scheme:dark;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *{scrollbar-width:thin}
-/* ton CSS d’origine suppose content-box : border-box seulement pour l’interface du lecteur */
+/* your original CSS assumes content-box: border-box only for the reader interface */
 #fl,#fl *,#setm,#setm *,#menuBtn,nav,nav *,#modal,#modal *,.btn,.tab,.arcsep,.arcsep *,.lect,.lect *,#ctx,#ctx *,#lb,#lb *,#toast,.cg,.cg *,.empty,.empty *{box-sizing:border-box}
 html,body{height:100%;margin:0;padding:0}
 body{background:var(--bg);color:var(--ink);font:15px/1.5 var(--sans);overflow:hidden}
@@ -267,7 +267,7 @@ nav{width:280px;flex:none;overflow:auto;background:var(--sb);border-right:1px so
 .sub a:hover{background:var(--s2)}
 .sub a.cur{background:var(--s2);color:var(--t1);font-weight:600}
 main{flex:1;overflow:auto;scroll-behavior:smooth;background:#111}
-/* bandeau : outils, onglets */
+/* banner: tools, tabs */
 .drm-business{position:relative}
 .bt{position:absolute;top:12px;right:12px;display:flex;gap:6px;z-index:5}
 mt{display:block;margin-top:4px;font-size:12px;color:var(--shade7)}
@@ -275,7 +275,7 @@ tb{display:flex;justify-content:center;gap:8px;margin-top:16px}
 .tab{border:1px solid var(--shade4);background:var(--shade1);color:var(--text);border-radius:6px;padding:6px 20px;cursor:pointer;font:600 11px var(--sans);letter-spacing:2px;text-transform:uppercase}
 .tab.on{background:linear-gradient(145deg,rgba(var(--clr1),.8),rgba(var(--clr2),.8),rgba(var(--clr3),.8));color:#fff;border-color:transparent}
 .hint{padding:40px}
-/* lecture */
+/* reading */
 .lect{border-top:1px solid var(--shade4)}
 .arcsep{display:flex;align-items:center;gap:6px;padding:14px 35px;background:var(--shade0) linear-gradient(145deg, rgba(var(--clr1).3), rgba(var(--clr2).3), rgba(var(--clr3).3));border-bottom:1px solid var(--shade4)}
 .arcsep .btn{margin-right:auto;font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:11px}
@@ -372,7 +372,7 @@ tb{display:flex;justify-content:center;gap:8px;margin-top:16px}
  nav{position:fixed;left:0;top:0;bottom:0;padding-top:calc(10px + env(safe-area-inset-top,0px));z-index:20;transform:translateX(-105%);transition:transform .25s;width:84%;max-width:320px;box-shadow:var(--sh)}
  body.nav nav{transform:none}
 }
-/* === ajustements (v. fiches) === */
+/* === adjustments (sheets version) === */
 .btn{border-radius:8px}
 .tab{border:1px solid var(--line);background:var(--s1);color:var(--ink);border-radius:999px;padding:6px 22px;font:600 13px var(--sans);letter-spacing:.04em;text-transform:uppercase}
 .tab:hover{border-color:var(--c1)}
@@ -389,7 +389,7 @@ tb{margin-top:18px}
 .anl{display:flex;flex-wrap:wrap;gap:10px}
 .anl span{flex:1 1 230px;background:rgba(0,0,0,.32);border:1px solid rgba(255,255,255,.05);border-radius:12px;padding:14px 18px;font:400 13px/1.7 var(--sans);color:var(--text)}
 .cg .grid,.cg grid{margin-top:0}
-/* éditeur : informations en cases, anecdotes en pastilles */
+/* editor: details in boxes, trivia as chips */
 .kvb,.chips{margin:10px 0 0;padding:12px 14px 14px;border-radius:12px;background:color-mix(in srgb,var(--c1) 22%,#16121c)}
 .lab{font:700 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--t1);margin-bottom:10px}
 .cl{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
@@ -403,15 +403,15 @@ tb{margin-top:18px}
 #modal .kvr .kk{flex:0 0 38%}
 @media (max-width:860px){.cgrid{grid-template-columns:1fr}}
 
-/* police des titres : sans par défaut, Qalisso en option (bouton Aa) */
+/* heading font: sans by default, Qalisso as an option (Aa button) */
 body{--titlefont:qalisso;--tw:700}
 body.qal{--titlefont:'Qalisso',var(--sans);--tw:900}
-/* les vidéos de ton CSS (position:absolute) ne doivent pas sortir de leur vignette */
+/* videos from your CSS (position:absolute) must not overflow their thumbnail */
 video.av,#modal video,#lbc video{position:static!important;top:auto!important;left:auto!important;transform:none!important;min-width:0!important;min-height:0!important;z-index:auto!important}
 video.av{width:56px!important;height:56px!important;border-radius:50%;object-fit:cover;object-position:center 20%}
 .chip.w{flex:1 1 100%}
 
-/* mise en forme colorée (synopsis + lecture) */
+/* coloured formatting (synopsis + reading) */
 .txt strong,.txt b{font-weight:600;color:var(--t1)}
 .txt em,.txt i{font-size:105%;color:var(--t2)}
 .txt b.q{font-weight:600;color:rgba(var(--clr1)1)}
@@ -426,7 +426,7 @@ mem a[data-sec]{cursor:pointer}
 #modal .cg{padding:0;background:none}
 #modal .cg .anl span{line-height:1.7}
 
-/* boutons flottants + paramètres */
+/* floating buttons + settings */
 #fl{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));right:22px;z-index:25;display:flex;gap:4px;align-items:center;padding:4px;border-radius:12px;background:rgba(18,18,22,.62);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--line);box-shadow:0 4px 16px rgba(0,0,0,.35)}
 #fl .btn{background:transparent;border-color:transparent;padding:5px 10px;border-radius:8px;display:inline-flex;align-items:center;min-height:30px}
 #fl .btn:hover{background:var(--s2);border-color:transparent}
@@ -439,7 +439,7 @@ body.setm #setm{display:flex}
 #main .container{margin-top:60px}
 nav{padding-top:16px}
 #menuBtn{position:fixed;left:12px;top:calc(10px + env(safe-area-inset-top,0px));z-index:25}
-/* personnages secondaires : plus d’effet de survol qui masque le texte, bouton fiche */
+/* secondary characters: no more hover effect hiding the text, profile button */
 .drm-business inner mem span:hover b{opacity:.8;pointer-events:auto}
 .drm-business inner mem span:hover i{opacity:1;pointer-events:auto}
 .drm-business inner mem span:hover xx{opacity:0}
@@ -454,15 +454,15 @@ nav{padding-top:16px}
 <div id="app">
  <button class="btn" id="menuBtn" aria-label="Menu">☰</button>
  <div id="fl">
-  <button class="btn" id="fm" title="Réduire le texte">A−</button>
-  <button class="btn" id="fp" title="Agrandir le texte">A+</button>
-  <button class="btn" id="fnt" title="Police des titres : sans / Qalisso">Aa</button>
-  <button class="btn" id="dlz" title="Télécharger toutes les fiches (ZIP)" aria-label="Télécharger toutes les fiches (ZIP)"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg></button>
-  <button class="btn" id="gear" title="Paramètres" aria-label="Paramètres"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4z"/><path d="M19.4 13.5a7.7 7.7 0 0 0 0-3l1.9-1.5a.5.5 0 0 0 .1-.6l-1.8-3.1a.5.5 0 0 0-.6-.2l-2.2.9a7.6 7.6 0 0 0-2.6-1.5l-.3-2.3a.5.5 0 0 0-.5-.4h-3.6a.5.5 0 0 0-.5.4l-.3 2.3a7.6 7.6 0 0 0-2.6 1.5l-2.2-.9a.5.5 0 0 0-.6.2L2.6 8.4a.5.5 0 0 0 .1.6l1.9 1.5a7.7 7.7 0 0 0 0 3l-1.9 1.5a.5.5 0 0 0-.1.6l1.8 3.1c.1.2.4.3.6.2l2.2-.9c.8.6 1.7 1.1 2.6 1.5l.3 2.3c0 .2.2.4.5.4h3.6c.2 0 .5-.2.5-.4l.3-2.3c.9-.4 1.8-.9 2.6-1.5l2.2.9c.2.1.5 0 .6-.2l1.8-3.1a.5.5 0 0 0-.1-.6z"/></svg></button>
+  <button class="btn" id="fm" title="Smaller text">A−</button>
+  <button class="btn" id="fp" title="Larger text">A+</button>
+  <button class="btn" id="fnt" title="Heading font: sans / Qalisso">Aa</button>
+  <button class="btn" id="dlz" title="Download all sheets (ZIP)" aria-label="Download all sheets (ZIP)"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg></button>
+  <button class="btn" id="gear" title="Settings" aria-label="Settings"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4z"/><path d="M19.4 13.5a7.7 7.7 0 0 0 0-3l1.9-1.5a.5.5 0 0 0 .1-.6l-1.8-3.1a.5.5 0 0 0-.6-.2l-2.2.9a7.6 7.6 0 0 0-2.6-1.5l-.3-2.3a.5.5 0 0 0-.5-.4h-3.6a.5.5 0 0 0-.5.4l-.3 2.3a7.6 7.6 0 0 0-2.6 1.5l-2.2-.9a.5.5 0 0 0-.6.2L2.6 8.4a.5.5 0 0 0 .1.6l1.9 1.5a7.7 7.7 0 0 0 0 3l-1.9 1.5a.5.5 0 0 0-.1.6l1.8 3.1c.1.2.4.3.6.2l2.2-.9c.8.6 1.7 1.1 2.6 1.5l.3 2.3c0 .2.2.4.5.4h3.6c.2 0 .5-.2.5-.4l.3-2.3c.9-.4 1.8-.9 2.6-1.5l2.2.9c.2.1.5 0 .6-.2l1.8-3.1a.5.5 0 0 0-.1-.6z"/></svg></button>
  </div>
  <div id="setm" class="glass">
-  <button class="btn" id="imp"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg> Importer des fichiers…</button>
-  <button class="btn" id="dat"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3z"/><path d="M4 7v5c0 1.7 3.6 3 8 3s8-1.3 8-3V7M4 12v5c0 1.7 3.6 3 8 3s8-1.3 8-3v-5"/></svg> Données, synchro et fiches IA</button>
+  <button class="btn" id="imp"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg> Import files…</button>
+  <button class="btn" id="dat"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3z"/><path d="M4 7v5c0 1.7 3.6 3 8 3s8-1.3 8-3V7M4 12v5c0 1.7 3.6 3 8 3s8-1.3 8-3v-5"/></svg> Data, sync and AI sheets</button>
   <span id="sync" class="n"></span>
  </div>
  <input type="file" id="file" multiple accept=".txt,.md,.html,text/plain,text/html" hidden>
@@ -473,7 +473,7 @@ nav{padding-top:16px}
 </div>
 <div id="scrim"></div>
 <div id="lb"><button id="lbx">×</button><button id="lbp">‹</button><button id="lbn">›</button><div id="lbc"></div></div>
-<div id="drop">Dépose tes fichiers ici</div>
+<div id="drop">Drop your files here</div>
 <div id="toast"></div>
 <script>
 //<pure>
@@ -481,7 +481,7 @@ const RV={I:1,V:5,X:10,L:50,C:100};
 const rom2n=s=>/^\d+$/.test(s)?+s:[...s.toUpperCase()].reduce((a,c,i,r)=>a+(RV[c]<(RV[r[i+1]]||0)?-RV[c]:RV[c]),0);
 const n2rom=n=>{let o='';for(const[k,v]of[['L',50],['XL',40],['X',10],['IX',9],['V',5],['IV',4],['I',1]])while(n>=v){o+=k;n-=v}return o||'—'};
 const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-/* texte entre guillemets (" ", “ ”, « », „ “) → gras coloré */
+/* text in quotation marks (" ", “ ”, « », „ “) → coloured bold */
 const QB=/("[^"\n]+?"|“[^“”\n]+?”|«[^«»\n]+?»|„[^„“”\n]+?[“”])/g;
 const qb=h=>h.replace(QB,'<b class="q">$1</b>');
 const inlq=t=>qb(inl(t));
@@ -513,10 +513,10 @@ function fileMeta(name){
   .replace(/-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i,'');
  let arc=0;const m=s.match(/[_\s-]*arc[_\s]+([ivxlc]+|\d+)$/i);
  if(m){arc=rom2n(m[1]);s=s.slice(0,m.index)}
- s=s.replace(/[_\s-]+$/,'').replace(/[_]+/g,' ').trim()||'Sans titre';
+ s=s.replace(/[_\s-]+$/,'').replace(/[_]+/g,' ').trim()||'Untitled';
  return{scenario:cap(s),arc};
 }
-/* ---------- nettoyage des notes de l’IA en fin d’acte ---------- */
+/* ---------- cleanup of the AI's notes at the end of an act ---------- */
 const META=[
  /^(word|words|mot|mots)\s*count\b/i,
  /^\(?\s*(approx\.?|approximately|about|~|≈)?\s*\d[\d.,\s]*\s*(words?|mots)\b/i,
@@ -591,7 +591,7 @@ function parseFile(name,text){
  return acts;
 }
 //</pure>
-/* ---------- état ---------- */
+/* ---------- state ---------- */
 const $=s=>document.querySelector(s);
 const q=s=>esc(String(s)).replace(/"/g,'&quot;');
 let lib=[],cur=null,ver={},fs=19,theme='auto',colors={},alias={},col={},delArm=null,order=[],info={},savedAt=0,lastSnap='',prog={},wantCur=null,fresh=false,tab=null,tf='s';
@@ -630,7 +630,7 @@ function group(){
 const num=o=>Object.keys(o).map(Number).sort((a,b)=>a-b);
 const words=s=>(s.match(/\S+/g)||[]).length;
 const aid=(arc,n)=>`a-${arc}-${n}`;
-const arcLbl=a=>a?'Arc '+n2rom(a):'Arc non précisé';
+const arcLbl=a=>a?'Arc '+n2rom(a):'Unspecified arc';
 const kS=s=>'S:'+s,kA=(s,a)=>'A:'+s+'|'+a,kO=s=>'O:'+s;
 const arcT=(s,a)=>((info[s]||{}).arcs||{})[a]||'';
 const arcFull=(s,a)=>arcLbl(a)+(arcT(s,a)?' — '+arcT(s,a):'');
@@ -646,20 +646,20 @@ function render(){
  const PC=cur?pal(cur):['#6d5bd0','#8a5bd0','#5b6dd0'];
  R.style.setProperty('--c1',PC[0]);R.style.setProperty('--c2',PC[1]);R.style.setProperty('--c3',PC[2]);R.style.setProperty('--accfg',fgFor(PC[0]));
  /* navigation */
- $('#nav').innerHTML='<div class="navtop"><button class="btn sm" data-navx>✕ Fermer</button></div>'+names.map(s=>{
+ $('#nav').innerHTML='<div class="navtop"><button class="btn sm" data-navx>✕ Close</button></div>'+names.map(s=>{
   const sc=g[s],nA=num(sc).length,open=s===cur&&!!col[kO(s)],p=pal(s),ic=(info[s]||{}).icon;
-  let h=`<div class="sc${s===cur?' on':''}" draggable="true" style="--r1:${p[0]};--r2:${p[1]};--r3:${p[2]};--rf:${fgFor(p[0])}"><button class="t" data-sc="${q(s)}" title="Clic : ouvrir · second clic : arcs · clic droit : options">${safe(ic)?`<i class="ni" style="background-image:url(${q(JSON.stringify(ic))})"></i>`:''}<span class="nm">${esc(s)}</span><span class="n">${nA}</span><i class="chev">${open?'▾':'▸'}</i></button>`;
+  let h=`<div class="sc${s===cur?' on':''}" draggable="true" style="--r1:${p[0]};--r2:${p[1]};--r3:${p[2]};--rf:${fgFor(p[0])}"><button class="t" data-sc="${q(s)}" title="Click: open · second click: arcs · right-click: options">${safe(ic)?`<i class="ni" style="background-image:url(${q(JSON.stringify(ic))})"></i>`:''}<span class="nm">${esc(s)}</span><span class="n">${nA}</span><i class="chev">${open?'▾':'▸'}</i></button>`;
   if(open){
    h+='<div class="sub">';
-   for(const arc of num(sc))h+=`<a data-go="arc-${arc}" data-t="arc-${arc}" data-arc="${arc}" title="Clic droit : options de l’arc">${esc(arcFull(s,arc))}</a>`;
+   for(const arc of num(sc))h+=`<a data-go="arc-${arc}" data-t="arc-${arc}" data-arc="${arc}" title="Right-click: arc options">${esc(arcFull(s,arc))}</a>`;
    h+='</div>';
   }
   return h+'</div>';
- }).join('')+'<button class="btn sm" data-nsc="1" style="margin:8px 6px">＋ Scénario</button>';
+ }).join('')+'<button class="btn sm" data-nsc="1" style="margin:8px 6px">＋ Scenario</button>';
  /* page */
  const m=$('#main'),y0=m.scrollTop;
  if(!cur){
-  m.innerHTML=`<div class="empty glass"><h2>Aucun scénario pour l’instant</h2><p>Importe tes archives de conversation (.txt) ou dépose-les sur la page. Seules les générations d’écriture sont conservées, classées par scénario, puis par arc et par acte.</p><button class="btn pri" id="imp2">Importer des fichiers…</button> <button class="btn" data-nsc="1">Créer à la main</button></div>`;
+  m.innerHTML=`<div class="empty glass"><h2>No scenarios yet</h2><p>Import your conversation archives (.txt) or drop them onto the page. Only the writing generations are kept, sorted by scenario, then by arc and by act.</p><button class="btn pri" id="imp2">Import files…</button> <button class="btn" data-nsc="1">Create manually</button></div>`;
   $('#imp2').onclick=()=>$('#file').click();return;
  }
  const sc=g[cur],I=info[cur]||{};
@@ -668,16 +668,16 @@ function render(){
  const hasF=!!(I.plot||I.gallery||(I.chars||[]).length||(I.places||[]).length||(I.sec||[]).length||acts.some(v=>v.some(a=>a.sum||a.loc)));
  const eff=tab||(hasF?'fiche':'lecture');
  const wst=`--clr1:${trip(PC[0])};--clr2:${trip(PC[1])};--clr3:${trip(PC[2])}`;
- const top=`<top><div>${safe(I.icon)?`<img src="${q(I.icon)}" alt="">`:''}</div><in><tit>${esc(cur)}</tit><mt>${num(sc).length} arc(s) · ${acts.length} acte(s) · ${tot.toLocaleString('fr-FR')} mots</mt><tb><button class="tab${eff==='fiche'?' on':''}" data-tab="fiche">Fiche</button><button class="tab${eff==='lecture'?' on':''}" data-tab="lecture">Lecture</button></tb></in></top>`;
+ const top=`<top><div>${safe(I.icon)?`<img src="${q(I.icon)}" alt="">`:''}</div><in><tit>${esc(cur)}</tit><mt>${num(sc).length} arc(s) · ${acts.length} act(s) · ${tot.toLocaleString('en-US')} words</mt><tb><button class="tab${eff==='fiche'?' on':''}" data-tab="fiche">Sheet</button><button class="tab${eff==='lecture'?' on':''}" data-tab="lecture">Reading</button></tb></in></top>`;
  const inner=eff==='fiche'?`<inner>${sheetBody(cur,sc)}</inner>`:lectureHtml(cur,sc);
- m.innerHTML=`<div class="container" style="${wst}"><div class="drm-business" data-zg><div class="bt"><button class="btn sm" data-na="">＋ Acte</button><button class="btn sm" data-nr="1">＋ Arc</button><button class="btn sm" data-xf="1" title="Télécharger la fiche complète (Markdown, pour une IA)">⬇ Fiche IA</button></div>${top}${inner}</div></div>`;
+ m.innerHTML=`<div class="container" style="${wst}"><div class="drm-business" data-zg><div class="bt"><button class="btn sm" data-na="">＋ Act</button><button class="btn sm" data-nr="1">＋ Arc</button><button class="btn sm" data-xf="1" title="Download the full sheet (Markdown, for an AI)">⬇ AI sheet</button></div>${top}${inner}</div></div>`;
  m.querySelectorAll('video[data-src]').forEach(v=>{v.src=v.dataset.src;const p=v.play();if(p&&p.catch)p.catch(()=>{})});
  m.style.scrollBehavior='auto';m.scrollTop=y0;m.style.scrollBehavior='';
  spy();
  if(fresh){fresh=false;restoreProg()}
 }
 
-/* ---------- visionneuse d’images ---------- */
+/* ---------- image viewer ---------- */
 let lbL=[],lbI=0;
 function lbShow(){const u=lbL[lbI];$('#lbc').innerHTML=isVid(u)?`<video src="${q(u)}" controls autoplay loop></video>`:`<img src="${q(u)}" alt="">`;$('#lb').classList.toggle('one',lbL.length<2);$('#lb').style.display='flex'}
 function lbOpen(el){const g=el.closest('[data-zg]')||el.parentElement;lbL=[...g.querySelectorAll('[data-zoom]')].map(x=>x.dataset.zoom);lbI=Math.max(0,lbL.indexOf(el.dataset.zoom));lbShow()}
@@ -697,22 +697,22 @@ function spy(){
  document.querySelectorAll('#main article[data-arc],#main .arcsep[data-arc]').forEach(a=>io.observe(a));
 }
 
-/* ---------- fenêtre de modification ---------- */
-function modal(title,fields,ok,lab='Enregistrer'){
+/* ---------- edit dialog ---------- */
+function modal(title,fields,ok,lab='Save'){
  const names=sortedNames();
  const o=document.createElement('div');o.id='modal';
  const fh=f=>{
   if(f.t==='area')return`<label>${f.l}</label><textarea name="${f.k}" rows="${f.rows||14}" style="font-family:ui-monospace,Menlo,monospace;font-size:13px">${esc(f.v||'')}</textarea>`;
   if(f.t==='text'||f.t==='number')return`<label>${f.l}</label><input type="${f.t}" name="${f.k}" value="${q(f.v)}"${f.t==='number'?' min="0"':''}>`;
-  if(f.t==='scen')return`<label>${f.l}</label><select name="${f.k}">${names.map(n=>`<option value="${q(n)}"${n===f.v?' selected':''}>${esc(n)}</option>`).join('')}<option value="__new"${f.v==='__new'?' selected':''}>＋ Nouveau scénario…</option></select><input type="text" name="${f.k}_new" placeholder="Nom du nouveau scénario" style="${f.v==='__new'?'':'display:none'}">`;
+  if(f.t==='scen')return`<label>${f.l}</label><select name="${f.k}">${names.map(n=>`<option value="${q(n)}"${n===f.v?' selected':''}>${esc(n)}</option>`).join('')}<option value="__new"${f.v==='__new'?' selected':''}>＋ New scenario…</option></select><input type="text" name="${f.k}_new" placeholder="New scenario name" style="${f.v==='__new'?'':'display:none'}">`;
   if(f.t==='color')return`<label>${f.l}</label><div class="sw">${PAL.map(c=>`<i data-c="${c}" style="background:${c}"></i>`).join('')}<input type="color" name="${f.k}" value="${f.v}"><button type="button" class="btn sm" data-auto>Auto</button></div>`;
  };
- o.innerHTML=`<form class="glass${fields.some(f=>f.t==='area')?' wide':''}"><h3>${esc(title)}</h3>${fields.map(fh).join('')}<div class="row"><button type="button" class="btn" data-x>Annuler</button><button class="btn pri">${esc(lab)}</button></div></form>`;
+ o.innerHTML=`<form class="glass${fields.some(f=>f.t==='area')?' wide':''}"><h3>${esc(title)}</h3>${fields.map(fh).join('')}<div class="row"><button type="button" class="btn" data-x>Cancel</button><button class="btn pri">${esc(lab)}</button></div></form>`;
  document.body.appendChild(o);
  const f=o.querySelector('form'),close=()=>o.remove();
  f.querySelectorAll('select[name]').forEach(s=>s.onchange=()=>{f.elements[s.name+'_new'].style.display=s.value==='__new'?'':'none'});
  f.querySelectorAll('.sw i').forEach(i=>i.onclick=()=>{const c=f.querySelector('input[type=color]');c.value=i.dataset.c;c.dataset.auto=''});
- const au=f.querySelector('[data-auto]');if(au)au.onclick=()=>{f.querySelector('input[type=color]').dataset.auto='1';toast('Couleur automatique')};
+ const au=f.querySelector('[data-auto]');if(au)au.onclick=()=>{f.querySelector('input[type=color]').dataset.auto='1';toast('Automatic colour')};
  o.onclick=e=>{if(e.target===o||e.target.dataset.x!==undefined)close()};
  f.onsubmit=e=>{e.preventDefault();const v={};
   for(const fl of fields){
@@ -723,7 +723,7 @@ function modal(title,fields,ok,lab='Enregistrer'){
  };
 }
 function editScenario(s){
- modal('Scénario',[{k:'name',t:'text',l:'Nom',v:s},{k:'color',t:'color',l:'Couleur d’accent',v:colorOf(s)}],v=>{
+ modal('Scenario',[{k:'name',t:'text',l:'Name',v:s},{k:'color',t:'color',l:'Accent colour',v:colorOf(s)}],v=>{
   const nn=v.name||s;
   if(nn!==s){
    lib.forEach(a=>{if(a.scenario===s)a.scenario=nn});
@@ -735,7 +735,7 @@ function editScenario(s){
  });
 }
 function editArc(s,arc){
- modal('Arc',[{k:'t',t:'text',l:'Titre de l’arc',v:arcT(s,arc)},{k:'s',t:'scen',l:'Scénario',v:s},{k:'a',t:'number',l:'Numéro d’arc (0 = non précisé)',v:arc}],v=>{
+ modal('Arc',[{k:'t',t:'text',l:'Arc title',v:arcT(s,arc)},{k:'s',t:'scen',l:'Scenario',v:s},{k:'a',t:'number',l:'Arc number (0 = unspecified)',v:arc}],v=>{
   const ns=v.s||s;lib.forEach(a=>{if(a.scenario===s&&a.arc===arc){a.scenario=ns;a.arc=v.a}});
   if(ns!==s||v.a!==arc)setArcT(s,arc,'');setArcT(ns,v.a,v.t);cur=ns;
  });
@@ -743,31 +743,31 @@ function editArc(s,arc){
 function editAct(k){
  const[s,arc,n]=JSON.parse(k),slot=lib.filter(a=>a.scenario===s&&a.arc===arc&&a.n===n);
  const v0=slot.sort((a,b)=>a.ts-b.ts),sel=v0[Math.min(ver[k]??v0.length-1,v0.length-1)];
- modal('Acte',[{k:'t',t:'text',l:'Titre',v:sel.title},{k:'s',t:'scen',l:'Scénario',v:s},{k:'a',t:'number',l:'Arc',v:arc},{k:'n',t:'number',l:'Numéro d’acte',v:n},{k:'loc',t:'text',l:'Lieu / moment (optionnel, affiché dans « Chapitres »)',v:sel.loc||''},{k:'sum',t:'area',rows:3,l:'Résumé court (optionnel)',v:sel.sum||''},{k:'md',t:'area',l:'Texte (Markdown)',v:sel.md}],v=>{
+ modal('Act',[{k:'t',t:'text',l:'Title',v:sel.title},{k:'s',t:'scen',l:'Scenario',v:s},{k:'a',t:'number',l:'Arc',v:arc},{k:'n',t:'number',l:'Act number',v:n},{k:'loc',t:'text',l:'Place / time (optional, shown under “Chapters”)',v:sel.loc||''},{k:'sum',t:'area',rows:3,l:'Short summary (optional)',v:sel.sum||''},{k:'md',t:'area',l:'Text (Markdown)',v:sel.md}],v=>{
   sel.title=v.t;sel.loc=v.loc;sel.sum=v.sum;if(v.md)sel.md=v.md;
   const ns=v.s||s;slot.forEach(a=>{a.scenario=ns;a.arc=v.a;a.n=v.n||n});cur=ns;
  });
 }
 
-/* ---------- création / suppression manuelles ---------- */
+/* ---------- manual creation / deletion ---------- */
 function newAct(s,arc){
  const sc=group()[s]||{},as=num(sc);
  const a=arc==='new'?(as.length?Math.max(...as):0)+1:arc===null?(as.length?Math.max(...as):1):arc;
  const ns=num(sc[a]||{}),n=(ns.length?Math.max(...ns):0)+1;
- modal(arc==='new'?'Nouvel arc':'Nouvel acte',[{k:'s',t:'scen',l:'Scénario',v:s||'__new'},{k:'a',t:'number',l:'Arc',v:a},...(arc==='new'?[{k:'at',t:'text',l:'Titre de l’arc',v:''}]:[]),{k:'n',t:'number',l:'Numéro d’acte',v:n},{k:'t',t:'text',l:'Titre',v:''},{k:'md',t:'area',l:'Texte (Markdown)',v:''}],v=>{
-  const sn=v.s||s;if(!sn)return toast('Indique un scénario.');if(!v.md)return toast('Le texte est vide : acte non créé.');
-  lib.push({scenario:sn,arc:v.a,n:v.n||1,title:v.t,md:v.md,ts:Date.now(),src:'manuel'});if(v.at)setArcT(sn,v.a,v.at);cur=sn;
- },'Ajouter');
+ modal(arc==='new'?'New arc':'New act',[{k:'s',t:'scen',l:'Scenario',v:s||'__new'},{k:'a',t:'number',l:'Arc',v:a},...(arc==='new'?[{k:'at',t:'text',l:'Arc title',v:''}]:[]),{k:'n',t:'number',l:'Act number',v:n},{k:'t',t:'text',l:'Title',v:''},{k:'md',t:'area',l:'Text (Markdown)',v:''}],v=>{
+  const sn=v.s||s;if(!sn)return toast('Choose a scenario.');if(!v.md)return toast('The text is empty: act not created.');
+  lib.push({scenario:sn,arc:v.a,n:v.n||1,title:v.t,md:v.md,ts:Date.now(),src:'manual'});if(v.at)setArcT(sn,v.a,v.at);cur=sn;
+ },'Add');
 }
 function newScenario(){
- modal('Nouveau scénario',[{k:'name',t:'text',l:'Nom',v:''}],v=>{if(!v.name)return;info[v.name]??={plot:'',chars:[]};cur=v.name},'Créer');
+ modal('New scenario',[{k:'name',t:'text',l:'Name',v:''}],v=>{if(!v.name)return;info[v.name]??={plot:'',chars:[]};cur=v.name},'Create');
 }
-function copyAct(k){const{n,sel:a}=pickAct(k);navigator.clipboard.writeText(`**Act ${n2rom(n)} — ${a.title}**\n\n${a.md}`).then(()=>toast('Texte copié (Markdown).'),()=>toast('Copie impossible.'))}
+function copyAct(k){const{n,sel:a}=pickAct(k);navigator.clipboard.writeText(`**Act ${n2rom(n)} — ${a.title}**\n\n${a.md}`).then(()=>toast('Text copied (Markdown).'),()=>toast('Could not copy.'))}
 function pickAct(k){const[s,arc,n]=JSON.parse(k),sl=lib.filter(a=>a.scenario===s&&a.arc===arc&&a.n===n).sort((a,b)=>a.ts-b.ts);return{s,arc,n,sel:sl[Math.min(ver[k]??sl.length-1,sl.length-1)]}}
-function delAct(k){const{n,sel}=pickAct(k);modal('Supprimer l’acte « '+(sel.title||'Act '+n2rom(n))+' » ?',[],()=>{lib=lib.filter(a=>a!==sel);delete ver[k]},'Supprimer')}
-function delArc(s,arc){modal('Supprimer '+arcFull(s,arc)+' de « '+s+' » ?',[],()=>{lib=lib.filter(a=>!(a.scenario===s&&a.arc===arc));setArcT(s,arc,'')},'Supprimer')}
+function delAct(k){const{n,sel}=pickAct(k);modal('Delete the act “'+(sel.title||'Act '+n2rom(n))+'”?',[],()=>{lib=lib.filter(a=>a!==sel);delete ver[k]},'Delete')}
+function delArc(s,arc){modal('Delete '+arcFull(s,arc)+' from “'+s+'”?',[],()=>{lib=lib.filter(a=>!(a.scenario===s&&a.arc===arc));setArcT(s,arc,'')},'Delete')}
 
-/* ---------- clics ---------- */
+/* ---------- clicks ---------- */
 document.addEventListener('click',e=>{
  const t=e.target.closest('[data-sc],[data-tg],[data-go],[data-del],[data-es],[data-ea],[data-ev],[data-ei],[data-c],[data-navx],[data-na],[data-nr],[data-da],[data-nsc],[data-xv],[data-tab],[data-zoom],[data-sec],[data-xf]');if(!t||t.closest('#modal'))return;
  const d=t.dataset;
@@ -809,8 +809,8 @@ async function importFiles(files){
  }
  if(last)cur=last;
  save();render();
- if(sheets&&!added&&!empty.length)return toast(`${sheets} fiche(s) de scénario importée(s).`);
- toast(empty.length?`Format non reconnu (aucun titre d’acte trouvé) dans : ${empty.join(', ')}`:`${added} acte(s) ajouté(s)${dup?`, ${dup} déjà présent(s)`:''}.`);
+ if(sheets&&!added&&!empty.length)return toast(`${sheets} scenario sheet(s) imported.`);
+ toast(empty.length?`Unrecognised format (no act heading found) in: ${empty.join(', ')}`:`${added} act(s) added${dup?`, ${dup} already present`:''}.`);
 }
 $('#imp').onclick=()=>{document.body.classList.remove('setm');$('#file').click()};
 $('#gear').onclick=e=>{e.stopPropagation();document.body.classList.toggle('setm')};
@@ -822,15 +822,15 @@ addEventListener('dragleave',e=>{if(![...e.dataTransfer.types].includes('Files')
 addEventListener('dragover',e=>e.preventDefault());
 addEventListener('drop',e=>{e.preventDefault();dc=0;$('#drop').style.display='none';if(e.dataTransfer.files.length)importFiles([...e.dataTransfer.files])});
 $('#fm').onclick=()=>{fs=Math.max(14,fs-1);save();render()};
-$('#fnt').onclick=()=>{tf=tf==='q'?'s':'q';savePrefs();render();toast(tf==='q'?'Titres en Qalisso.':'Titres en sans-serif.')};
+$('#fnt').onclick=()=>{tf=tf==='q'?'s':'q';savePrefs();render();toast(tf==='q'?'Headings in Qalisso.':'Headings in sans-serif.')};
 $('#fp').onclick=()=>{fs=Math.min(30,fs+1);save();render()};
 $('#menuBtn').onclick=()=>document.body.classList.toggle('nav');
 $('#scrim').onclick=()=>document.body.classList.remove('nav');
-/* ---------- ordre des groupes, menu contextuel ---------- */
+/* ---------- group order, context menu ---------- */
 const ordIdx=s=>{const i=order.indexOf(s);return i<0?1e9:i};
-function sortedNames(g=group()){return Object.keys(g).sort((a,b)=>ordIdx(a)-ordIdx(b)||a.localeCompare(b,'fr'))}
+function sortedNames(g=group()){return Object.keys(g).sort((a,b)=>ordIdx(a)-ordIdx(b)||a.localeCompare(b,'en'))}
 function placeScenario(s,fn){const n=sortedNames().filter(x=>x!==s);fn(n);order=n;save();render()}
-function delScenario(s){modal('Supprimer « '+s+' » ?',[],()=>{lib=lib.filter(a=>a.scenario!==s);delete info[s]},'Supprimer')}
+function delScenario(s){modal('Delete “'+s+'”?',[],()=>{lib=lib.filter(a=>a.scenario!==s);delete info[s]},'Delete')}
 function closeCtx(){const c=$('#ctx');if(c)c.remove()}
 function showCtx(x,y,items){
  closeCtx();if(isMobile())return;
@@ -841,11 +841,11 @@ function showCtx(x,y,items){
  m.style.top=Math.max(8,Math.min(y,innerHeight-m.offsetHeight-8))+'px';
  m.onclick=e=>{const b=e.target.closest('button');if(b){closeCtx();items[b.dataset.i][1]()}};
 }
-const arcItems=(s,a)=>[['Modifier l’arc (titre, numéro)…',()=>editArc(s,a)],['Ajouter un acte…',()=>newAct(s,a)],['Supprimer l’arc…',()=>delArc(s,a)]];
-const actItems=k=>[['Modifier l’acte…',()=>editAct(k)],['Copier le texte',()=>copyAct(k)],['Supprimer l’acte…',()=>delAct(k)]];
+const arcItems=(s,a)=>[['Edit arc (title, number)…',()=>editArc(s,a)],['Add an act…',()=>newAct(s,a)],['Delete arc…',()=>delArc(s,a)]];
+const actItems=k=>[['Edit act…',()=>editAct(k)],['Copy text',()=>copyAct(k)],['Delete act…',()=>delAct(k)]];
 function ctxMenu(x,y,s){
  const names=sortedNames(),i=names.indexOf(s),last=i===names.length-1;
- const items=[['Modifier la fiche…',()=>editFiche(s)],['Nom et couleur…',()=>editScenario(s)],i>0&&['Placer en premier',()=>placeScenario(s,n=>n.unshift(s))],i>0&&['Monter',()=>placeScenario(s,n=>n.splice(i-1,0,s))],!last&&['Descendre',()=>placeScenario(s,n=>n.splice(i+1,0,s))],['Supprimer…',()=>delScenario(s)]].filter(Boolean);
+ const items=[['Edit sheet…',()=>editFiche(s)],['Name and colour…',()=>editScenario(s)],i>0&&['Move to top',()=>placeScenario(s,n=>n.unshift(s))],i>0&&['Move up',()=>placeScenario(s,n=>n.splice(i-1,0,s))],!last&&['Move down',()=>placeScenario(s,n=>n.splice(i+1,0,s))],['Delete…',()=>delScenario(s)]].filter(Boolean);
  showCtx(x,y,items);
 }
 $('#main').addEventListener('contextmenu',e=>{
@@ -856,7 +856,7 @@ $('#main').addEventListener('contextmenu',e=>{
  if(ar)items=actItems(ar.dataset.k);
  else if(as)items=arcItems(cur,+as.dataset.arc);
  else{const f=e.target.closest('.star-speech,.cg')?'cast':e.target.closest('rapapa')?'pl':e.target.closest('mem')?'sec':'syn';
-  items=[['Modifier la fiche…',()=>editFiche(cur,f)],['Nom et couleur…',()=>editScenario(cur)],['Télécharger la fiche IA',()=>exportOne(cur)]]}
+  items=[['Edit sheet…',()=>editFiche(cur,f)],['Name and colour…',()=>editScenario(cur)],['Download AI sheet',()=>exportOne(cur)]]}
  e.preventDefault();showCtx(e.clientX,e.clientY,items);
 });
 const nv=$('#nav');
@@ -878,7 +878,7 @@ nv.addEventListener('drop',e=>{if(dragS===null)return;e.preventDefault();const s
  placeScenario(from,n=>n.splice(n.indexOf(t)+(after?1:0),0,from));
 });
 nv.addEventListener('dragend',()=>{dragS=null;clearDt()});
-/* ---------- palette, médias, fiche du scénario ---------- */
+/* ---------- palette, media, scenario sheet ---------- */
 const kF=(s,k)=>'F:'+s+'|'+k;
 const fgFor=h=>{const n=parseInt(h.slice(1),16),r=n>>16,g=n>>8&255,b=n&255;return(.299*r+.587*g+.114*b)>170?'#1c1c26':'#fff'};
 const hexToHsl=h=>{const n=parseInt(h.slice(1),16),r=(n>>16)/255,g=(n>>8&255)/255,b=(n&255)/255,mx=Math.max(r,g,b),mn=Math.min(r,g,b),d=mx-mn,l=(mx+mn)/2;let hh=0,ss=0;
@@ -902,7 +902,7 @@ const SZ=['poster','xs','med','xs','sm','xl','med'],SZ2=['xl','med','xs','sm','s
 const gridH=(urls,pat)=>urls.length?`<grid>${urls.map((u,i)=>`<span class="${pat[i%pat.length]}" data-zoom="${q(u)}"><img src="${q(u)}" loading="lazy"></span>`).join('')}</grid>`:'';
 const GBG=(a,b,c)=>`background: var(--shade0) linear-gradient(145deg, rgba(var(--clr${a}).3), rgba(var(--clr${b}).3), rgba(var(--clr${c}).3));`;
 function charBlock(c,i){
- const det=lines(c.fields??(c.age?'âge: '+c.age:'')).map(l=>{const j=l.indexOf(':');return j<0?['',l]:[l.slice(0,j).trim(),l.slice(j+1).trim()]}).filter(x=>x[1]);
+ const det=lines(c.fields??(c.age?'age: '+c.age:'')).map(l=>{const j=l.indexOf(':');return j<0?['',l]:[l.slice(0,j).trim(),l.slice(j+1).trim()]}).filter(x=>x[1]);
  const an=lines(c.anec??c.info??''),gal=lines(c.imgs),m=c.media;
  const ok=safe(m),vid=ok&&isVid(m);
  const vp=cssv(c.vpos)||'center 20%',qt=cssv(c.qtop);
@@ -929,27 +929,27 @@ function sheetBody(s,sc){
  if(ch)h+=`<abt><div>${ch}</div></abt>`;
  (I.chars||[]).forEach((c,i)=>{h+=charBlock(c,i)});
  if((I.places||[]).length)h+=`<gall><rapapa>${I.places.map(p=>`<span2><bg style="background-image: url(${q(JSON.stringify(p.img||''))}); background-position: center 15%;"></bg>\n<w>${esc(p.name)}</w>${p.sub?`<i>${esc(p.sub)}</i>`:''}</span2>`).join('')}</rapapa></gall>`;
- if((I.sec||[]).length)h+=`<mem><h><x class="fas fa-user-music"></x> <w>personnages secondaires</w></h><wr>${I.sec.map((p,i)=>`<a><button type="button" class="secb" data-sec="${i}" title="Fiche complète" aria-label="Fiche complète"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="9" cy="11" r="2.2"/><path d="M5.8 16.2c.6-1.5 1.8-2.2 3.2-2.2s2.6.7 3.2 2.2M15 10h3.5M15 13.5h3.5"/></svg></button><span><xx></xx><ic style="background-image: url(${q(JSON.stringify(p.img||''))});"></ic><b>${esc(p.name||'')}</b> ${p.sub?`<i>${esc(p.sub)}</i>`:''}</span></a>`).join('\n')}</wr></mem>`;
- return h||`<abt><ahha><block>Aucune information pour l’instant : synopsis, galerie, personnages, lieux…<br><br><button class="btn pri" data-ei="syn">Remplir la fiche</button></block></ahha></abt>`;
+ if((I.sec||[]).length)h+=`<mem><h><x class="fas fa-user-music"></x> <w>secondary characters</w></h><wr>${I.sec.map((p,i)=>`<a><button type="button" class="secb" data-sec="${i}" title="Full profile" aria-label="Full profile"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="9" cy="11" r="2.2"/><path d="M5.8 16.2c.6-1.5 1.8-2.2 3.2-2.2s2.6.7 3.2 2.2M15 10h3.5M15 13.5h3.5"/></svg></button><span><xx></xx><ic style="background-image: url(${q(JSON.stringify(p.img||''))});"></ic><b>${esc(p.name||'')}</b> ${p.sub?`<i>${esc(p.sub)}</i>`:''}</span></a>`).join('\n')}</wr></mem>`;
+ return h||`<abt><ahha><block>No information yet: synopsis, gallery, characters, places…<br><br><button class="btn pri" data-ei="syn">Fill in the sheet</button></block></ahha></abt>`;
 }
 function lectureHtml(s,sc){
  let out='';
  for(const arc of num(sc)){
   const c=col[kA(s,arc)],cnt=Object.keys(sc[arc]).length;
-  out+=`<div class="arcsep" id="arc-${arc}" data-arc="${arc}" title="Clic droit : options de l’arc"><button class="btn sm" data-tg="${q(kA(s,arc))}">${c?'▸':'▾'} ${esc(arcFull(s,arc))} · ${cnt} acte${cnt>1?'s':''}</button><button class="btn sm" data-na="${arc}" title="Ajouter un acte à cet arc">＋</button></div>`;
+  out+=`<div class="arcsep" id="arc-${arc}" data-arc="${arc}" title="Right-click: arc options"><button class="btn sm" data-tg="${q(kA(s,arc))}">${c?'▸':'▾'} ${esc(arcFull(s,arc))} · ${cnt} act${cnt>1?'s':''}</button><button class="btn sm" data-na="${arc}" title="Add an act to this arc">＋</button></div>`;
   if(c)continue;
   for(const n of num(sc[arc])){
    const v=sc[arc][n],k=JSON.stringify([s,arc,n]),i=Math.min(ver[k]??v.length-1,v.length-1),a=v[i];
    out+=`<article id="${aid(arc,n)}" data-arc="${arc}" data-k="${q(k)}"><h2><small>Act ${n2rom(n)}</small>${esc(a.title)}</h2>${a.loc?`<div class="loc">${esc(a.loc)}</div>`:''}
-   <div class="tools"><span>${words(a.md).toLocaleString('fr-FR')} mots</span>
+   <div class="tools"><span>${words(a.md).toLocaleString('en-US')} words</span>
    ${v.length>1?`<select data-v="${q(k)}">${v.map((x,j)=>`<option value="${j}"${j===i?' selected':''}>Version ${j+1}/${v.length}</option>`).join('')}</select>`:''}
-   <button class="btn sm" data-c="${q(k)}">Copier</button></div><div class="txt">${md(a.md)}</div></article>`;
+   <button class="btn sm" data-c="${q(k)}">Copy</button></div><div class="txt">${md(a.md)}</div></article>`;
   }
  }
- return`<div class="lect">${out||'<div class="hint n">Aucun acte pour l’instant : importe un fichier ou ajoute-en un à la main.</div>'}</div>`;
+ return`<div class="lect">${out||'<div class="hint n">No acts yet: import a file or add one manually.</div>'}</div>`;
 }
 
-/* ---------- fiche détaillée d’un personnage secondaire ---------- */
+/* ---------- detailed profile of a secondary character ---------- */
 const kvList=t=>lines(t).map(l=>{const j=l.indexOf(':');return j<0?['',l]:[l.slice(0,j).trim(),l.slice(j+1).trim()]}).filter(x=>x[1]);
 function secView(i){
  const p=((info[cur]||{}).sec||[])[i];if(!p)return;
@@ -957,13 +957,13 @@ function secView(i){
  const o=document.createElement('div');o.id='modal';
  o.innerHTML=`<form class="glass wide" style="--clr1:${trip(PC[0])};--clr2:${trip(PC[1])};--clr3:${trip(PC[2])}"><div class="secv">${safe(p.img)&&!isVid(p.img)?`<img src="${q(p.img)}" alt="">`:''}<div><h3>${esc(p.name||'')}</h3>${p.sub?`<span class="rl">${esc(p.sub)}</span>`:''}</div></div><div class="cg">`+
   (det.length?`<div class="cblk"><h4 class="ch4">Informations</h4><div class="cgrid">${det.map(([k,v])=>`<k><x>${esc(k)}</x><y>${esc(v)}</y></k>`).join('')}</div></div>`:'')+
-  (!det.length&&!ds.length?`<p class="n" style="margin:0 0 14px">Pas encore de détails : ajoute-les depuis « ✎ Fiche » → Personnages secondaires.</p>`:'')+
+  (!det.length&&!ds.length?`<p class="n" style="margin:0 0 14px">No details yet: add them from “✎ Sheet” → Secondary characters.</p>`:'')+
   (ds.length?`<div class="cblk"><h4 class="ch4">Description</h4><div class="anl">${ds.map(x=>`<span style="flex:1 1 100%">${abtHtml(x)}</span>`).join('')}</div></div>`:'')+
-  `</div><div class="row"><button type="button" class="btn" data-x>Fermer</button></div></form>`;
+  `</div><div class="row"><button type="button" class="btn" data-x>Close</button></div></form>`;
  o.onclick=e=>{if(e.target===o||e.target.dataset.x!==undefined)o.remove()};
  document.body.appendChild(o);
 }
-/* ---------- export des fiches pour une IA (Markdown) ---------- */
+/* ---------- export of sheets for an AI (Markdown) ---------- */
 /*ZIP*/
 const crcT=(()=>{const t=[];for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0}return t})();
 const crc32=b=>{let c=-1;for(let i=0;i<b.length;i++)c=crcT[(c^b[i])&255]^(c>>>8);return(c^-1)>>>0};
@@ -985,21 +985,21 @@ function zipParts(files){
 const plain=t=>String(t||'').replace(/\+\+(.+?)\+\+/g,'$1').replace(/<\/?[a-z]+>/gi,'');
 const safeFn=t=>String(t).replace(/[\\/:*?"<>|]+/g,'').replace(/\s+/g,' ').trim()||'fiche';
 const up1=k=>k.charAt(0).toUpperCase()+k.slice(1);
-/* bloc balisé : <nom> … </nom> (omis s’il est vide) */
+/* tagged block: <name> … </name> (omitted if empty) */
 const tg=(n,b)=>{b=String(b||'').trim();return b?`<${n}>\n${b}\n</${n}>\n\n`:''};
 function charMd(c,lvl='##'){
- let o=`${lvl} ${c.name||'(sans nom)'}\n`;
- if(c.old)o+=`- Ancien prénom (abandonné, ne plus l’utiliser) : ${c.old}\n`;
- kvList(c.fields??(c.age?'âge: '+c.age:'')).forEach(([k,v])=>o+=`- ${k?up1(k):'Info'} : ${plain(v)}\n`);
- if(c.quote)o+=`- Citation : « ${plain(c.quote)} »${c.by?` (${c.by})`:''}\n`;
+ let o=`${lvl} ${c.name||'(unnamed)'}\n`;
+ if(c.old)o+=`- Former first name (abandoned, no longer use it): ${c.old}\n`;
+ kvList(c.fields??(c.age?'age: '+c.age:'')).forEach(([k,v])=>o+=`- ${k?up1(k):'Info'}: ${plain(v)}\n`);
+ if(c.quote)o+=`- Quote: “${plain(c.quote)}”${c.by?` (${c.by})`:''}\n`;
  const an=lines(c.anec??c.info??'');
  if(an.length)o+=`\n${lvl}# Anecdotes\n${an.map(a=>`- ${plain(a)}`).join('\n')}\n`;
  return o.trim()+'\n';
 }
 function secMd(p,lvl='##'){
- let o=`${lvl} ${p.name||'(sans nom)'}\n`;
- if(p.sub)o+=`- Rôle / lien : ${p.sub}\n`;
- kvList(p.fields).forEach(([k,v])=>o+=`- ${k?up1(k):'Info'} : ${plain(v)}\n`);
+ let o=`${lvl} ${p.name||'(unnamed)'}\n`;
+ if(p.sub)o+=`- Role / relationship: ${p.sub}\n`;
+ kvList(p.fields).forEach(([k,v])=>o+=`- ${k?up1(k):'Info'}: ${plain(v)}\n`);
  const ds=lines(p.desc);
  if(ds.length)o+=`\n${lvl}# Description\n${ds.map(x=>plain(x)).join('\n\n')}\n`;
  return o.trim()+'\n';
@@ -1008,50 +1008,50 @@ function planMd(s){
  const sc=group()[s]||{};let o='';
  for(const arc of num(sc))for(const n of num(sc[arc])){
   const v=sc[arc][n],a=v[v.length-1];
-  if(a.sum||a.loc)o+=`- ${arcFull(s,arc)}, Acte ${n2rom(n)}${a.title?' — '+a.title:''}${a.loc?` (lieu : ${a.loc})`:''}${a.sum?' : '+plain(a.sum).replace(/\n+/g,' '):''}\n`;
+  if(a.sum||a.loc)o+=`- ${arcFull(s,arc)}, Act ${n2rom(n)}${a.title?' — '+a.title:''}${a.loc?` (place: ${a.loc})`:''}${a.sum?': '+plain(a.sum).replace(/\n+/g,' '):''}\n`;
  }
  return o;
 }
-const placesMd=I=>(I.places||[]).map(x=>`- ${x.name}${x.sub?` (dans : ${x.sub})`:''}`).join('\n');
-/* contexte commun à toutes les fiches d’un scénario */
+const placesMd=I=>(I.places||[]).map(x=>`- ${x.name}${x.sub?` (in: ${x.sub})`:''}`).join('\n');
+/* context shared by all of a scenario's sheets */
 function ctxMd(s){
  const I=info[s]||{};
- return tg('synopsis',plain(I.plot))+tg('deroule_des_actes',planMd(s))+tg('lieux',placesMd(I));
+ return tg('synopsis',plain(I.plot))+tg('act_outline',planMd(s))+tg('places',placesMd(I));
 }
-const allChars=I=>tg('personnages_principaux',(I.chars||[]).map(c=>tg('personnage',charMd(c))).join('').trim());
-const allSecs=I=>tg('personnages_secondaires',(I.sec||[]).map(p=>tg('personnage_secondaire',secMd(p))).join('').trim());
-/* fiche complète du scénario */
+const allChars=I=>tg('main_characters',(I.chars||[]).map(c=>tg('character',charMd(c))).join('').trim());
+const allSecs=I=>tg('secondary_characters',(I.sec||[]).map(p=>tg('secondary_character',secMd(p))).join('').trim());
+/* full scenario sheet */
 function ficheMd(s){
  const I=info[s]||{};
- return `<scenario nom="${s.replace(/"/g,'\'')}">\n\n# ${s}\n\n${ctxMd(s)}${allChars(I)}${allSecs(I)}</scenario>\n`.replace(/\n{3,}/g,'\n\n');
+ return `<scenario name="${s.replace(/"/g,'\'')}">\n\n# ${s}\n\n${ctxMd(s)}${allChars(I)}${allSecs(I)}</scenario>\n`.replace(/\n{3,}/g,'\n\n');
 }
-/* fiche d’un personnage principal : contexte + lui en détail + les autres */
+/* main character sheet: context + this character in detail + the others */
 function charFileMd(s,c){
  const I=info[s]||{};
  const oth=(I.chars||[]).filter(x=>x!==c);
- return `<scenario nom="${s.replace(/"/g,'\'')}">\n\n# ${s}\n\n${ctxMd(s)}</scenario>\n\n`+
-  tg('personnage_principal',charMd(c))+
-  tg('autres_personnages_principaux',oth.map(x=>tg('personnage',charMd(x))).join('').trim())+
+ return `<scenario name="${s.replace(/"/g,'\'')}">\n\n# ${s}\n\n${ctxMd(s)}</scenario>\n\n`+
+  tg('main_character',charMd(c))+
+  tg('other_main_characters',oth.map(x=>tg('character',charMd(x))).join('').trim())+
   allSecs(I);
 }
-/* fiche d’un personnage secondaire : contexte + lui en détail + les principaux */
+/* secondary character sheet: context + this character in detail + the main ones */
 function secFileMd(s,p){
  const I=info[s]||{};
  const oth=(I.sec||[]).filter(x=>x!==p);
- return `<scenario nom="${s.replace(/"/g,'\'')}">\n\n# ${s}\n\n${ctxMd(s)}</scenario>\n\n`+
-  tg('personnage_secondaire',secMd(p))+
+ return `<scenario name="${s.replace(/"/g,'\'')}">\n\n# ${s}\n\n${ctxMd(s)}</scenario>\n\n`+
+  tg('secondary_character',secMd(p))+
   allChars(I)+
-  tg('autres_personnages_secondaires',oth.map(x=>tg('personnage_secondaire',secMd(x))).join('').trim());
+  tg('other_secondary_characters',oth.map(x=>tg('secondary_character',secMd(x))).join('').trim());
 }
 function saveBlob(name,blob){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000)}
-function exportOne(s){saveBlob('fiche - '+safeFn(s)+'.txt',new Blob([ficheMd(s).trim()+'\n'],{type:'text/plain;charset=utf-8'}));toast('Fiche téléchargée.')}
+function exportOne(s){saveBlob('sheet - '+safeFn(s)+'.txt',new Blob([ficheMd(s).trim()+'\n'],{type:'text/plain;charset=utf-8'}));toast('Sheet downloaded.')}
 function exportAll(){
  const files=[],names=Object.keys(info).filter(k=>{const I=info[k];return I&&(I.plot||(I.chars||[]).length||(I.sec||[]).length||(I.places||[]).length)});
- if(!names.length)return toast('Aucune fiche à exporter pour l’instant.');
+ if(!names.length)return toast('No sheets to export yet.');
  const T=x=>x.replace(/\n{3,}/g,'\n\n').trim()+'\n';
  for(const s of names)files.push({name:`${safeFn(s)}.txt`,data:T(ficheMd(s))});
- saveBlob('fiches-scenarios.zip',new Blob(zipParts(files),{type:'application/zip'}));
- toast(`${files.length} fiche(s) dans l’archive.`);
+ saveBlob('scenario-sheets.zip',new Blob(zipParts(files),{type:'application/zip'}));
+ toast(`${files.length} sheet(s) in the archive.`);
 }
 function thumb(file,S=192){return new Promise((res,rej)=>{
  if(file.type==='image/gif'&&file.size<600000){const r=new FileReader();r.onload=()=>res(r.result);r.onerror=rej;r.readAsDataURL(file);return}
@@ -1061,50 +1061,50 @@ function thumb(file,S=192){return new Promise((res,rej)=>{
   let d=c.toDataURL('image/webp',.85);if(!d.startsWith('data:image/webp'))d=c.toDataURL('image/jpeg',.85);res(d)};
  im.onerror=()=>rej();im.src=u})}
 
-/* ---------- éditeur de la fiche ---------- */
+/* ---------- sheet editor ---------- */
 function editFiche(s,focus){
  const I=info[s]||{},P=pal(s);
- const DEF=['nom complet','âge','occupation','origine'];
+ const DEF=['full name','age','gender','occupation','origin'];
  const parseKv=l=>{const j=l.indexOf(':');return j<0?['',l]:[l.slice(0,j).trim(),l.slice(j+1).trim()]};
- const DEF2=['nom complet','âge','occupation'];
- const kvOf=(c,D=DEF)=>{const ex=lines(c.fields??(c.age?'âge: '+c.age:'')).map(parseKv);
+ const DEF2=['full name','age','gender','occupation'];
+ const kvOf=(c,D=DEF)=>{const ex=lines(c.fields??(c.age?'age: '+c.age:'')).map(parseKv);
   const out=D.map(k=>{const i=ex.findIndex(r=>r[0].toLowerCase()===k);return i<0?[k,'']:ex.splice(i,1)[0]});return out.concat(ex)};
  const cvt=c=>({...c,fields:kvOf(c),anec:lines(c.anec??c.info??''),imgs:lines(c.imgs)});
  const L={
   gen:{single:1,S:160,items:[{icon:I.icon||''}],f:[{k:'icon',t:'img'}]},
-  gal:{single:1,items:[{gallery:lines(I.gallery)}],f:[{k:'gallery',t:'chips',l:'Galerie — liens d’images',ph:'https://…',w:1}]},
-  chars:{S:360,add:'＋ Personnage',items:(I.chars||[]).map(cvt),f:[
+  gal:{single:1,items:[{gallery:lines(I.gallery)}],f:[{k:'gallery',t:'chips',l:'Gallery — image links',ph:'https://…',w:1}]},
+  chars:{S:360,add:'＋ Character',items:(I.chars||[]).map(cvt),f:[
    {k:'media',t:'img'},
-   {k:'vpos',t:'text',ph:'Cadrage image / vidéo (object-position, ex. center 20%)'},
-   {k:'qtop',t:'text',ph:'Citation — top (ex. -40px)'},
-   {k:'old',t:'text',ph:'Ancien prénom (affiché barré)',h:1},{k:'name',t:'text',ph:'Prénom Nom actuel',h:1},
-   {k:'quote',t:'area',rows:3,ph:'Citation du personnage'},{k:'by',t:'text',ph:'@pseudo (auteur de la citation)'},
-   {k:'fields',t:'kv',l:'Informations'},
-   {k:'anec',t:'chips',l:'Anecdotes',ph:'Une anecdote'},
-   {k:'imgs',t:'chips',l:'Moodboard — liens d’images',ph:'https://…',w:1}]},
-  places:{S:480,add:'＋ Lieu',items:(I.places||[]).map(x=>({...x})),f:[{k:'img',t:'img'},{k:'name',t:'text',ph:'Nom du lieu'},{k:'sub',t:'text',ph:'Lieu parent (optionnel)'}]},
-  sec:{S:200,add:'＋ Personnage secondaire',items:(I.sec||[]).map(x=>({...x,fields:kvOf(x,DEF2)})),f:[{k:'img',t:'img'},{k:'name',t:'text',ph:'Nom'},{k:'sub',t:'text',ph:'Relation / rôle'},{k:'fields',t:'kv',l:'Informations'},{k:'desc',t:'area',rows:5,ph:'Description : personnalité, histoire, rapport avec les personnages principaux…'}]}
+   {k:'vpos',t:'text',ph:'Image / video framing (object-position, e.g. center 20%)'},
+   {k:'qtop',t:'text',ph:'Quote — top (e.g. -40px)'},
+   {k:'old',t:'text',ph:'Former first name (shown struck through)',h:1},{k:'name',t:'text',ph:'Current first and last name',h:1},
+   {k:'quote',t:'area',rows:3,ph:'Character quote'},{k:'by',t:'text',ph:'@handle (quote author)'},
+   {k:'fields',t:'kv',l:'Details'},
+   {k:'anec',t:'chips',l:'Trivia',ph:'A piece of trivia'},
+   {k:'imgs',t:'chips',l:'Moodboard — image links',ph:'https://…',w:1}]},
+  places:{S:480,add:'＋ Place',items:(I.places||[]).map(x=>({...x})),f:[{k:'img',t:'img'},{k:'name',t:'text',ph:'Place name'},{k:'sub',t:'text',ph:'Parent place (optional)'}]},
+  sec:{S:200,add:'＋ Secondary character',items:(I.sec||[]).map(x=>({...x,fields:kvOf(x,DEF2)})),f:[{k:'img',t:'img'},{k:'name',t:'text',ph:'Name'},{k:'sub',t:'text',ph:'Relationship / role'},{k:'fields',t:'kv',l:'Details'},{k:'desc',t:'area',rows:5,ph:'Description: personality, backstory, relationship with the main characters…'}]}
  };
  const o=document.createElement('div');o.id='modal';
  const crow=(k,v,l,auto)=>`<div><span>${l}</span><input type="color" name="${k}" value="${v}"${auto?' data-auto="1"':''}><button type="button" class="btn sm" data-ca="${k}">Auto</button></div>`;
  const fld=(f,it)=>{const v=it[f.k]||'';
-  if(f.t==='img')return`<div class="imgf">${mediaHtml(v,it.name||'')}<div><input type="text" data-k="${f.k}" placeholder="Lien image / vidéo (https://…)" value="${q(v.startsWith('data:')?'':v)}"><div><input type="file" accept="image/*" hidden data-f><button type="button" class="btn sm" data-pick>Image…</button>${v?' <button type="button" class="btn sm" data-rm>Retirer</button>':''}</div></div></div>`;
+  if(f.t==='img')return`<div class="imgf">${mediaHtml(v,it.name||'')}<div><input type="text" data-k="${f.k}" placeholder="Image / video link (https://…)" value="${q(v.startsWith('data:')?'':v)}"><div><input type="file" accept="image/*" hidden data-f><button type="button" class="btn sm" data-pick>Image…</button>${v?' <button type="button" class="btn sm" data-rm>Remove</button>':''}</div></div></div>`;
   if(f.t==='area')return`<textarea data-k="${f.k}" rows="${f.rows||3}" placeholder="${q(f.ph||'')}">${esc(v)}</textarea>`;
-  if(f.t==='kv')return`<div class="kvb" data-fk="${f.k}"><div class="lab">${f.l}</div>${(it[f.k]||[]).map((r,i)=>`<div class="kvr"><input type="text" class="kk" placeholder="Intitulé" value="${q(r[0])}"><input type="text" class="kvv" placeholder="Valeur" value="${q(r[1])}"><button type="button" class="cx" data-kvx="${i}" title="Retirer">✕</button></div>`).join('')}<button type="button" class="btn sm" data-kvadd>＋ Info</button></div>`;
-  if(f.t==='chips')return`<div class="chips" data-fk="${f.k}"><div class="lab">${f.l}</div><div class="cl">${(it[f.k]||[]).map((x,i)=>`<div class="chip${f.w?' w':''}"><input type="text" data-ci placeholder="${q(f.ph||'')}" value="${q(x)}"><button type="button" class="cx" data-cx="${i}" title="Retirer">✕</button></div>`).join('')}<button type="button" class="cp" data-cadd title="Ajouter">＋</button></div></div>`;
+  if(f.t==='kv')return`<div class="kvb" data-fk="${f.k}"><div class="lab">${f.l}</div>${(it[f.k]||[]).map((r,i)=>`<div class="kvr"><input type="text" class="kk" placeholder="Label" value="${q(r[0])}"><input type="text" class="kvv" placeholder="Value" value="${q(r[1])}"><button type="button" class="cx" data-kvx="${i}" title="Remove">✕</button></div>`).join('')}<button type="button" class="btn sm" data-kvadd>＋ Info</button></div>`;
+  if(f.t==='chips')return`<div class="chips" data-fk="${f.k}"><div class="lab">${f.l}</div><div class="cl">${(it[f.k]||[]).map((x,i)=>`<div class="chip${f.w?' w':''}"><input type="text" data-ci placeholder="${q(f.ph||'')}" value="${q(x)}"><button type="button" class="cx" data-cx="${i}" title="Remove">✕</button></div>`).join('')}<button type="button" class="cp" data-cadd title="Add">＋</button></div></div>`;
   return`<input type="text" data-k="${f.k}"${f.h?' class="h"':''} placeholder="${q(f.ph||'')}" value="${q(v)}">`};
- const rowH=(key,it)=>`<div class="ce" data-l="${key}"><div class="cf">${L[key].f.map(f=>fld(f,it)).join('')}${L[key].single?'':'<div class="ra"><button type="button" class="btn sm" data-up>↑</button><button type="button" class="btn sm" data-dn>↓</button><button type="button" class="btn sm" data-del>Supprimer</button></div>'}</div></div>`;
+ const rowH=(key,it)=>`<div class="ce" data-l="${key}"><div class="cf">${L[key].f.map(f=>fld(f,it)).join('')}${L[key].single?'':'<div class="ra"><button type="button" class="btn sm" data-up>↑</button><button type="button" class="btn sm" data-dn>↓</button><button type="button" class="btn sm" data-del>Delete</button></div>'}</div></div>`;
  const sec=(key,t)=>`<div id="S_${key}"><b class="eh">${t}</b><div id="L_${key}"></div><button type="button" class="btn sm" data-add="${key}">${L[key].add}</button></div>`;
- o.innerHTML=`<form class="glass wide"><h3>Fiche — ${esc(s)}</h3>
-<div id="S_gen"><b class="eh">Général</b><label>Icône du scénario</label><div id="L_gen"></div>
-<label>Couleurs du dégradé (la première est la couleur principale)</label><div class="cors">${crow('c1',P[0],'1',!colors[s])}${crow('c2',P[1],'2',!I.c2)}${crow('c3',P[2],'3',!I.c3)}</div>
-<label>Synopsis (**gras**, *italique*, ++souligné++)</label><textarea name="plot" rows="6">${esc(I.plot||'')}</textarea>
+ o.innerHTML=`<form class="glass wide"><h3>Sheet — ${esc(s)}</h3>
+<div id="S_gen"><b class="eh">General</b><label>Scenario icon</label><div id="L_gen"></div>
+<label>Gradient colours (the first one is the main colour)</label><div class="cors">${crow('c1',P[0],'1',!colors[s])}${crow('c2',P[1],'2',!I.c2)}${crow('c3',P[2],'3',!I.c3)}</div>
+<label>Synopsis (**bold**, *italic*, ++underline++)</label><textarea name="plot" rows="6">${esc(I.plot||'')}</textarea>
 <div id="L_gal"></div></div>
-${sec('chars','Personnages')}${sec('places','Lieux')}${sec('sec','Personnages secondaires')}
-<div class="row"><button type="button" class="btn" data-x>Annuler</button><button class="btn pri">Enregistrer</button></div></form>`;
+${sec('chars','Characters')}${sec('places','Places')}${sec('sec','Secondary characters')}
+<div class="row"><button type="button" class="btn" data-x>Cancel</button><button class="btn pri">Save</button></div></form>`;
  document.body.appendChild(o);
  const f=o.querySelector('form'),close=()=>o.remove();
- const draw=key=>{o.querySelector('#L_'+key).innerHTML=L[key].items.map(it=>rowH(key,it)).join('')||(L[key].single?'':'<div class="n" style="margin:6px 0">Rien pour l’instant.</div>')};
+ const draw=key=>{o.querySelector('#L_'+key).innerHTML=L[key].items.map(it=>rowH(key,it)).join('')||(L[key].single?'':'<div class="n" style="margin:6px 0">Nothing yet.</div>')};
  const rowsOf=key=>[...o.querySelectorAll(`.ce[data-l="${key}"]`)];
  const sync=key=>rowsOf(key).forEach((e,i)=>{const l=L[key],it=l.items[i];if(!it)return;
   l.f.forEach(fl=>{
@@ -1121,7 +1121,7 @@ ${sec('chars','Personnages')}${sec('places','Lieux')}${sec('sec','Personnages se
   if(e.target===o||e.target.dataset.x!==undefined)return close();
   const b=e.target.closest('button');if(!b)return;
   if(b.dataset.add){const key=b.dataset.add;sync(key);L[key].items.push(key==='chars'?{fields:kvOf({}),anec:[],imgs:[]}:key==='sec'?{fields:kvOf({},DEF2)}:{});draw(key);return}
-  if(b.dataset.ca){const el=f.elements[b.dataset.ca];el.dataset.auto='1';toast('Couleur automatique');return}
+  if(b.dataset.ca){const el=f.elements[b.dataset.ca];el.dataset.auto='1';toast('Automatic colour');return}
   const ce=b.closest('.ce');if(!ce)return;
   const key=ce.dataset.l,l=L[key];
   if(b.dataset.pick!==undefined){ce.querySelector('[data-f]').click();return}
@@ -1142,7 +1142,7 @@ ${sec('chars','Personnages')}${sec('places','Lieux')}${sec('sec','Personnages se
  f.addEventListener('change',async e=>{
   if(!e.target.matches('[data-f]')||!e.target.files[0])return;
   const ce=e.target.closest('.ce'),key=ce.dataset.l;sync(key);const i=rowsOf(key).indexOf(ce);
-  try{L[key].items[i][imgk(key)]=await thumb(e.target.files[0],L[key].S);draw(key)}catch(x){toast('Image illisible. Pour une vidéo, colle un lien (.mp4 / .webm).')}
+  try{L[key].items[i][imgk(key)]=await thumb(e.target.files[0],L[key].S);draw(key)}catch(x){toast('Unreadable image. For a video, paste a link (.mp4 / .webm).')}
  });
  f.onsubmit=e=>{e.preventDefault();Object.keys(L).forEach(sync);
   const E=f.elements,auto=n=>E[n].dataset.auto==='1';
@@ -1159,16 +1159,16 @@ ${sec('chars','Personnages')}${sec('places','Lieux')}${sec('sec','Personnages se
  };
 }
 
-/* ---------- sauvegarde des données ---------- */
+/* ---------- data backup ---------- */
 const payload=()=>JSON.stringify({v:2,savedAt,lib,colors,alias,order,info},null,1);
 async function exportData(){
  const data=payload(),name='lecteur-data.json';
  try{
   const dl=window.claude&&claude.use?await claude.use('downloads'):null;
-  if(dl){await dl.save({filename:name,data});toast('Fichier prêt.');return}
+  if(dl){await dl.save({filename:name,data});toast('File ready.');return}
  }catch(e){if(e&&e.code==='declined')return}
  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([data],{type:'application/json'}));a.download=name;
- document.body.appendChild(a);a.click();a.remove();toast('Fichier téléchargé.');
+ document.body.appendChild(a);a.click();a.remove();toast('File downloaded.');
 }
 function applyData(d,mode){
  (d.lib||[]).forEach(a=>{const m=cleanTail(a.md||'');if(m)a.md=m});
@@ -1183,7 +1183,7 @@ function applyData(d,mode){
  cleanLib();
  save();render();
 }
-/* ---------- import d’une ancienne page de fiches (.html) ---------- */
+/* ---------- import of an old sheets page (.html) ---------- */
 const rgb2hex=t=>'#'+t.split(',').map(x=>Math.max(0,Math.min(255,parseInt(x)||0)).toString(16).padStart(2,'0')).join('');
 const decH=h=>{const t=document.createElement('textarea');t.innerHTML=h;return t.value};
 const stripH=h=>decH(h.replace(/<[^>]+>/g,'')).replace(/\s+/g,' ').trim();
@@ -1252,7 +1252,7 @@ function importSheet(txt,over){
 
 function dataModal(){
  const o=document.createElement('div');o.id='modal';
- o.innerHTML=`<form class="glass"><h3>Sauvegarde des données</h3><p class="n" style="font-size:13px;line-height:1.5;margin:0 0 12px">Scénarios, titres, couleurs, ordre, synopsis et personnages tiennent dans un seul fichier, <b>lecteur-data.json</b>. Place-le dans le même dossier GitHub (Pages) que cette page : elle le charge toute seule au démarrage, sur tous tes appareils. Après une modification, exporte et remplace le fichier sur GitHub.</p><div class="dcol" style="margin-bottom:14px"><b style="font-size:14px">Synchronisation automatique avec GitHub</b><p class="n" style="font-size:12.5px;line-height:1.5;margin:0">Chaque modification est envoyée toute seule dans le fichier du dépôt (et relue à l’ouverture). Crée un jeton « fine-grained » limité à ce dépôt, avec la permission <b>Contents : Read and write</b> (github.com/settings/personal-access-tokens). Le jeton reste dans ce navigateur, à renseigner une fois par appareil, et n’est jamais écrit dans le fichier de données.</p><div class="two"><input type="text" name="gho" placeholder="Propriétaire (ton pseudo)" value="${q(gh.owner)}"><input type="text" name="ghr" placeholder="Dépôt" value="${q(gh.repo)}"></div><div class="two"><input type="text" name="ghb" placeholder="Branche (main)" value="${q(gh.branch)}"><input type="text" name="ghp" placeholder="Fichier (lecteur-data.json)" value="${q(gh.path)}"></div><input type="text" name="ght" placeholder="${gh.token?'Jeton enregistré (laisser vide pour le garder)':'Jeton d’accès GitHub'}" autocomplete="off" style="-webkit-text-security:disc"><div class="two"><button type="button" class="btn pri" data-ghs>Enregistrer et synchroniser</button><button type="button" class="btn" data-ghx>Déconnecter</button></div><button type="button" class="btn" data-ghl>Copier le lien d’installation rapide (autre appareil)</button><input type="text" id="ghl" readonly style="display:none"><p class="n" style="font-size:12px;line-height:1.5;margin:0">⚠ Ce lien contient ton jeton : envoie-le uniquement à toi-même (note personnelle, gestionnaire de mots de passe), ne le partage pas. En cas de fuite, révoque le jeton sur GitHub.</p><div class="n" id="ghst"></div></div><div class="dcol"><button type="button" class="btn" data-dl>Télécharger lecteur-data.json</button><button type="button" class="btn" data-cp>Copier le JSON</button><button type="button" class="btn" data-zipf title="Un dossier par scénario : fiche complète, un fichier par personnage principal et secondaire">Télécharger toutes les fiches pour une IA (.zip)</button><label>Importer un fichier de données</label><select name="mode"><option value="merge">Fusionner avec ma bibliothèque</option><option value="replace">Remplacer ma bibliothèque</option></select><input type="file" accept=".json,application/json" data-imp><label>Importer une ancienne page de fiches (.html)</label><select name="smode"><option value="fill">Compléter seulement les champs vides</option><option value="over">Écraser les champs importés</option></select><input type="file" accept=".html,text/html" data-sheet></div><div class="row"><button type="button" class="btn" data-x>Fermer</button></div></form>`;
+ o.innerHTML=`<form class="glass"><h3>Data backup</h3><p class="n" style="font-size:13px;line-height:1.5;margin:0 0 12px">Scenarios, titles, colours, order, synopses and characters all fit in a single file, <b>lecteur-data.json</b>. Put it in the same GitHub (Pages) folder as this page: it loads it automatically on startup, on all your devices. After making changes, export it and replace the file on GitHub.</p><div class="dcol" style="margin-bottom:14px"><b style="font-size:14px">Automatic sync with GitHub</b><p class="n" style="font-size:12.5px;line-height:1.5;margin:0">Every change is sent automatically to the file in the repository (and read back when the page opens). Create a “fine-grained” token limited to this repository, with the <b>Contents: Read and write</b> permission (github.com/settings/personal-access-tokens). The token stays in this browser, needs to be entered once per device, and is never written to the data file.</p><div class="two"><input type="text" name="gho" placeholder="Owner (your username)" value="${q(gh.owner)}"><input type="text" name="ghr" placeholder="Repository" value="${q(gh.repo)}"></div><div class="two"><input type="text" name="ghb" placeholder="Branch (main)" value="${q(gh.branch)}"><input type="text" name="ghp" placeholder="File (lecteur-data.json)" value="${q(gh.path)}"></div><input type="text" name="ght" placeholder="${gh.token?'Token saved (leave empty to keep it)':'GitHub access token'}" autocomplete="off" style="-webkit-text-security:disc"><div class="two"><button type="button" class="btn pri" data-ghs>Save and sync</button><button type="button" class="btn" data-ghx>Disconnect</button></div><button type="button" class="btn" data-ghl>Copy quick-setup link (other device)</button><input type="text" id="ghl" readonly style="display:none"><p class="n" style="font-size:12px;line-height:1.5;margin:0">⚠ This link contains your token: only send it to yourself (personal note, password manager), never share it. If it leaks, revoke the token on GitHub.</p><div class="n" id="ghst"></div></div><div class="dcol"><button type="button" class="btn" data-dl>Download lecteur-data.json</button><button type="button" class="btn" data-cp>Copy the JSON</button><button type="button" class="btn" data-zipf title="One folder per scenario: full sheet, one file per main and secondary character">Download all sheets for an AI (.zip)</button><label>Import a data file</label><select name="mode"><option value="merge">Merge with my library</option><option value="replace">Replace my library</option></select><input type="file" accept=".json,application/json" data-imp><label>Import an old sheets page (.html)</label><select name="smode"><option value="fill">Only fill in empty fields</option><option value="over">Overwrite imported fields</option></select><input type="file" accept=".html,text/html" data-sheet></div><div class="row"><button type="button" class="btn" data-x>Close</button></div></form>`;
  document.body.appendChild(o);
  const close=()=>o.remove();
  o.onclick=e=>{
@@ -1262,24 +1262,24 @@ function dataModal(){
   if(e.target.dataset.ghs!==undefined){
    const v=n=>o.querySelector(`[name=${n}]`).value.trim();
    gh.owner=v('gho');gh.repo=v('ghr').replace(/\.git$/,'');gh.branch=v('ghb')||'main';gh.path=v('ghp')||'lecteur-data.json';if(v('ght'))gh.token=v('ght');
-   ghSave();if(!ghOn())return toast('Renseigne le propriétaire, le dépôt et le jeton.');
+   ghSave();if(!ghOn())return toast('Enter the owner, repository and token.');
    ghStart();
   }
   if(e.target.dataset.ghl!==undefined){
-   if(!ghOn())return toast('Enregistre d’abord la synchronisation.');
+   if(!ghOn())return toast('Save the sync settings first.');
    const link=location.href.split('#')[0]+'#setup='+b64(JSON.stringify({o:gh.owner,r:gh.repo,b:gh.branch,p:gh.path,t:gh.token})).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
    const i=o.querySelector('#ghl');i.style.display='';i.value=link;i.select();
-   navigator.clipboard.writeText(link).then(()=>toast('Lien copié.'),()=>toast('Sélectionne et copie le lien affiché.'));
+   navigator.clipboard.writeText(link).then(()=>toast('Link copied.'),()=>toast('Select and copy the link shown.'));
   }
-  if(e.target.dataset.ghx!==undefined){gh.token='';ghSave();clearTimeout(ghT);ghT=null;setMsg('','Synchronisation désactivée.')}
-  if(e.target.dataset.cp!==undefined)navigator.clipboard.writeText(payload()).then(()=>toast('JSON copié.'),()=>toast('Copie impossible.'));
+  if(e.target.dataset.ghx!==undefined){gh.token='';ghSave();clearTimeout(ghT);ghT=null;setMsg('','Sync disabled.')}
+  if(e.target.dataset.cp!==undefined)navigator.clipboard.writeText(payload()).then(()=>toast('JSON copied.'),()=>toast('Could not copy.'));
  };
  o.addEventListener('change',async e=>{
-  if(e.target.matches('[data-sheet]')&&e.target.files[0]){try{const n=importSheet(await e.target.files[0].text(),o.querySelector('[name=smode]').value==='over');save();render();close();toast(n?`${n} fiche(s) de scénario importée(s).`:'Aucune fiche reconnue dans ce fichier.')}catch(x){toast('Fichier illisible.')}return}
+  if(e.target.matches('[data-sheet]')&&e.target.files[0]){try{const n=importSheet(await e.target.files[0].text(),o.querySelector('[name=smode]').value==='over');save();render();close();toast(n?`${n} scenario sheet(s) imported.`:'No sheets recognised in this file.')}catch(x){toast('Unreadable file.')}return}
   if(!e.target.matches('[data-imp]')||!e.target.files[0])return;
   try{const d=JSON.parse(await e.target.files[0].text());if(!d||!Array.isArray(d.lib))throw 0;
-   applyData(d,o.querySelector('[name=mode]').value);close();toast('Données importées.');
-  }catch(x){toast('Fichier de données invalide.')}
+   applyData(d,o.querySelector('[name=mode]').value);close();toast('Data imported.');
+  }catch(x){toast('Invalid data file.')}
  });
 }
 async function loadRemote(){
@@ -1287,11 +1287,11 @@ async function loadRemote(){
   const r=await fetch('lecteur-data.json',{cache:'no-store'});if(!r.ok)return;
   const d=await r.json();if(!d||!Array.isArray(d.lib))return;
   const at=d.savedAt||0;
-  if(!lib.length||at>savedAt){applyData(d,'replace');savedAt=at||Date.now();lastSnap=snap();save();isMobile()||toast('Données chargées depuis lecteur-data.json.')}
-  else if(savedAt>at&&!isMobile())toast('Tes données locales sont plus récentes que lecteur-data.json : pense à exporter.');
+  if(!lib.length||at>savedAt){applyData(d,'replace');savedAt=at||Date.now();lastSnap=snap();save();isMobile()||toast('Data loaded from lecteur-data.json.')}
+  else if(savedAt>at&&!isMobile())toast('Your local data is newer than lecteur-data.json: remember to export.');
  }catch(e){}
 }
-/* ---------- synchro GitHub automatique ---------- */
+/* ---------- automatic GitHub sync ---------- */
 const GK='lecteur-gh-v1';
 let gh={owner:'',repo:'',branch:'main',path:'lecteur-data.json',token:''},ghSha=null,ghT=null,ghBusy=false,suppress=false;
 try{Object.assign(gh,JSON.parse(localStorage.getItem(GK)||'{}'))}catch(e){}
@@ -1299,10 +1299,10 @@ const ghSave=()=>{try{localStorage.setItem(GK,JSON.stringify(gh))}catch(e){}};
 const ghOn=()=>!!(gh.token&&gh.owner&&gh.repo);
 const ghUrl=()=>`https://api.github.com/repos/${encodeURIComponent(gh.owner)}/${encodeURIComponent(gh.repo)}/contents/${gh.path.split('/').map(encodeURIComponent).join('/')}`;
 const ghH=raw=>({Authorization:'Bearer '+gh.token,Accept:raw?'application/vnd.github.raw+json':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'});
-const hhmm=()=>new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+const hhmm=()=>new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
 function setMsg(short,full){const e=$('#sync');if(e){e.textContent=ghOn()?short:'';e.title=full||short}const m=$('#ghst');if(m)m.textContent=full||short}
 function b64(str){const b=new TextEncoder().encode(str);let t='';for(let i=0;i<b.length;i+=0x8000)t+=String.fromCharCode.apply(null,b.subarray(i,i+0x8000));return btoa(t)}
-const ghErr=r=>r.status===401||r.status===403?'jeton refusé ou permissions insuffisantes ('+r.status+')':r.status===404?'dépôt, branche ou accès introuvable':'erreur '+r.status;
+const ghErr=r=>r.status===401||r.status===403?'token rejected or insufficient permissions ('+r.status+')':r.status===404?'repository, branch or access not found':'error '+r.status;
 async function ghPull(){
  const u=ghUrl()+'?ref='+encodeURIComponent(gh.branch);
  const r=await fetch(u,{headers:ghH(),cache:'no-store'});
@@ -1316,36 +1316,36 @@ async function ghPull(){
 }
 async function ghPush(retry){
  if(!ghOn())return;
- ghBusy=true;setMsg('Envoi…','Envoi vers GitHub…');
+ ghBusy=true;setMsg('Sending…','Sending to GitHub…');
  try{
-  const body={message:'Mise à jour des données — '+new Date().toLocaleString('fr-FR'),content:b64(payload()),branch:gh.branch};
+  const body={message:'Data update — '+new Date().toLocaleString('en-US'),content:b64(payload()),branch:gh.branch};
   if(ghSha)body.sha=ghSha;
   const r=await fetch(ghUrl(),{method:'PUT',headers:{...ghH(),'Content-Type':'application/json'},body:JSON.stringify(body)});
   if((r.status===409||r.status===422)&&!retry){await ghPull();ghBusy=false;return ghPush(true)}
   if(!r.ok)throw new Error(ghErr(r));
   ghSha=(await r.json()).content.sha;
-  setMsg('Synchronisé ✓','Synchronisé avec GitHub à '+hhmm()+'.');
- }catch(e){setMsg('Échec ✗','Échec de la synchronisation : '+e.message)}
+  setMsg('Synced ✓','Synced with GitHub at '+hhmm()+'.');
+ }catch(e){setMsg('Failed ✗','Sync failed: '+e.message)}
  finally{ghBusy=false}
 }
 function ghSchedule(){
  if(!ghOn()||suppress||isMobile())return;
- clearTimeout(ghT);setMsg('En attente…','Modifications en attente d’envoi…');
+ clearTimeout(ghT);setMsg('Pending…','Changes waiting to be sent…');
  ghT=setTimeout(()=>{ghT=null;ghPush()},2500);
 }
 async function ghStart(){
  if(!ghOn())return;
  try{
-  setMsg('Connexion…','Connexion à GitHub…');
+  setMsg('Connecting…','Connecting to GitHub…');
   const d=await ghPull();
   if(d&&Array.isArray(d.lib)){
    const at=d.savedAt||0;
-   if(!lib.length||at>savedAt){suppress=true;applyData(d,'replace');savedAt=at||Date.now();lastSnap=snap();save();suppress=false;setMsg('Synchronisé ✓','Données chargées depuis GitHub à '+hhmm()+'.');toast('Données chargées depuis GitHub.')}
+   if(!lib.length||at>savedAt){suppress=true;applyData(d,'replace');savedAt=at||Date.now();lastSnap=snap();save();suppress=false;setMsg('Synced ✓','Data loaded from GitHub at '+hhmm()+'.');toast('Data loaded from GitHub.')}
    else if(savedAt>at)await ghPush();
-   else setMsg('Synchronisé ✓','À jour avec GitHub ('+hhmm()+').');
+   else setMsg('Synced ✓','Up to date with GitHub ('+hhmm()+').');
   }else if(lib.length)await ghPush();
-  else setMsg('Connecté ✓','Connecté à GitHub : aucun fichier de données pour l’instant.');
- }catch(e){suppress=false;setMsg('Échec ✗','Échec de la connexion : '+e.message)}
+  else setMsg('Connected ✓','Connected to GitHub: no data file yet.');
+ }catch(e){suppress=false;setMsg('Failed ✗','Connection failed: '+e.message)}
 }
 document.addEventListener('visibilitychange',()=>{if(document.hidden||ghBusy||ghT)return;ghOn()&&!isMobile()?ghStart():loadRemote()});
 $('#dlz').onclick=exportAll;
@@ -1373,7 +1373,7 @@ function readSetup(){
   const d=JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(m[1].replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0))));
   history.replaceState(null,'',location.pathname+location.search);
   if(!d.o||!d.r||!d.t)return;
-  Object.assign(gh,{owner:d.o,repo:d.r,branch:d.b||'main',path:d.p||'lecteur-data.json',token:d.t});ghSave();toast('Synchronisation GitHub configurée.');
+  Object.assign(gh,{owner:d.o,repo:d.r,branch:d.b||'main',path:d.p||'lecteur-data.json',token:d.t});ghSave();toast('GitHub sync configured.');
  }catch(e){}
 }
 async function boot(){
@@ -1394,19 +1394,19 @@ boot();
 </script>
 <style>
 /* =====================================================================
-   ANIMATIONS & FINITIONS — ajoutées par-dessus, le design d'origine est intact
+   ANIMATIONS & FINISHING TOUCHES — added on top, the original design is untouched
    ===================================================================== */
 :root{--ease:cubic-bezier(.22,1,.36,1);--spring:cubic-bezier(.34,1.56,.64,1)}
 
-/* ---------- apparition des blocs au défilement (classes posées par le script) ---------- */
+/* ---------- blocks appearing on scroll (classes set by the script) ---------- */
 .rv{opacity:0;transform:translateY(28px) scale(.985);filter:blur(4px);transition:opacity .8s var(--ease),transform .9s var(--ease),filter .8s var(--ease);transition-delay:var(--d,0s)}
 .rv.in{opacity:1;transform:none;filter:none}
 .rvl{opacity:0;transform:translateY(12px);transition:opacity .7s var(--ease),transform .8s var(--ease)}
 .rvl.in{opacity:1;transform:none}
 
-/* ---------- bannière ----------
-   la bannière elle-même n'est jamais rendue transparente : sinon l'image en mix-blend-mode
-   se retrouve isolée et s'affiche en blanc. On anime seulement son contenu. */
+/* ---------- banner ----------
+   the banner itself is never made transparent: otherwise the mix-blend-mode image
+   gets isolated and shows up white. Only its content is animated. */
 .drm-business top{background-size:200% 100%!important;animation:topflow 14s ease-in-out infinite alternate;overflow:hidden}
 @keyframes topflow{from{background-position:0% 50%}to{background-position:100% 50%}}
 .drm-business top::before{content:'';position:absolute;inset:-30%;pointer-events:none;
@@ -1427,7 +1427,7 @@ top.hello tb .tab:nth-child(1){animation-delay:.6s}top.hello tb .tab:nth-child(2
 .drm-business > .bt{animation:fadein 1s ease .9s backwards}
 @keyframes upin{from{opacity:0;transform:translateY(14px)}}
 
-/* ---------- boutons, onglets ---------- */
+/* ---------- buttons, tabs ---------- */
 .btn,.tab{transition:border-color .2s,background .25s,color .2s,transform .25s var(--spring),box-shadow .25s}
 .btn:hover,.tab:hover{transform:translateY(-1px)}
 .btn:active,.tab:active{transform:scale(.95)}
@@ -1437,7 +1437,7 @@ top.hello tb .tab:nth-child(1){animation-delay:.6s}top.hello tb .tab:nth-child(2
 .rip{position:absolute;border-radius:50%;pointer-events:none;background:rgba(255,255,255,.35);transform:scale(0);animation:rip .6s ease-out forwards}
 @keyframes rip{to{transform:scale(1);opacity:0}}
 
-/* ---------- barre latérale ---------- */
+/* ---------- sidebar ---------- */
 .sc>.t{position:relative;overflow:hidden;transition:background .25s,transform .3s var(--ease)}
 .sc>.t:hover{transform:translateX(3px)}
 .sc.on>.t{background-size:200% 200%!important;animation:gradmove 8s ease infinite}
@@ -1458,7 +1458,7 @@ body.boot nav .sc{animation:navin .6s var(--ease) both;animation-delay:calc(var(
 abt.in block{animation:clipin 1.1s var(--ease) .1s backwards}
 @keyframes clipin{from{clip-path:inset(0 0 100% 0 round 6px);opacity:.3}}
 
-/* ---------- personnages principaux : entrée en trois temps ---------- */
+/* ---------- main characters: three-step entrance ---------- */
 .star-speech.go .star-con pic{animation:picin 1s var(--ease) backwards}
 .star-speech.go > h{animation:hin 1s var(--ease) .2s backwards}
 .star-speech.go .star-con ch-quote{animation:quotein 1s var(--spring) .35s backwards}
@@ -1471,7 +1471,7 @@ abt.in block{animation:clipin 1.1s var(--ease) .1s backwards}
 .star-speech .star-con ch-quote:before{animation:qfloat 6s ease-in-out infinite}
 @keyframes qfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 
-/* ---------- cartes : survols + halo qui suit la souris ---------- */
+/* ---------- cards: hovers + glow that follows the mouse ---------- */
 .spot{position:relative;overflow:hidden}
 .spot::after{content:'';position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .35s;border-radius:inherit;
  background:radial-gradient(220px circle at var(--mx,50%) var(--my,50%),rgba(var(--clr2).22),transparent 70%)}
@@ -1493,7 +1493,7 @@ span2 bg{transition:all .8s var(--ease)!important}
 .tilt{transition:transform .5s var(--ease)}
 .tilt.tilting{transition:transform .08s linear}
 
-/* ---------- lecture ---------- */
+/* ---------- reading ---------- */
 #rp{position:fixed;top:0;left:0;right:0;height:3px;z-index:40;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(to right,var(--c1),var(--c2),var(--c3));box-shadow:0 0 12px var(--c1);opacity:0;transition:opacity .3s}
 body.reading #rp{opacity:1}
 .arcsep.rv{transform:translateX(-30px)}
@@ -1510,7 +1510,7 @@ body.reading #rp{opacity:1}
 #totop.on{opacity:1;transform:none;pointer-events:auto}
 #totop:hover{transform:translateY(-3px)}
 
-/* ---------- fenêtres, menus, visionneuse, notifications ---------- */
+/* ---------- dialogs, menus, viewer, notifications ---------- */
 #modal{animation:fadein .3s ease both}
 #modal form{animation:popin .45s var(--spring) both}
 #ctx{animation:popin .25s var(--ease) both;transform-origin:top left}
@@ -1524,7 +1524,7 @@ body.reading #rp{opacity:1}
 main{scroll-behavior:smooth}
 </style>
 <div id="rp"></div>
-<button id="totop" title="Revenir en haut" aria-label="Revenir en haut">↑</button>
+<button id="totop" title="Back to top" aria-label="Back to top">↑</button>
 <script>
 (()=>{
  const main=document.getElementById('main'),rp=document.getElementById('rp'),totop=document.getElementById('totop');
@@ -1532,7 +1532,7 @@ main{scroll-behavior:smooth}
  document.body.classList.add('boot');setTimeout(()=>document.body.classList.remove('boot'),1800);
  let last='',lastT=0,io=null;
 
- /* ===== apparitions ===== */
+ /* ===== entrances ===== */
  const SEL='.drm-business inner > :not(.star-speech), .star-speech, .lect .arcsep, .lect article, .drm-business inner mem a, .drm-business inner grid span, .cg .cblk, .cg k, .anl span, rapapa span2';
  function apply(){
   document.querySelectorAll('#nav .sc').forEach((e,i)=>e.style.setProperty('--i',i));
@@ -1564,7 +1564,7 @@ main{scroll-behavior:smooth}
  totop.onclick=()=>main.scrollTo({top:0,behavior:'smooth'});
  main.addEventListener('scroll',onScroll,{passive:true});
 
- /* halo qui suit la souris + inclinaison 3D des portraits */
+ /* glow that follows the mouse + 3D tilt of the portraits */
  main.addEventListener('pointermove',e=>{
   const s=e.target.closest('.spot');
   if(s){const r=s.getBoundingClientRect();s.style.setProperty('--mx',e.clientX-r.left+'px');s.style.setProperty('--my',e.clientY-r.top+'px')}
@@ -1574,7 +1574,7 @@ main{scroll-behavior:smooth}
  },{passive:true});
  main.addEventListener('pointerout',e=>{const t=e.target.closest('.tilt');if(t&&!t.contains(e.relatedTarget)){t.classList.remove('tilting');t.style.transform=''}});
 
- /* onde au clic sur les boutons */
+ /* ripple on button click */
  document.addEventListener('pointerdown',e=>{
   const b=e.target.closest('.btn,.tab,.secb,#totop');if(!b)return;
   const r=b.getBoundingClientRect(),d=Math.max(r.width,r.height)*2,i=document.createElement('i');
