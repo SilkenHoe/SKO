@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1795376620386,
+ "savedAt": 1795376673863,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -1754,28 +1754,26 @@
      "old": "",
      "name": "Evelyn Harrington",
      "media": "https://www.aht.li/3943118/Dont_bore_me.mp4",
-     "fields": "âge: 31 ans\noccupation: CEO",
+     "fields": "âge: 31 ans\noccupation: CEO\ngender: female",
      "anec": "",
      "imgs": "",
      "quote": "Deception is only vulgar when it fails. I didn’t expose him — I refined him, shaped the lie until it learned to walk in heels. Shame looks exquisite when tailored correctly.",
      "by": "@1800dominatrix",
      "vpos": "",
-     "htop": "",
-     "hright": ""
+     "qtop": ""
     },
     {
      "id": "21ctdq",
      "old": "Eliott",
      "name": "Eleonore Donovan",
      "media": "https://www.aht.li/3943140/Slim_or_baggy_fit_.mp4",
-     "fields": "âge: 21 ans\noccupation: Secrétaire",
+     "fields": "âge: 21 ans\noccupation: Secretary\ngender: male (sissified)",
      "anec": "",
      "imgs": "",
      "quote": "Every rule she gave tasted like absolution wrapped in silk. I kept obeying, not to survive, but to stay within the warmth of her attention. By the time I looked in the mirror, I was already hers.",
      "by": "@leyagornaya",
      "vpos": "center 5%",
-     "htop": "",
-     "hright": ""
+     "qtop": ""
     }
    ],
    "icon": "https://i.imgur.com/kvZSxBg.png",
@@ -1784,14 +1782,14 @@
      "name": "Zoey Cooper",
      "sub": "collègue",
      "img": "https://i.imgur.com/j66CXA2.gif",
-     "fields": "",
+     "fields": "gender: female",
      "desc": ""
     },
     {
      "name": "Charlotte Donovan",
      "sub": "grande-soeur d'Eleonore",
      "img": "https://i.imgur.com/FYFOC3F.gif",
-     "fields": "",
+     "fields": "gender: female",
      "desc": ""
     }
    ],
