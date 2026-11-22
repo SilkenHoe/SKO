@@ -1,6 +1,6 @@
 {
  "v": 2,
- "savedAt": 1795378189587,
+ "savedAt": 1795378197437,
  "lib": [
   {
    "scenario": "A Debt In Flesh",
@@ -2730,7 +2730,7 @@
      "quote": "Art has always demanded a willing subject, someone beautiful enough to be observed and empty enough to be reshaped. I never wanted to paint a portrait of perfection when I could simply create one. The finest masterpieces are the ones that eventually forget they were ever unfinished.",
      "by": "@magxnumb",
      "imgs": "",
-     "fields": "age: 28 years old\ngender: female\noccupation: Artist",
+     "fields": "age: 28 years old\ngender: female\noccupation: artist",
      "anec": "",
      "vpos": "center 0%",
      "qtop": "50px"
