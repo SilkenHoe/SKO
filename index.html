@@ -623,6 +623,8 @@ function migFields(t,g){
 }
 function migrateInfo(){
  let ch=false;
+ for(const s in info)if(s.startsWith('\u0000')){delete info[s];ch=true}
+ if(typeof order!=='undefined'&&order.some(s=>String(s).startsWith('\u0000'))){order=order.filter(s=>!String(s).startsWith('\u0000'));ch=true}
  for(const s in info){const I=info[s];if(!I)continue;
   for(const c of I.chars||[]){const f0=c.fields??(c.age?'age: '+c.age:'');const f=migFields(f0,c.old||c.name==='Sasha Fairchild'?'male (sissified)':'female');if(f!==c.fields){c.fields=f;delete c.age;ch=true}if(addPhys(c))ch=true}
   for(const x of I.sec||[]){if(MSUB[x.sub]){x.sub=MSUB[x.sub];ch=true}const f=migFields(x.fields,MMALE.includes(x.name)?'male':'female');if(f!==(x.fields||'')){x.fields=f;ch=true}if(addPhys(x))ch=true}
@@ -668,8 +670,8 @@ const kS=s=>'S:'+s,kA=(s,a)=>'A:'+s+'|'+a,kO=s=>'O:'+s;
 const arcT=(s,a)=>((info[s]||{}).arcs||{})[a]||'';
 const arcFull=(s,a)=>arcLbl(a)+(arcT(s,a)?' — '+arcT(s,a):'');
 const arcS=(s,a)=>((info[s]||{}).arcsum||{})[a]||'';
-function setArcS(s,a,t){const I=info[s]??={};I.arcsum??={};t=String(t||'').trim();if(t)I.arcsum[a]=t;else delete I.arcsum[a];if(!Object.keys(I.arcsum).length)delete I.arcsum}
-function setArcT(s,a,t){const I=info[s]??={};I.arcs??={};if(t)I.arcs[a]=t;else delete I.arcs[a];if(!Object.keys(I.arcs).length)delete I.arcs}
+function setArcS(s,a,t){t=String(t||'').trim();if(!t&&!info[s])return;const I=info[s]??={};I.arcsum??={};t=String(t||'').trim();if(t)I.arcsum[a]=t;else delete I.arcsum[a];if(!Object.keys(I.arcsum).length)delete I.arcsum}
+function setArcT(s,a,t){if(!t&&!info[s])return;const I=info[s]??={};I.arcs??={};if(t)I.arcs[a]=t;else delete I.arcs[a];if(!Object.keys(I.arcs).length)delete I.arcs}
 const cssv=v=>{v=String(v||'').replace(/[^\w\s.%,()-]/g,'').trim();return/^-?\d+(\.\d+)?$/.test(v)?v+'px':v};
 
 function render(){
