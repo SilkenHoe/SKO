@@ -366,7 +366,7 @@ tb{display:flex;justify-content:center;gap:8px;margin-top:16px}
  #menuBtn{display:inline-block}
  #gear,#setm{display:none!important}
  #fl{right:12px}
- [data-es],[data-ea],[data-ev],[data-ei],[data-na],[data-nr],[data-da],[data-xv],[data-nsc]{display:none!important}
+ [data-es],[data-ea],[data-ev],[data-ei],[data-na],[data-nr],[data-ia],[data-da],[data-xv],[data-nsc]{display:none!important}
  .navtop{display:flex;justify-content:flex-end;padding:0 4px 6px}
  body.nav #scrim{display:block}
  nav{position:fixed;left:0;top:0;bottom:0;padding-top:calc(10px + env(safe-area-inset-top,0px));z-index:20;transform:translateX(-105%);transition:transform .25s;width:84%;max-width:320px;box-shadow:var(--sh)}
@@ -447,7 +447,7 @@ nav{padding-top:16px}
 @media (max-width:860px){rapapa{display:flex;width:100%}}
 .secb{position:absolute;top:10px;right:10px;z-index:3;width:32px;height:32px;padding:0;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(10,10,14,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff;cursor:pointer;transition:.15s}
 .secb:hover{background:linear-gradient(145deg,rgba(var(--clr1)1),rgba(var(--clr2)1),rgba(var(--clr3)1));border-color:transparent}
-#fnt, .drm-business > .bt > .btn.sm:nth-child(3){display: none !important;} 
+#fnt{display: none !important;} 
 </style>
 </head>
 <body class="dark_mode">
@@ -705,7 +705,7 @@ function render(){
  const wst=`--clr1:${trip(PC[0])};--clr2:${trip(PC[1])};--clr3:${trip(PC[2])}`;
  const top=`<top><div>${safe(I.icon)?`<img src="${q(I.icon)}" alt="">`:''}</div><in><tit>${esc(cur)}</tit><mt>${num(sc).length} arc(s) · ${acts.length} act(s) · ${tot.toLocaleString('en-US')} words</mt><tb><button class="tab${eff==='fiche'?' on':''}" data-tab="fiche">Sheet</button><button class="tab${eff==='lecture'?' on':''}" data-tab="lecture">Reading</button></tb></in></top>`;
  const inner=eff==='fiche'?`<inner>${sheetBody(cur,sc)}</inner>`:lectureHtml(cur,sc);
- m.innerHTML=`<div class="container" style="${wst}"><div class="drm-business" data-zg><div class="bt"><button class="btn sm" data-na="">＋ Act</button><button class="btn sm" data-nr="1">＋ Arc</button><button class="btn sm" data-xf="1" title="Download the full sheet (Markdown, for an AI)">⬇ AI sheet</button></div>${top}${inner}</div></div>`;
+ m.innerHTML=`<div class="container" style="${wst}"><div class="drm-business" data-zg><div class="bt"><button class="btn sm" data-na="">＋ Act</button><button class="btn sm" data-nr="1">＋ Arc</button><button class="btn sm" data-ia="1" title="Import a conversation file as an arc of this scenario">⇪ Import arc</button></div>${top}${inner}</div></div>`;
  m.querySelectorAll('video[data-src]').forEach(v=>{v.src=v.dataset.src;const p=v.play();if(p&&p.catch)p.catch(()=>{})});
  m.style.scrollBehavior='auto';m.scrollTop=y0;m.style.scrollBehavior='';
  spy();
@@ -740,21 +740,23 @@ function modal(title,fields,ok,lab='Save'){
   if(f.t==='area')return`<label>${f.l}</label><textarea name="${f.k}" rows="${f.rows||14}" style="font-family:ui-monospace,Menlo,monospace;font-size:13px">${esc(f.v||'')}</textarea>`;
   if(f.t==='text'||f.t==='number')return`<label>${f.l}</label><input type="${f.t}" name="${f.k}" value="${q(f.v)}"${f.t==='number'?' min="0"':''}>`;
   if(f.t==='scen')return`<label>${f.l}</label><select name="${f.k}">${names.map(n=>`<option value="${q(n)}"${n===f.v?' selected':''}>${esc(n)}</option>`).join('')}<option value="__new"${f.v==='__new'?' selected':''}>＋ New scenario…</option></select><input type="text" name="${f.k}_new" placeholder="New scenario name" style="${f.v==='__new'?'':'display:none'}">`;
+  if(f.t==='choice')return`<label>${f.l}</label><select name="${f.k}" data-ch>${f.o.map(([v,l])=>`<option value="${q(v)}"${v===f.v?' selected':''}>${esc(l)}</option>`).join('')}</select>`;
+  if(f.t==='file')return`<label>${f.l}</label><input type="file" name="${f.k}" accept="${f.acc||''}">`;
   if(f.t==='color')return`<label>${f.l}</label><div class="sw">${PAL.map(c=>`<i data-c="${c}" style="background:${c}"></i>`).join('')}<input type="color" name="${f.k}" value="${f.v}"><button type="button" class="btn sm" data-auto>Auto</button></div>`;
  };
  o.innerHTML=`<form class="glass${fields.some(f=>f.t==='area')?' wide':''}"><h3>${esc(title)}</h3>${fields.map(fh).join('')}<div class="row"><button type="button" class="btn" data-x>Cancel</button><button class="btn pri">${esc(lab)}</button></div></form>`;
  document.body.appendChild(o);
  const f=o.querySelector('form'),close=()=>o.remove();
- f.querySelectorAll('select[name]').forEach(s=>s.onchange=()=>{f.elements[s.name+'_new'].style.display=s.value==='__new'?'':'none'});
+ f.querySelectorAll('select[name]:not([data-ch])').forEach(s=>s.onchange=()=>{f.elements[s.name+'_new'].style.display=s.value==='__new'?'':'none'});
  f.querySelectorAll('.sw i').forEach(i=>i.onclick=()=>{const c=f.querySelector('input[type=color]');c.value=i.dataset.c;c.dataset.auto=''});
  const au=f.querySelector('[data-auto]');if(au)au.onclick=()=>{f.querySelector('input[type=color]').dataset.auto='1';toast('Automatic colour')};
  o.onclick=e=>{if(e.target===o||e.target.dataset.x!==undefined)close()};
  f.onsubmit=e=>{e.preventDefault();const v={};
   for(const fl of fields){
    const el=f.elements[fl.k];
-   v[fl.k]=fl.t==='scen'?(el.value==='__new'?f.elements[fl.k+'_new'].value.trim():el.value):fl.t==='color'?(el.dataset.auto==='1'?'':el.value):fl.t==='number'?Math.max(0,parseInt(el.value)||0):el.value.trim();
+   v[fl.k]=fl.t==='scen'?(el.value==='__new'?f.elements[fl.k+'_new'].value.trim():el.value):fl.t==='color'?(el.dataset.auto==='1'?'':el.value):fl.t==='number'?Math.max(0,parseInt(el.value)||0):fl.t==='file'?el.files[0]||null:fl.t==='choice'?el.value:el.value.trim();
   }
-  close();ok(v);save();render();
+  close();const r=ok(v);if(r&&r.then)r.then(()=>{save();render()});else{save();render()}
  };
 }
 function editScenario(s){
@@ -769,10 +771,49 @@ function editScenario(s){
   if(v.color)colors[nn]=v.color;else if(v.color==='')delete colors[nn];
  });
 }
+/* renumber every arc of scenario s with f (arc 0 = unspecified never moves); titles and summaries follow */
+function remapArcs(s,f){
+ const g=n=>n>0?f(n):n;
+ lib.forEach(a=>{if(a.scenario===s)a.arc=g(a.arc)});
+ const I=info[s];if(!I)return;
+ for(const key of ['arcs','arcsum'])if(I[key]){const o={};for(const k in I[key])o[g(+k)]=I[key][k];I[key]=o}
+}
+const ARC_MODES=[['insert','Insert it there and shift the following arcs'],['swap','Swap the two arcs'],['merge','Merge the two arcs']];
+/* move arc `from` of scenario s to number `to` of scenario ns; if that number is taken, mode decides */
+function moveArc(s,from,ns,to,mode){
+ if(s===ns&&from===to)return;
+ const mv=lib.filter(a=>a.scenario===s&&a.arc===from),T=arcT(s,from),S=arcS(s,from),TMP='\u0000moving';
+ mv.forEach(a=>a.scenario=TMP);setArcT(s,from,'');setArcS(s,from,'');
+ const busy=lib.some(a=>a.scenario===ns&&a.arc===to);
+ if(busy&&mode==='swap'&&!s.startsWith('\u0000')){
+  const tT=arcT(ns,to),tS=arcS(ns,to);
+  lib.forEach(a=>{if(a.scenario===ns&&a.arc===to){a.scenario=s;a.arc=from}});
+  setArcT(ns,to,'');setArcS(ns,to,'');setArcT(s,from,tT);setArcS(s,from,tS);
+ }else if(busy&&mode!=='merge'&&to>0){
+  if(s===ns&&from>0)remapArcs(s,n=>n>from?n-1:n);   /* close the gap left behind (reordering) */
+  remapArcs(ns,n=>n>=to?n+1:n);                     /* make room */
+ }
+ mv.forEach(a=>{a.scenario=ns;a.arc=to});
+ if(T&&!arcT(ns,to))setArcT(ns,to,T);if(S&&!arcS(ns,to))setArcS(ns,to,S);
+}
+/* import a conversation file as one arc of a chosen scenario */
+function importArc(s){
+ const sc=group()[s]||{},as=num(sc),next=(as.length?Math.max(...as):0)+1;
+ modal('Import an arc from a file',[{k:'file',t:'file',l:'File (.txt / .md)',acc:'.txt,.md,text/plain'},{k:'s',t:'scen',l:'Scenario',v:s||'__new'},{k:'a',t:'number',l:'Arc number',v:next},{k:'t',t:'text',l:'Arc title (optional)',v:''},
+  {k:'mode',t:'choice',l:'If that arc number is already used',v:'insert',o:[ARC_MODES[0],ARC_MODES[2]]}],async v=>{
+  const ns=v.s||s;if(!ns)return toast('Choose a scenario.');if(!v.file)return toast('Choose a file.');
+  const acts=parseFile(v.file.name,await v.file.text());
+  if(!acts.length)return toast('Unrecognised format (no act heading found).');
+  const TMP='\u0000import',fresh=acts.filter(a=>!lib.some(x=>x.md===a.md));
+  if(!fresh.length)return toast('These acts are already in the library.');
+  fresh.forEach(a=>{a.scenario=TMP;a.arc=0;lib.push(a)});
+  moveArc(TMP,0,ns,v.a,v.mode);if(v.t)setArcT(ns,v.a,v.t);cur=ns;
+  toast(`${fresh.length} act(s) imported as ${arcLbl(v.a)}${acts.length>fresh.length?`, ${acts.length-fresh.length} already present`:''}.`);
+ },'Import');
+}
 function editArc(s,arc){
- modal('Arc',[{k:'t',t:'text',l:'Arc title',v:arcT(s,arc)},{k:'s',t:'scen',l:'Scenario',v:s},{k:'a',t:'number',l:'Arc number (0 = unspecified)',v:arc},{k:'sum',t:'area',rows:6,l:'Arc summary (what happened in this arc, for writing the next ones)',v:arcS(s,arc)}],v=>{
-  const ns=v.s||s;lib.forEach(a=>{if(a.scenario===s&&a.arc===arc){a.scenario=ns;a.arc=v.a}});
-  if(ns!==s||v.a!==arc){setArcT(s,arc,'');setArcS(s,arc,'')}setArcT(ns,v.a,v.t);setArcS(ns,v.a,v.sum);cur=ns;
+ modal('Arc',[{k:'t',t:'text',l:'Arc title',v:arcT(s,arc)},{k:'s',t:'scen',l:'Scenario',v:s},{k:'a',t:'number',l:'Arc number (0 = unspecified)',v:arc},{k:'mode',t:'choice',l:'If that arc number is already used',v:'insert',o:ARC_MODES},{k:'sum',t:'area',rows:6,l:'Arc summary (what happened in this arc, for writing the next ones)',v:arcS(s,arc)}],v=>{
+  const ns=v.s||s;moveArc(s,arc,ns,v.a,v.mode);setArcT(ns,v.a,v.t);setArcS(ns,v.a,v.sum);cur=ns;
  });
 }
 function editAct(k){
@@ -804,7 +845,7 @@ function delArc(s,arc){modal('Delete '+arcFull(s,arc)+' from “'+s+'”?',[],()
 
 /* ---------- clicks ---------- */
 document.addEventListener('click',e=>{
- const t=e.target.closest('[data-sc],[data-tg],[data-go],[data-del],[data-es],[data-ea],[data-ev],[data-ei],[data-c],[data-navx],[data-na],[data-nr],[data-da],[data-nsc],[data-xv],[data-tab],[data-zoom],[data-sec],[data-xf]');if(!t||t.closest('#modal'))return;
+ const t=e.target.closest('[data-sc],[data-tg],[data-go],[data-del],[data-es],[data-ea],[data-ev],[data-ei],[data-c],[data-navx],[data-na],[data-nr],[data-ia],[data-da],[data-nsc],[data-xv],[data-tab],[data-zoom],[data-sec],[data-xf]');if(!t||t.closest('#modal'))return;
  const d=t.dataset;
  if(d.sc!==undefined){const s=d.sc;let sw=false;if(s===cur)col[kO(s)]=!col[kO(s)];else{cur=s;wantCur=null;delete col[kO(s)];$('#main').scrollTop=0;document.body.classList.remove('nav');sw=true}delArm=null;save();render();if(sw)restoreProg()}
  else if(d.tg!==undefined){keep(()=>{col[d.tg]=!col[d.tg];save()})}
@@ -819,6 +860,7 @@ document.addEventListener('click',e=>{
  else if(d.navx!==undefined)document.body.classList.remove('nav');
  else if(d.na!==undefined)newAct(cur,d.na===''?null:+d.na);
  else if(d.nr!==undefined)newAct(cur,'new');
+ else if(d.ia!==undefined)importArc(cur);
  else if(d.da!==undefined)delArc(cur,+d.da);
  else if(d.nsc!==undefined)newScenario();
  else if(d.xv!==undefined)delAct(d.xv);
@@ -876,11 +918,11 @@ function showCtx(x,y,items){
  m.style.top=Math.max(8,Math.min(y,innerHeight-m.offsetHeight-8))+'px';
  m.onclick=e=>{const b=e.target.closest('button');if(b){closeCtx();items[b.dataset.i][1]()}};
 }
-const arcItems=(s,a)=>[['Edit arc (title, number)…',()=>editArc(s,a)],['Add an act…',()=>newAct(s,a)],['Delete arc…',()=>delArc(s,a)]];
+const arcItems=(s,a)=>[['Edit arc (title, number)…',()=>editArc(s,a)],['Add an act…',()=>newAct(s,a)],['Import a file as a new arc…',()=>importArc(s)],['Delete arc…',()=>delArc(s,a)]];
 const actItems=k=>[['Edit act…',()=>editAct(k)],['Copy text',()=>copyAct(k)],['Delete act…',()=>delAct(k)]];
 function ctxMenu(x,y,s){
  const names=sortedNames(),i=names.indexOf(s),last=i===names.length-1;
- const items=[['Edit sheet…',()=>editFiche(s)],['Name and colour…',()=>editScenario(s)],i>0&&['Move to top',()=>placeScenario(s,n=>n.unshift(s))],i>0&&['Move up',()=>placeScenario(s,n=>n.splice(i-1,0,s))],!last&&['Move down',()=>placeScenario(s,n=>n.splice(i+1,0,s))],['Delete…',()=>delScenario(s)]].filter(Boolean);
+ const items=[['Edit sheet…',()=>editFiche(s)],['Name and colour…',()=>editScenario(s)],['Import an arc from a file…',()=>importArc(s)],i>0&&['Move to top',()=>placeScenario(s,n=>n.unshift(s))],i>0&&['Move up',()=>placeScenario(s,n=>n.splice(i-1,0,s))],!last&&['Move down',()=>placeScenario(s,n=>n.splice(i+1,0,s))],['Delete…',()=>delScenario(s)]].filter(Boolean);
  showCtx(x,y,items);
 }
 $('#main').addEventListener('contextmenu',e=>{
