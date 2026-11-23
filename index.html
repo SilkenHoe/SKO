@@ -667,6 +667,8 @@ const arcLbl=a=>a?'Arc '+n2rom(a):'Unspecified arc';
 const kS=s=>'S:'+s,kA=(s,a)=>'A:'+s+'|'+a,kO=s=>'O:'+s;
 const arcT=(s,a)=>((info[s]||{}).arcs||{})[a]||'';
 const arcFull=(s,a)=>arcLbl(a)+(arcT(s,a)?' — '+arcT(s,a):'');
+const arcS=(s,a)=>((info[s]||{}).arcsum||{})[a]||'';
+function setArcS(s,a,t){const I=info[s]??={};I.arcsum??={};t=String(t||'').trim();if(t)I.arcsum[a]=t;else delete I.arcsum[a];if(!Object.keys(I.arcsum).length)delete I.arcsum}
 function setArcT(s,a,t){const I=info[s]??={};I.arcs??={};if(t)I.arcs[a]=t;else delete I.arcs[a];if(!Object.keys(I.arcs).length)delete I.arcs}
 const cssv=v=>{v=String(v||'').replace(/[^\w\s.%,()-]/g,'').trim();return/^-?\d+(\.\d+)?$/.test(v)?v+'px':v};
 
@@ -768,9 +770,9 @@ function editScenario(s){
  });
 }
 function editArc(s,arc){
- modal('Arc',[{k:'t',t:'text',l:'Arc title',v:arcT(s,arc)},{k:'s',t:'scen',l:'Scenario',v:s},{k:'a',t:'number',l:'Arc number (0 = unspecified)',v:arc}],v=>{
+ modal('Arc',[{k:'t',t:'text',l:'Arc title',v:arcT(s,arc)},{k:'s',t:'scen',l:'Scenario',v:s},{k:'a',t:'number',l:'Arc number (0 = unspecified)',v:arc},{k:'sum',t:'area',rows:6,l:'Arc summary (what happened in this arc, for writing the next ones)',v:arcS(s,arc)}],v=>{
   const ns=v.s||s;lib.forEach(a=>{if(a.scenario===s&&a.arc===arc){a.scenario=ns;a.arc=v.a}});
-  if(ns!==s||v.a!==arc)setArcT(s,arc,'');setArcT(ns,v.a,v.t);cur=ns;
+  if(ns!==s||v.a!==arc){setArcT(s,arc,'');setArcS(s,arc,'')}setArcT(ns,v.a,v.t);setArcS(ns,v.a,v.sum);cur=ns;
  });
 }
 function editAct(k){
@@ -1004,7 +1006,7 @@ function zipParts(files){
  const enc=new TextEncoder(),parts=[],cen=[];let off=0;
  const u16=v=>[v&255,v>>8&255],u32=v=>[v&255,v>>8&255,v>>16&255,v>>>24&255];
  for(const f of files){
-  const nb=enc.encode(f.name),db=enc.encode(f.data),crc=crc32(db);
+  const nb=enc.encode(f.name),db=typeof f.data==='string'?enc.encode(f.data):f.data,crc=crc32(db);
   const lh=new Uint8Array([0x50,0x4b,3,4,...u16(20),...u16(0x0800),...u16(0),...u16(0),...u16(0x21),...u32(crc),...u32(db.length),...u32(db.length),...u16(nb.length),...u16(0)]);
   parts.push(lh,nb,db);
   cen.push(new Uint8Array([0x50,0x4b,1,2,...u16(20),...u16(20),...u16(0x0800),...u16(0),...u16(0),...u16(0x21),...u32(crc),...u32(db.length),...u32(db.length),...u16(nb.length),...u16(0),...u16(0),...u16(0),...u16(0),...u32(0),...u32(off)]),nb);
@@ -1024,7 +1026,6 @@ function charMd(c,lvl='##'){
  let o=`${lvl} ${c.name||'(unnamed)'}\n`;
  if(c.old)o+=`- Former first name (abandoned, no longer use it): ${c.old}\n`;
  kvList(c.fields??(c.age?'age: '+c.age:'')).forEach(([k,v])=>o+=`- ${k?up1(k):'Info'}: ${plain(v)}\n`);
- if(c.quote)o+=`- Quote: “${plain(c.quote)}”${c.by?` (${c.by})`:''}\n`;
  const an=lines(c.anec??c.info??'');
  if(an.length)o+=`\n${lvl}# Anecdotes\n${an.map(a=>`- ${plain(a)}`).join('\n')}\n`;
  return o.trim()+'\n';
@@ -1045,11 +1046,12 @@ function planMd(s){
  }
  return o;
 }
+const arcSumMd=s=>num((info[s]||{}).arcsum||{}).map(a=>`## ${arcFull(s,a)}\n${plain(arcS(s,a))}`).join('\n\n');
 const placesMd=I=>(I.places||[]).map(x=>`- ${x.name}${x.sub?` (in: ${x.sub})`:''}`).join('\n');
 /* context shared by all of a scenario's sheets */
 function ctxMd(s){
  const I=info[s]||{};
- return tg('synopsis',plain(I.plot))+tg('act_outline',planMd(s))+tg('places',placesMd(I));
+ return tg('synopsis',plain(I.plot))+tg('arc_summaries',arcSumMd(s))+tg('act_outline',planMd(s))+tg('places',placesMd(I));
 }
 const allChars=I=>tg('main_characters',(I.chars||[]).map(c=>tg('character',charMd(c))).join('').trim());
 const allSecs=I=>tg('secondary_characters',(I.sec||[]).map(p=>tg('secondary_character',secMd(p))).join('').trim());
@@ -1077,12 +1079,29 @@ function secFileMd(s,p){
   tg('other_secondary_characters',oth.map(x=>tg('secondary_character',secMd(x))).join('').trim());
 }
 function saveBlob(name,blob){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000)}
-function exportOne(s){saveBlob('sheet - '+safeFn(s)+'.txt',new Blob([ficheMd(s).trim()+'\n'],{type:'text/plain;charset=utf-8'}));toast('Sheet downloaded.')}
-function exportAll(){
+/* ---------- PDF export (jsPDF, loaded on first use) ---------- */
+let jspdfP=null;
+function loadPdf(){return jspdfP??=new Promise((res,rej)=>{if(window.jspdf)return res(window.jspdf);const sc=document.createElement('script');sc.src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';sc.onload=()=>res(window.jspdf);sc.onerror=()=>{jspdfP=null;rej(new Error('pdf'))};document.head.appendChild(sc)})}
+/* the built-in PDF fonts only know Latin-1: map typographic characters, drop the rest */
+const pdfTxt=t=>String(t).replace(/[‘’ʼ]/g,"'").replace(/[“”«»]/g,'"').replace(/[–—]/g,'-').replace(/…/g,'...').replace(/[•●]/g,'-').replace(/ /g,' ').replace(/[^\n\x20-\x7e\xa0-\xff]/g,'');
+function mdPdf(J,md){
+ /* raw Markdown, line by line: the sheet is meant to be read by an AI, not laid out for people */
+ const doc=new J.jsPDF({unit:'pt',format:'a4'}),W=doc.internal.pageSize.getWidth(),H=doc.internal.pageSize.getHeight(),M=40,S=10,LH=S*1.4;let y=M;
+ doc.setFont('courier','normal');doc.setFontSize(S);doc.setTextColor(0);
+ for(const l of md.replace(/\n{3,}/g,'\n\n').trim().split('\n')){
+  const ws=l.trim()?doc.splitTextToSize(pdfTxt(l),W-2*M):[''];
+  for(const w of ws){if(y+LH>H-M){doc.addPage();y=M}doc.text(w,M,y+S);y+=LH}
+ }
+ return doc;
+}
+async function pdfOf(s){const J=await loadPdf();return mdPdf(J,ficheMd(s))}
+async function exportOne(s){try{const d=await pdfOf(s);saveBlob('sheet - '+safeFn(s)+'.pdf',d.output('blob'));toast('Sheet downloaded.')}catch(e){toast('Could not create the PDF (no connection?).')}}
+async function exportAll(){
  const files=[],names=Object.keys(info).filter(k=>{const I=info[k];return I&&(I.plot||(I.chars||[]).length||(I.sec||[]).length||(I.places||[]).length)});
  if(!names.length)return toast('No sheets to export yet.');
  const T=x=>x.replace(/\n{3,}/g,'\n\n').trim()+'\n';
- for(const s of names)files.push({name:`${safeFn(s)}.txt`,data:T(ficheMd(s))});
+ let J;try{J=await loadPdf()}catch(e){return toast('Could not create the PDFs (no connection?).')}
+ for(const s of names)files.push({name:`${safeFn(s)}.pdf`,data:new Uint8Array(mdPdf(J,T(ficheMd(s))).output('arraybuffer'))});
  saveBlob('scenario-sheets.zip',new Blob(zipParts(files),{type:'application/zip'}));
  toast(`${files.length} sheet(s) in the archive.`);
 }
@@ -1130,13 +1149,15 @@ function editFiche(s,focus){
   if(f.t==='chips')return`<div class="chips" data-fk="${f.k}"><div class="lab">${f.l}</div><div class="cl">${(it[f.k]||[]).map((x,i)=>`<div class="chip${f.w?' w':''}"><input type="text" data-ci placeholder="${q(f.ph||'')}" value="${q(x)}"><button type="button" class="cx" data-cx="${i}" title="Remove">✕</button></div>`).join('')}<button type="button" class="cp" data-cadd title="Add">＋</button></div></div>`;
   return`<input type="text" data-k="${f.k}"${f.h?' class="h"':''} placeholder="${q(f.ph||'')}" value="${q(v)}">`};
  const rowH=(key,it)=>`<div class="ce" data-l="${key}"><div class="cf">${L[key].f.map(f=>fld(f,it)).join('')}${L[key].single?'':'<div class="ra"><button type="button" class="btn sm" data-up>↑</button><button type="button" class="btn sm" data-dn>↓</button><button type="button" class="btn sm" data-del>Delete</button></div>'}</div></div>`;
+ const arcNs=[...new Set([...num(group()[s]||{}),...Object.keys(I.arcsum||{}).map(Number)])].sort((a,b)=>a-b);
+ const arcBox=arcNs.length?`<div id="S_arcs"><b class="eh">Arc summaries</b>${arcNs.map(a=>`<label>${esc(arcFull(s,a))}</label><textarea name="asum_${a}" rows="5" placeholder="What happened in this arc: key events, how the characters changed, where things stand at the end…">${esc(arcS(s,a))}</textarea>`).join('')}</div>`:'';
  const sec=(key,t)=>`<div id="S_${key}"><b class="eh">${t}</b><div id="L_${key}"></div><button type="button" class="btn sm" data-add="${key}">${L[key].add}</button></div>`;
  o.innerHTML=`<form class="glass wide"><h3>Sheet — ${esc(s)}</h3>
 <div id="S_gen"><b class="eh">General</b><label>Scenario icon</label><div id="L_gen"></div>
 <label>Gradient colours (the first one is the main colour)</label><div class="cors">${crow('c1',P[0],'1',!colors[s])}${crow('c2',P[1],'2',!I.c2)}${crow('c3',P[2],'3',!I.c3)}</div>
 <label>Synopsis (**bold**, *italic*, ++underline++)</label><textarea name="plot" rows="6">${esc(I.plot||'')}</textarea>
 <div id="L_gal"></div></div>
-${sec('chars','Characters')}${sec('places','Places')}${sec('sec','Secondary characters')}
+${arcBox}${sec('chars','Characters')}${sec('places','Places')}${sec('sec','Secondary characters')}
 <div class="row"><button type="button" class="btn" data-x>Cancel</button><button class="btn pri">Save</button></div></form>`;
  document.body.appendChild(o);
  const f=o.querySelector('form'),close=()=>o.remove();
@@ -1188,6 +1209,7 @@ ${sec('chars','Characters')}${sec('places','Places')}${sec('sec','Secondary char
    r.imgs=(c.imgs||[]).map(x=>x.trim()).filter(Boolean).join('\n');return r});
   const nI={...I,plot:E.plot.value.trim(),gallery:(L.gal.items[0].gallery||[]).map(x=>x.trim()).filter(Boolean).join('\n'),icon:L.gen.items[0].icon||'',c2:auto('c2')?'':E.c2.value,c3:auto('c3')?'':E.c3.value,
    chars:clean(L.chars.items.filter(c=>c.name||c.old)),places:L.places.items.filter(p=>p.name),sec:L.sec.items.filter(p=>p.name).map(c=>({...c,fields:(c.fields||[]).filter(x=>x[1]).map(x=>`${x[0]}: ${x[1]}`).join('\n')}))};
+  const as={};arcNs.forEach(a=>{const t=(E['asum_'+a]?.value||'').trim();if(t)as[a]=t});nI.arcsum=Object.keys(as).length?as:'';
   Object.keys(nI).forEach(k=>{if(!nI[k]||(Array.isArray(nI[k])&&!nI[k].length))delete nI[k]});
   if(auto('c1'))delete colors[s];else colors[s]=E.c1.value;
   if(Object.keys(nI).length)info[s]=nI;else delete info[s];
